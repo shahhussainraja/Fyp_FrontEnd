@@ -2,17 +2,19 @@
     height: calc(100vh - 70px);
     display: flex;
     margin-top: 70px;
+    position: relative;
 }
 
 .chatList{
     flex: .3;
     /* background: green; */
     height: 100vh;
+
 }
 .chatMenu{
     flex:0.7;
     /* background: yellow; */
-    height: 100vh;
+    /* height: 100vh; */
     overflow-y: scroll;
 }
 
@@ -35,4 +37,10 @@
     width: 80%;
     margin: 10px;
     background: green;
+}
+
+.chatTitle{
+
+ align-items: center;
+ justify-content: center;
 }

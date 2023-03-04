@@ -18,8 +18,9 @@ display: flex;
     max-width: 500px;
     background: rgb(66, 92, 154);
     color: white;
-    border-radius: 10px;
+    border-radius: 5px;
     font-size: 15px;
+    padding: 10px;
 }
 
 .messageBottom{

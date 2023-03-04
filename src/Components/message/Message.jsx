@@ -1,15 +1,16 @@
 import "./Message.css"
 import imgCover from "../../images/about2.png"
+import { format } from 'timeago.js'
 
-export default function Message({own}) {
+export default function Message({message , userId}) {
   return (
-    <div className={ own ? "message own" : "message" }>
+    <div className={ message.senderId === userId ? "message own" : "message" }>
         <div className="messageTop">
         <img src={imgCover} className="messageImg" alt="" />
-         <p className="messageText">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Explicabo reiciendis, qui eos ea dolore, fuga molestias debitis assumenda facilis ex consequuntur tempora in omnis est laborum quia quam quae voluptates.</p>
+         <p className="messageText">{message.message}</p>
         </div>
         <div className="messageBottom">
-            1 hour ago
+            {format(message.createdAt)}
         </div>
     </div>
     
