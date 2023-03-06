@@ -4,6 +4,7 @@ import Message from '../../Components/message/Message'
 import "./Conversation.css"
 import Button from 'react-bootstrap/Button';
 import authServices from '../../Services/AuthServices';
+import { io } from 'socket.io-client';
 
 function Conversation() {
 
@@ -11,13 +12,34 @@ function Conversation() {
   const [conversation , setConversation] = useState(null);
   const [currentChat, setCurrentChat] = useState(null);
   const [messages, setMessages] = useState([]);
+  const [socketmessages, setSocketMessages] = useState(null);
+  const socket = useRef();
   const [newMessage , setNewMessage] = useState("");
+
   const scrollRef = useRef()
-   
 
   useEffect(()=>{
+    socket.current = io("ws://localhost:8900")
+    socket.current.on("getMessage",(data)=>{
+      setSocketMessages({
+        senderId:data.senderId,
+        message:data.text,
+        createdAt:Date.now()
+      })
+    })
+  },[])
 
-   const fetchUser = ()=>{
+  //updateMessage from socket and update in function Usestate message
+  useEffect(()=>{
+    socketmessages && currentChat.members.includes(socketmessages.senderId) &&
+    setMessages((prev)=> [...prev,socketmessages])
+
+  },[socketmessages,currentChat])
+
+
+  useEffect(()=>{
+    
+    const fetchUser = ()=>{
       authServices.currentUser().then(res=>{
         // console.log(res)
         setCurrentUser(res.id)
@@ -27,6 +49,18 @@ function Conversation() {
     }
     fetchUser();
   },[])
+  
+  
+  //sending userID to Server
+    useEffect(()=>{
+      socket.current.on("wellcome",(message)=>{
+        console.log(message)
+      })
+
+      socket.current.emit("addUser",currentUser)
+    },[currentUser])
+     
+
 
   useEffect(()=>{
     const fetchConversation = ()=>{
@@ -65,6 +99,14 @@ const handleSubmit =async(e)=>{
       message : newMessage,
       conversationId : currentChat._id 
     }
+
+const receiver = currentChat.members.find(member => member != currentUser )
+
+    socket.current.emit("sendMessage",{
+      senderId : currentUser,
+      receiverId:receiver,
+      text:newMessage
+    })
 
 
    authServices.sendMessage(data).then((res)=>{
