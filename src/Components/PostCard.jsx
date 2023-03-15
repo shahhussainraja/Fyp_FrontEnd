@@ -2,8 +2,32 @@ import Card from 'react-bootstrap/Card';
 import CardGroup from 'react-bootstrap/CardGroup';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Button from 'react-bootstrap/Button';
+import React, {useEffect, useState} from 'react'
 
 function GroupExample() {
+  const [post, setPost] = useState({
+    title : "",
+    text: "",
+    duedate : "",
+    Category:"",
+    budget:""
+  });
+
+  function handleChange(event) {
+    const { name, value } = event.target;
+    setPost(prevUser => ({
+      ...prevUser,
+      [name]: value
+    }));
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    // Update user profile with new data
+  }
+
+
+
   return (
     <Card style={{ width: '18rem', marginLeft:"20%"}}>
     <Card.Body>

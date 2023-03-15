@@ -3,6 +3,7 @@ import Contact from '../Components/Contact'
 import Search from '../Components/Search'
 import Catagories from '../Components/Catagories'
 import GroupExample from '../Components/PostCard'
+import App from '../Components/searchbar/App'
 
 function FindJobs() {
 

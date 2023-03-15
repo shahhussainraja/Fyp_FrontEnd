@@ -4,8 +4,12 @@ import Home from './Pages/Home';
 import FindJobs from './Pages/FindJobs';
 import Navbar from './Components/Navbar';
 import Shop from './Pages/Shop';
+import Post from './Pages/Post/Post';
+import Login from './Components/Login/Login'
 import Conversation from './Pages/ConversationPage/Conversation';
 import Spinner from 'react-spinkit';
+import Registration from './Components/registration/registration';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import {
   BrowserRouter,
   Routes,
@@ -13,6 +17,7 @@ import {
   Link,
   Navigate,
 } from "react-router-dom";
+import SellerRegistration from './Components/registration/sellerRegistration';
 
 
 
@@ -24,6 +29,22 @@ function App() {
   {
     case"/":
     component = <Home />
+    break
+
+    case"/Registration":
+    component = <Registration/>
+    break
+
+    case"/SellerRegistration":
+    component = <SellerRegistration/>
+    break
+
+    case"/Login":
+    component = <Login/>
+    break
+
+    case"/Post":
+    component = <Post/>
     break
 
     case"/FindJobs":

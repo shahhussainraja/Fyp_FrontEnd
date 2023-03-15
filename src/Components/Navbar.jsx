@@ -5,12 +5,16 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Dropdown from 'react-bootstrap/Dropdown';
 import logo3 from '../images/logo4.png';
-import Post from '../Pages/Post';
+import Post from '../Pages/Post/Post';
 import authServices from '../Services/AuthServices';
 import axios from 'axios';
 import * as Icon from 'react-bootstrap-icons';
 import { ArrowRight } from 'react-bootstrap-icons';
 import { BoxArrowInRight } from 'react-bootstrap-icons';
+import {BuyerReg} from '../Components/registration/registration';
+import { Link } from 'react-router-dom'
+import { GiHamburgerMenu } from "react-icons/gi";
+
 
 
 
@@ -89,16 +93,31 @@ function Navbar() {
 
       }
 
+
+
+      //image handler
+        const [image, setImage] = useState('')
+        function handleImage(e) {
+          setImage(e.target.files[0])
+        }
+
+        //hanmberger menu
+        const [showMediaIcons, setShowMediaIcons] = useState(false);
+        
   return (
       <>
     <nav className={nav ? 'nav active' : 'nav'}>
-      <a href='#' className='logo'>
+      <div col-lg-12 col-xl-9 mx-auto>
+      <a href='/' className='logo'>
           <img src={logo3} alt=''/>
       </a>
+      </div>
+
+      <div col-lg-12 col-xl-9 mx-auto>
       <ul className='menu' style={{display:'flex',alignItems:"center"}}>
         {authServices.isLogged() ? (<>
           <li><a href='/' >Home</a></li>
-          <li><a onClick={handleShowPost} style={{color:'#E3BE00'}}>Post Order</a></li>
+          <li><a href='/Post' style={{color:'#E3BE00'}}>Post Order</a></li>
           <li ><a href='/FindJobs'>Find Job</a></li>
           <li><a href='/Chat'>chat</a></li>
           <li><a href='/Shop'>Shop</a></li>
@@ -106,14 +125,23 @@ function Navbar() {
             authServices.logOut()
           }} /></li>
         </>) : (<>
-          <li><a onClick={handleShow} style={{color:'#E3BE00'}}>Login</a></li>
-          <a className='nav-btn' style={{borderRadius:2,marginTop:2}} onClick={handleLogin} >Register</a>
+          <li><a href='/Login' style={{color:'#E3BE00'}}>Login</a></li>
+          <a className='nav-btn' style={{borderRadius:2,marginTop:2}} href='/Registration'>Register</a>
           {/* className='active'  */}  
         </>)}    
       </ul>
+      </div>
+
+      <div className="hamburger-menu">
+            <a href="#" onClick={() => setShowMediaIcons(!showMediaIcons)}>
+              <GiHamburgerMenu />
+            </a>
+          </div>
+
+          
     </nav>
 
-{/* login modal */}
+{/* login modal
     <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton style={{color:'#00b7ff'}}>
           <Modal.Title>Login here</Modal.Title>
@@ -152,11 +180,11 @@ function Navbar() {
         </Modal.Body>
         <Modal.Footer>
         </Modal.Footer>
-      </Modal>
+      </Modal> */}
 
       {/* Registration form  */}
 
-      <Modal show={login} onHide={handleCloseLogin}>
+      {/* <Modal show={login} onHide={handleCloseLogin}>
         <Modal.Header closeButton style={{color:'#00b7ff'}}>
           <Modal.Title>Registration</Modal.Title>
         </Modal.Header>
@@ -201,7 +229,7 @@ function Navbar() {
             Next
           </Button>
         </Modal.Footer>
-      </Modal>
+      </Modal> */}
 
       {/* onClick={sellerStateMethod} */}
 
@@ -209,7 +237,7 @@ function Navbar() {
 
       {/* registration modal */}
 
-      <Modal show={sellerReg} onHide={handleCloseSellerReg}>
+      {/* <Modal show={sellerReg} onHide={handleCloseSellerReg}>
         <Modal.Header closeButton style={{color:'#00b7ff'}}>
           <Modal.Title>Seller Registration</Modal.Title>
         </Modal.Header>
@@ -291,12 +319,12 @@ function Navbar() {
             Register
           </Button>
         </Modal.Footer>
-      </Modal>
+      </Modal> */}
 
 
 
       {/* Buyer registration modal */}
-
+{/* 
       <Modal show={buyerReg} onHide={handleCloseBuyerReg}>
         <Modal.Header closeButton style={{color:'#00b7ff'}}>
           <Modal.Title>Buyer Registration</Modal.Title>
@@ -354,7 +382,7 @@ function Navbar() {
             Register
           </Button>
         </Modal.Footer>
-      </Modal>
+      </Modal> */}
 
 
         {/* catagory modal */}
@@ -381,8 +409,14 @@ function Navbar() {
       </Modal>
 
 
+ 
 
-       {/* registration modal */}
+      
+
+
+
+
+       {/* Post Order modal */}
 
        <Modal show={post} onHide={handleClosePost}>
         <Modal.Header closeButton style={{color:'#00b7ff'}}>
@@ -434,6 +468,46 @@ function Navbar() {
                 autoFocus
               />
             </Form.Group>
+
+
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+              <Form.Label>Select file (optional) </Form.Label>
+             
+              {/* <Form.Control
+                type="location"
+                placeholder="choose any reference image"
+                autoFocus
+              />              */}
+           
+
+            {/* <button className='' onClick={handleImage}>Choose file</button> */}
+
+            {image && (
+        <div>
+          <img
+            alt="not found"
+            width={"250px"}
+            src={URL.createObjectURL(image)}
+          />
+          <br />
+          <button onClick={() => setImage(null)}>Remove</button>
+        </div>
+      )}
+
+      <br />
+      <br />
+      
+      <input
+        type="file"
+        name="myImage"
+        onChange={(event) => {
+          console.log(event.target.files[0]);
+          setImage(event.target.files[0]);
+        }}
+      />
+       </Form.Group>
+            
+
           </Form>
         </Modal.Body>
         <Modal.Footer>

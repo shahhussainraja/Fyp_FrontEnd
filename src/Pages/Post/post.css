@@ -1,0 +1,46 @@
+.container{
+  padding: 20px, 20px, 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  color: #E3BE00;
+  font-size:large;
+  margin-top: 100px;
+  margin-left: 300px;
+}
+
+.button{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px, 0px, 10px;
+}
+.Post-button{
+  outline: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 2px 5px 10px rgba(2, 238, 255, 0.336);
+      border: 0;
+      color: #ffffff;
+      border-radius: 50px;
+      background: #00b7ff;
+      transition: 0.3s;
+      cursor: pointer;
+      width:300px;
+      height: 40px;
+      margin-left: 20px;
+      text-transform: uppercase;
+      padding: 50px, 10px, 10px;
+      text-decoration: none;
+     
+}
+
+.Post-button:hover {
+  background-color: #0099ff;
+  transition: all ease 0.5s;
+  color: #ffffff;
+}  

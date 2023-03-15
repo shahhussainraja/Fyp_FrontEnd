@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap');
+
+*{
+  font-family: Montserrat;
+}
+.login,
+.image {
+  min-height: 100vh;
+}
+
+.bg-image {
+  background-image: url('../../images/Login-2.jpg');
+  background-size: cover;
+  background-position: center center;
+}
+
+.text {
+  color: #E3BE00;
+  text-align:center;
+  font-size:xx-large;
+}
+
+.login-btn{
+  width:350px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  text-transform: uppercase;
+    align-items: center;
+    background-color: #00b7ff;
+    box-shadow: 2px 5px 10px rgba(2, 238, 255, 0.336);
+    border-radius: 20px;
+  color:#ffffff;
+  margin-left: 0px;
+
+  }
+  .login-btn:hover{
+  background-color: #0099ff;
+    transition: all ease 0.5s;
+    color: #ffffff;
+  }
+
+
+ 
+
+  .modal-desc {
+    margin: 6px 0 30px 0;
+    color: grey;
+    text-align:center;
+  }
+
+  .form-error {
+    font-size: 1.2rem;
+    color: #b22b27;
+  }
+  .modal-right {
+    flex: 2;
+    font-size: 0;
+    transition: 0.3s;
+    overflow: hidden;
+  }
+
+  .modal-right img {
+      width: 100%;
+      height: 100%;
+      transform: scale(1);
+      -o-object-fit: cover;
+      object-fit: cover;
+      transition-duration: 1.2s;
+      /* margin-top: 50px;
+      margin-left: 50px */
+    };
+
+    .modal-buttons {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .modal-buttons a {
+      color: rgba(51, 51, 51, 0.6);
+      font-size: 14px;
+    }
+    .input-button {
+      outline: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 2px 5px 10px rgba(2, 238, 255, 0.336);
+      border: 0;
+      color: #ffffff;
+      border-radius: 50px;
+      background: #00b7ff;
+      transition: 0.3s;
+      cursor: pointer;
+      width:300px;
+      height: 40px;
+      margin-left: 20px;
+      text-transform: uppercase;
+      margin-left: 70px;
+      text-decoration: none;
+    }
+    .input-button:hover {
+      background-color: #0099ff;
+      transition: all ease 0.5s;
+      color: #ffffff;
+    }  
+
+    /* seller reg  */
+
+    .app {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      
+    }
+    .dropdown-container {
+      width: 450px;
+      border: 0;
+      border-radius: 10;
+      
+    }

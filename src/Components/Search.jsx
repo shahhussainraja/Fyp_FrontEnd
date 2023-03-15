@@ -8,8 +8,9 @@ const Search = () => {
   return (
     <>
       <section className='search'>
-          <div className='search-box'>
-            <input type='text' placeholder='Search and hit enter...'/>
+          <div>
+            <input className="search-box input" type='text' placeholder='Search and hit enter...'/>
+            {/* <FiSearch className="search-box i"></FiSearch> */}
           </div>
       </section>
     </>

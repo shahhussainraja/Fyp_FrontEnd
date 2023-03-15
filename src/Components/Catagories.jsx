@@ -7,11 +7,11 @@ function Catagories() {
     const data = [
         {
           cateImg: "../images/category/123.png" ,
-          cateName: "Fashion",
+          cateName: "Cloths",
         },
         {
           cateImg: "./images/category/cat-2.png",
-          cateName: "Food",
+          cateName: "Catering",
         },
         {
           cateImg: "./images/category/cat3.png",

@@ -9,7 +9,7 @@ import aboutImage1 from '../images/about3.png'
 
 function Home() {
   return (
-    <div className="App">
+    <div className="">
       <Header></Header>
       <Feature></Feature>
       <About image={aboutImage} title='About Bespoke' height='100px' width= "400px" description='Bespoke allow users to get their dream products without any physical research.Bespoke provide job opportunities for local shops or home working. This platform encourage newcomers (especially house women as tailors, designers, bakers etc.) to run their businesses on a small scale as entrepreneurs. ' button='Know More'></About>

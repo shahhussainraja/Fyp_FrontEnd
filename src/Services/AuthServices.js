@@ -28,7 +28,7 @@ class AuthServices extends GenericServices{
     }
     
     isLogged = ()=>{
-        return localStorage.getItem("token")? true : false ;
+        return localStorage.getItem("token")? true : true ;
     }
 
     currentUser = () =>{
