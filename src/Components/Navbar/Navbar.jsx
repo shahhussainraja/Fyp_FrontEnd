@@ -1,90 +1,99 @@
-import React, { useState } from "react";
-import "./navbar.css";
-import {
-  FaFacebookSquare,
-  FaInstagramSquare,
-  FaYoutubeSquare,
-} from "react-icons/fa";
-import { GiHamburgerMenu } from "react-icons/gi";
+import React, {useEffect, useState} from 'react'
+import logo3 from '../../images/logo4.png';
+import authServices from '../../Services/AuthServices';
+import axios from 'axios';
+import * as Icon from 'react-bootstrap-icons';
+import { ArrowRight } from 'react-bootstrap-icons';
+import { BoxArrowInRight } from 'react-bootstrap-icons';
+import './navbar.css'
 
-import { NavLink } from "react-router-dom";
 
-const Navbar = () => {
-  const [showMediaIcons, setShowMediaIcons] = useState(false);
+
+
+function Navbar() {
+
+  const [form,setForm]=useState()
+  const handleForm=(e)=>{
+    setForm(e.target.name)
+ }
+ const [sellerState,setSellerState] = useState(false)
+ const [type,setType] = useState("")
+
+
+//navbar
+    const [nav, setnav] = useState(false);
+
+    const changeBackground = () => {
+        if(window.scrollY >= 50){
+            setnav(true);
+        }
+        else{
+            setnav(false);
+        }
+    }
+    window.addEventListener('scroll', changeBackground);
+      const sellerStateMethod =()=>{
+        if(sellerState=='true')
+        {
+          console.log("hello")
+        }
+      }
+      useEffect(()=>{console.log("type: ", type)})
+      const SetFlag =()=>{
+        SetFlag(true)
+      }
+
+      const handleLoginForm = (event) => {
+        event.preventDefault();
+        const data = Object.fromEntries(new FormData(event.target));
+        console.log(event.target[0].value)
+        console.log(event.target[1].value)
+        authServices.login(event.target[0].value,event.target[1].value).
+        then(res=>{
+          console.log(res)
+        })
+        .catch()
+
+      }
+
+      //image handler
+        const [image, setImage] = useState('')
+        function handleImage(e) {
+          setImage(e.target.files[0])
+        }
   return (
-    <>
-      <nav className="main-nav">
-        {/* 1st logo part  */}
-        <div className="logo">
-          <h2>
-            <span>T</span>hapa
-            <span>T</span>echnical
-          </h2>
-        </div>
+      <>
+      <div className='container'>
+    <nav className={nav ? 'nav active' : 'nav'}>
+      <div>
+      <a href='/' className='logo'>
+          <img src={logo3} alt=''/>
+      </a>
+      </div>
 
-        {/* 2nd menu part  */}
-        <div
-          className={
-            showMediaIcons ? "menu-link mobile-menu-link" : "menu-link"
-          }>
-          <ul>
-            <li>
-              <NavLink to="/">Home</NavLink>
-            </li>
-            <li>
-              <NavLink to="/about">about</NavLink>
-            </li>
-            <li>
-              <NavLink to="/service">services</NavLink>
-            </li>
-            <li>
-              <NavLink to="/contact">contact</NavLink>
-            </li>
-          </ul>
-        </div>
-
-        {/* 3rd social media links */}
-        <div className="social-media">
-          <ul className="social-media-desktop">
-            <li>
-              <a
-                href="https://www.youtube.com/channel/UCwfaAHy4zQUb2APNOGXUCCA"
-                target="_thapa">
-                <FaFacebookSquare className="facebook" />
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://www.instagram.com/thapatechnical/"
-                target="_thapa">
-                <FaInstagramSquare className="instagram" />
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://www.youtube.com/channel/UCwfaAHy4zQUb2APNOGXUCCA"
-                target="_thapa">
-                <FaYoutubeSquare className="youtube" />
-              </a>
-            </li>
-          </ul>
-
-          {/* hamburget menu start  */}
-          <div className="hamburger-menu">
-            <a href="#" onClick={() => setShowMediaIcons(!showMediaIcons)}>
-              <GiHamburgerMenu />
-            </a>
-          </div>
-        </div>
-      </nav>
-
-      {/* hero section  */}
-      {/* <section className="hero-section">
-        <p>Welcome to </p>
-        <h1>Thapa Technical</h1>
-      </section> */}
+      <div className='menu'>
+      <ul>
+        {authServices.isLogged() ? (<>
+          <li><a href='/' >Home</a></li>
+          <li><a href='/Post'>Post Order</a></li>
+          <li ><a href='/FindJobs'>Find Job</a></li>
+          <li><a href='/Chat'>chat</a></li>
+          <li><a href='/Shop'>Shop</a></li>
+          <li><BoxArrowInRight color="royalblue" style={{cursor:"pointer"}} size={30} onClick={()=>{
+            authServices.logOut()
+          }} /></li>
+        </>) : (<>
+          <li><a href='/Login' style={{color:'#E3BE00'}}>Login</a></li>
+          <a className='nav-btn' style={{borderRadius:2,marginTop:2}} href='/Registration' >Register</a>
+          {/* className='active'  */}  
+        </>)}    
+      </ul>
+     
+      </div>
+    </nav>
+    </div>
     </>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar

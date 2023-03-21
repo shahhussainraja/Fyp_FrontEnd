@@ -1,11 +1,13 @@
 import React from 'react'
 import { FiFacebook, FiTwitter, FiInstagram, FiPhone } from "react-icons/fi";
+import './contact.css'
 
 function Contact() {
   return (
-    <div id='contact'>
+    
+    <div class='col-mb-6' id='contact'>
         <h3>Send complaints</h3>
-        <div className='contact-input'>
+        <div  className='contact-input'>
             <input type='email' placeholder='example@gmail.com'/>
             {/* <a href='#'>Contact</a> */}
         </div>
@@ -21,8 +23,8 @@ function Contact() {
           <FiPhone/>
         </div>
         
+      </div>
       
-    </div>
   )
 }
 

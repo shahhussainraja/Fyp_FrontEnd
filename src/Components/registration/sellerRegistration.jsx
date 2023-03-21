@@ -5,16 +5,18 @@ import '../Login/login.css';
 import {useEffect, useState} from 'react'
 import reg_img from '../../images/Login.jpg'
 import { useFormik } from "formik";
-import { signUpSchema } from "../../Schemas/index";
+import { registrationSchema } from "../../Schemas/index";
 import Select from "react-select";
 
 
 
 const initialValues = {
-    name: "",
-    email: "",
-    password: "",
-    confirm_password: "",
+    accountName: "",
+    phoneNumber: "",
+    cnic: "",
+    address: "",
+    category:"",
+
   };
   
   
@@ -44,7 +46,7 @@ function handleSelect(data) {
     const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
     useFormik({
       initialValues,
-      validationSchema: signUpSchema,
+      validationSchema: registrationSchema,
       onSubmit: (values, action) => {
         console.log(
           "🚀 ~ file: Registration.jsx ~ line 11 ~ Registration ~ values",
@@ -97,31 +99,31 @@ function handleSelect(data) {
                                             name="name"
                                             id="name"
                                             placeholder="Write name related to your work"
-                                            value={values.name}
+                                            value={values.accountName}
                                             onChange={handleChange}
                                             onBlur={handleBlur}
                                             class="form-control rounded-pill border-0 shadow-sm px-4" />
                                             </lable>    
-                                            {errors.name && touched.name ? (
-                                            <p className="form-error">{errors.name}</p>
+                                            {errors.accountName && touched.accountName ? (
+                                            <p className="form-error">{errors.accountName}</p>
                                             ) : null}             
                                         </div>
 
                                         <div class="mb-3">
                                         <lable class=" mb-4 " style={{marginBottom:"0px 0px 0px"}} >Phone Number
                                             <input
-                                                type="email"
+                                                type="tel"
                                                 autoComplete="off"
-                                                name="email"
-                                                id="email"
-                                                placeholder="abc@gmail.com"
-                                                value={values.email}
+                                                name="phoneNo"
+                                                id="phoneNo"
+                                                placeholder="1234-5678901"
+                                                value={values.phoneNumber}
                                                 onChange={handleChange}
                                                 onBlur={handleBlur}
                                             class="form-control rounded-pill border-0 shadow-sm px-4" />
                                             </lable>       
-                                            {errors.email && touched.email ? (
-                                            <p className="form-error">{errors.email}</p>
+                                            {errors.phoneNumber && touched.phoneNumber ? (
+                                            <p className="form-error">{errors.phoneNumber}</p>
                                             ) : null}       
                                         </div>
 
@@ -129,33 +131,33 @@ function handleSelect(data) {
                                         <lable class="mb-4 " style={{marginBottom:"0px 0px 0px"}} >CNIC Number
                                             <input
                                             id="password"
-                                            type="password" 
-                                            placeholder="****"
-                                            value={values.password}
+                                            type="text" 
+                                            placeholder="1234-1234567-1"
+                                            value={values.cnic}
                                             onChange={handleChange}
                                             onBlur={handleBlur}
                                             required="" autofocus="" 
                                             class="form-control rounded-pill border-0 shadow-sm px-4" />
                                             </lable>       
-                                            {errors.password && touched.password? (
-                                            <p className="form-error">{errors.password}</p>
+                                            {errors.cnic && touched.cnic? (
+                                            <p className="form-error">{errors.cnic}</p>
                                             ) : null}          
                                         </div>
 
                                         <div class="mb-3">
                                         <lable class="mb-4 " style={{marginBottom:"0px 0px 0px"}} >Address
                                             <input
-                                            id="confirm_password"
-                                            type="password" 
-                                            placeholder="****"
-                                            value={values.confirm_password}
+                                            id="text"
+                                            type="text" 
+                                            placeholder="write your address here..."
+                                            value={values.address}
                                             onChange={handleChange}
                                             onBlur={handleBlur}
                                             required="" autofocus="" 
                                             class="form-control rounded-pill border-0 shadow-sm px-4" />
                                             </lable>       
-                                            {errors.confirm_password && touched.confirm_password? (
-                                            <p className="form-error">{errors.confirm_password}</p>
+                                            {errors.address && touched.address? (
+                                            <p className="form-error">{errors.address}</p>
                                             ) : null}        
                                         </div>
 
@@ -171,10 +173,13 @@ function handleSelect(data) {
                                           isMulti
                                         />
                                         </lable>
+                                        {errors.category && touched.category? (
+                                            <p className="form-error">{errors.category}</p>
+                                            ) : null} 
                                       </div>
 
                                       <div class='mb-3'>
-                                        <lable class=" mb-4 " style={{marginBottom:"0px 0px 0px"}} >Profile Image
+                                        <lable class=" mb-4 " style={{marginBottom:"0px 0px 0px"}} >Profile Image<sub> (optional)</sub>
                                         {image && (
                                             <div>
                                               <img

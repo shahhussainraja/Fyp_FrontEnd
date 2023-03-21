@@ -1,5 +1,6 @@
 import React from 'react'
-import image from '../images/Bespoke.png'
+import image from '../../images/Bespoke.png'
+import './category.css'
 
 function Catagories() {
 
@@ -47,7 +48,7 @@ function Catagories() {
 
   return (
     <div>
-       <h4 style={{marginLeft:'20px', color:'#00b7ff'}}>Catagories</h4>
+       <h4 style={{color:'#00b7ff'}}>Catagories</h4>
        <div className='category'>
         {data.map((value, index) => {
           return (

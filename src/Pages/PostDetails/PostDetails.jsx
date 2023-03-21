@@ -6,7 +6,6 @@ import reg_img from '../../images/Login.jpg'
 import { useFormik } from "formik";
 import { signUpSchema } from "../../Schemas/index";
 import Select from "react-select";
-import './post.css'
 import { Textarea } from 'react-bootstrap-icons';
 
 
@@ -19,7 +18,7 @@ const initialValues = {
 };
 
 
-function Post() {
+function PostDetails() {
 
 
   // React state to manage selected options
@@ -240,4 +239,4 @@ const [selectedOptions, setSelectedOptions] = useState();
   )
 }
 
-export default Post
+export default PostDetails
