@@ -18,7 +18,7 @@
   }
   .about-text h2{
   font-size: 2rem;
-  color:#00b7ff;
+  color: #2693b2;
     font-weight: 500;
     margin: 0px;
   padding: 0px;
@@ -37,12 +37,12 @@
   border: none;
     outline: none;
     color: #ffffff;
-  background-color:#00b7ff;
+  background-color:#2693b2;
   }
   .about-text button:hover{
-  background-color: rgb(0, 132, 255);
+  background-color:#E3BE00;
     transition: all ease 0.3s;
-    color: #ffffff;
+    color: #000000;
   }
   .about-image{
     width: 50%;

@@ -594,13 +594,3 @@ color:#ffffff;
   }
 
   /* //PostPage */
-
-  .PostCard{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    justify-content: center;
-    /* grid-template-rows: 570px 570px 570px; */
-    grid-gap: 10px;
-
-  }
-  

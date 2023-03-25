@@ -42,7 +42,7 @@ nav{
       align-items: center;
     }
     .active{
-      background-color: #00b7ff;
+      background-color: #2693b2;
       color:#ffffff;
     box-shadow: 2px 5px 10px rgba(189, 198, 64, 0.411);
     transition: all ease 0.2s;
@@ -65,7 +65,7 @@ nav{
       transition: 0.2s ease-in-out;
     }
     nav ul li a:hover{
-    background-color: #00b7ff;
+    background-color: #2693b2;
       color:#ffffff;
     box-shadow: 5px 10px 30px rgba(2, 238, 255, 0.336);
     transition: all ease 0.2s;
@@ -79,13 +79,13 @@ nav{
       margin-top: 5px;
       justify-content: center;
         align-items: center;
-        background-color: #00b7ff;
-        box-shadow: 2px 5px 15px rgba(2, 238, 255, 0.336);
+        background-color: #2693b2;
+        box-shadow: 2px 5px 10px #02eeff56;
         border-radius: 10px;
       color:#ffffff;
       }
       .nav-btn:hover{
-        background-color: #0099ff;
+        background-color: #E3BE00;
           transition: all ease 0.5s;
-          color: #ffffff;
+          color: #000000;
         }

@@ -7,8 +7,11 @@
 }
 .maincontainer_post{
   background-color: ghostwhite;
-  background-image: url(../../images/bg1.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url(../../images/Post_bg3.jpg);
   padding: 100px;
+  image-rendering: pixelated;
   
 }
 
@@ -21,7 +24,7 @@
 }
 
 .title .h1{
-  color:#00b7ff;
+  color:#2693b2;
 }
 
 .button{
@@ -39,7 +42,7 @@
       border: 0;
       color: #ffffff;
       border-radius: 10px;
-      background: #00b7ff;
+      background: #2693b2;
       transition: 0.3s;
       cursor: pointer;
       width:350px;
@@ -52,7 +55,7 @@
 }
 
 .Post-button:hover {
-  background-color: #0099ff;
+  background-color: #E3BE00;
   transition: all ease 0.5s;
-  color: #ffffff;
+  color: #000000;
 }  

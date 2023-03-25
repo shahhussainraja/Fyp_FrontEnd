@@ -44,12 +44,11 @@
     padding: 5px;
   }
   .productImage{
-    margin-top: 1rem;
-    
     max-width: 100%;
     padding: 10px;
     max-height: 100%;
     justify-content: center;
+    margin-left: 15px;
   }
   
   /* .productCard__cart{
@@ -87,7 +86,8 @@
     font-size: 1rem;
     transition: 0.2s;
     cursor: pointer;
-    fill-opacity: 50%;
+    fill-opacity: 100%;
+    color: #2693b2;
   }
   
   
@@ -124,20 +124,20 @@
   }
 
   .postCard-btn{
-    width: 300px;
+    width: 250px;
   height: 35px;
   display: flex;
   margin-bottom: 3px;
   justify-content: center;
     align-items: center;
-    background-color: #00b7ff;
+    background-color: #2693b2;
     box-shadow: 2px 5px 15px rgba(2, 238, 255, 0.336);
     border-radius: 5px;
   color:#ffffff;
   font-size: large;
   }
   .postCard-btn:hover{
-    background-color: #0099ff;
+    background-color: #E3BE00;
       transition: all ease 0.5s;
-      color: #ffffff;
+      color: #000000;
     }

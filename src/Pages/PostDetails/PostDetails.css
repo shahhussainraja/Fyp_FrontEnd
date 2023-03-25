@@ -1,0 +1,110 @@
+.container_div{
+    display: flex;
+    padding: 10px;
+  }
+  .maincontainer_postDetails{
+ 
+    padding: 50px;
+    display: flex;
+  }
+  
+  
+  .title {
+    
+    color: #E3BE00;
+    font-size:large;
+    /* margin-top: 100px;
+    padding-left: 100px; */
+  }
+  
+  .title .h1{
+    color:#2693b2;
+  }
+  
+  .button{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px, 0px, 10px;
+  }
+  .makeoffer-button{
+    outline: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 2px 5px 10px rgba(2, 238, 255, 0.336);
+        border: 0;
+        color: #ffffff;
+        border-radius: 5px;
+        background: #2693b2;
+        transition: 0.3s;
+        cursor: pointer;
+        width:200px;
+        height: 40px;
+        margin-left: 12px;
+        margin-top: 40px;
+        text-transform: uppercase;
+        padding: 50px, 10px, 10px;
+        text-decoration: none;
+       
+  }
+  
+  .makeoffer-button:hover {
+    background-color: #E3BE00;
+    transition: all ease 0.5s;
+    color: black;
+  }  
+
+  .makeoffer-box .input{
+    height: 40px;
+    width: 200px;
+    padding: 10px;
+    margin-left: 12px;
+    margin-top: 20px;
+    box-sizing: border-box;
+    border-bottom: 1px solid #ccc;
+    background-color: transparent;
+  }
+
+  .makeoffer-box {
+    transition: 0.5s;
+    padding: 5px;
+    width: 15rem;
+    height: 10rem;
+    margin-top: 10rem;
+    background-color: ghostwhite;
+    border-radius: 10px;
+    box-shadow: 2px 5px 10px rgba(152, 162, 163, 0.336);
+    
+   
+  }
+  .makeoffer-box:hover {
+    background-color: rgb(255, 255, 255);
+    cursor: pointer;
+  }
+
+  .image-box{
+    height: 300px;
+    width: 300px;
+  }
+/* 
+  .h5{
+    font-weight: bold ;
+  } */
+
+ .h5{
+    font-weight: bold;
+    font-size: large;
+    color: grey;
+    text-transform: uppercase;
+
+
+  }
+
+   .p{
+    font-style: italic;
+    margin-left: 10px;
+    /* box-sizing: border-box;
+    border-bottom: 1px solid #ccc; */
+    margin-bottom:30px;
+  }
