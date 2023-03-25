@@ -3,6 +3,7 @@ import './PostCard.css'
 import user from '../../images/userProfile.png'
 import Popup from 'react-widgets/cjs/Popup';
 import Swal from 'sweetalert2'
+import { Link } from 'react-router-dom';
 
 export function Products(props) {
 
@@ -64,7 +65,7 @@ if (amount) {
                     </div >
                 </div>
                 <div className='postCardBtn'>
-                    <a className='postCard-btn' href='/PostDetails' >Open</a>
+                    <a className='postCard-btn' ><Link to="/PostDetails" style={{ color: "inherit", textDecoration: "inherit" }}>open</Link></a>
                     <a className='postCard-btn' onClick={Popup} >Make Offer</a>
                     </div>
             </div>

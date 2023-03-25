@@ -17,10 +17,6 @@ function Login(){
     const [password,setpassword] = useState(null) 
 
 
-    const [login, setLogin] = useState(false);
-    const handleCloseLogin = () => setLogin(false);
-
-  
     const handleLogin = () => {
         authServices.login(email,password).then((res)=>{
         dispatch(updateUserDetail(res.payload))
