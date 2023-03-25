@@ -1,23 +1,26 @@
 import React from 'react'
-import Search from '../../Components/Search'
+import Search from '../../Components/Search/Search'
 import Catagories from '../../Components/Category/Catagories'
 import GroupExample from '../../Components/Post-Cards/PostCard'
 import { Products } from '../../Components/Post-Cards/PostCard'
 import contents from '../../Components/Post-Cards/content'
+import './FindJobs.css'
 
 function FindJobs() {
 
     
   return (
-    <div className='maincontainer'>
+    <div className=''>
+      
         <Search></Search>
+      
         
-        <div style={{display:'flex', padding:"30px"}}>
-          <div>
+        <div style={{display:'flex', padding:"40px"}}>
+          <div style={{position:"fixed", marginBottom:"1000px"}}>
           <Catagories></Catagories>
           </div>
-          <div style={{marginLeft:'40px'}}>
-          <h4 style={{marginLeft:'20px', color:'#00b7ff'}}>Posts</h4>
+          <div style={{marginLeft:'250px'}}>
+          <h4 style={{marginLeft:'20px', color:'#2693b2'}}>Posts</h4>
           <div style={{ marginTop:"0px"}} className="PostCard">
                 {contents.map(contents => (
                     <Products 

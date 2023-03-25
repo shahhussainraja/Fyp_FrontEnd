@@ -14,6 +14,7 @@ import PostDetails from './Pages/PostDetails/PostDetails';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import SellerRegistration from './Components/registration/sellerRegistration';
 import Contact from './Components/Contact/Contact';
+import UserProfile from './Pages/UserProfile/UserProfile'
 
 
 
@@ -37,6 +38,7 @@ function App() {
         <Route path='/FindJobs' element={<FindJobs/>} />
         <Route path='/Shop' element={<Shop/>} />
         <Route path='/Chat' element={<Conversation/>} />
+        <Route path='/UserProfile' element={<UserProfile/>} />
         </Routes>
         <Contact/>
       </Router>

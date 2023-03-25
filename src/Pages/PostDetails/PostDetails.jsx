@@ -2,241 +2,111 @@ import React, {useState} from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useForm } from "react-cool-form";
-import reg_img from '../../images/Login.jpg'
 import { useFormik } from "formik";
 import { signUpSchema } from "../../Schemas/index";
 import Select from "react-select";
 import { Textarea } from 'react-bootstrap-icons';
+import "./PostDetails.css";
+import Catagories from '../../Components/Category/Catagories';
+import Search from '../../Components/Search/Search';
+import img from '../../images/examplePost.jfif';
+import user from '../../images/userProfile.png'
+import Swal from 'sweetalert2'
+import 'animate.css';
 
-
-
-const initialValues = {
-  name: "",
-  email: "",
-  password: "",
-  confirm_password: "",
-};
-
-
-function PostDetails() {
-
-
-  // React state to manage selected options
-const [selectedOptions, setSelectedOptions] = useState();
-
-
-
-
-  //form validation
-    const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
-    useFormik({
-      initialValues,
-      validationSchema: signUpSchema,
-      onSubmit: (values, action) => {
-        console.log(
-          "🚀 ~ file: Registration.jsx ~ line 11 ~ Registration ~ values",
-          values
-        );
-        action.resetForm();
+function PostDetails(props) {
+ 
+  const Alert = () => {
+    Swal.fire({
+      title: 'Your offer is successfully sent',
+      showClass: {
+        popup: 'animate__animated animate__fadeInDown'
       },
-    });
-  console.log(
-    "🚀 ~ file: Registration.jsx ~ line 25 ~ Registration ~ errors",
-    errors
-  );
-
-
-  //image handler
-  const [image, setImage] = useState('')
-  function handleImage(e) {
-    setImage(e.target.files[0])
+      hideClass: {
+        popup: 'animate__animated animate__fadeOutUp'
+      }
+    })
   }
 
+  return (      
 
- 
-  return (
-    <div>
-    <div className="maincontainer_post" >
-       
-           {/* <div class='col-lg-12 col-xl-9 mx-auto' classname="container"> */}
-          
-                            <div class="col-lg-9 col-xl-12 mx-auto" style={{backgroundColor:"white", padding:'50px', borderRadius:'2%'}}>
-                            <div className='title' >
-        <h1 className=''>Post Order</h1>
-          <p className='details'>Find your dream customized products by sitting at home. Your dreams are our responsinility.</p> 
+    <div className='maincontainer'>
+    
+        <Search></Search>
+      
+        <div style={{display:'flex', padding:"30px", marginTop:"0px"}}>
+          <div style={{position:"fixed"}}>
+          <Catagories></Catagories>
           </div>
-                                <form>
-                                    <div class="mb-3">
-                                        <lable class="mb-4 "  >Title
-                                        <input  type="Text"
-                                        autoComplete="off"
-                                        name="title"
-                                        id="title"
-                                        placeholder="e.g Custom Dress"
-                                        // value={values.name}
-                                        // onChange={handleChange}
-                                        // onBlur={handleBlur}
-                                        class="form-control rounded-pill border-0 shadow-sm px-4"
-                                        style={{height:"50px"}} />
-                                        </lable>    
-                                        {errors.name && touched.name ? (
-                                        <p className="form-error">{errors.name}</p>
-                                        ) : null}             
-                                    </div>
-
-                                    <div class="mb-3">
-                                    <lable class=" mb-4 "  >Details
-                                        <textarea
-                                            type="Text"
-                                            autoComplete="off"
-                                            name="email"
-                                            id="email"
-                                            placeholder="Write details here..."
-                                            // value={values.email}
-                                            // onChange={handleChange}
-                                            // onBlur={handleBlur}
-                                        class="form-control border-0 shadow-sm px-4" />
-                                        </lable>       
-                                        {errors.email && touched.email ? (
-                                        <p className="form-error">{errors.email}</p>
-                                        ) : null}       
-                                    </div>
-
-                                    <div class="mb-3">
-                                    <lable class="mb-4 "  > Asstimated Amount
-                                        <input
-                                        id="Amount"
-                                        type="text" 
-                                        placeholder="e.g 5000 Rs"
-                                        // value={values.password}
-                                        // onChange={handleChange}
-                                        // onBlur={handleBlur}
-                                        required="" autofocus="" 
-                                        class="form-control rounded-pill border-0 shadow-sm px-4" 
-                                        style={{height:"50px"}}/>
-                                        </lable>       
-                                        {errors.password && touched.password? (
-                                        <p className="form-error">{errors.password}</p>
-                                        ) : null}          
-                                    </div> 
-                                    
-                                    <div class='mb-3'>
-                                    <lable class=" mb-4 " >City
-                                     <Form>
-                                      <Form.Select aria-label="Default select example" class="form-control rounded-pill border-0 shadow-sm px-4">
-                                      <option>Select City</option>
-                                      <option value="1">Lahore</option>
-                                      <option value="2">Narowal</option>
-                                      <option value="3">Fasialabad</option>
-                                    </Form.Select>
-                                    </Form>
-                                    </lable>
+          <div style={{marginLeft:'300px', padding:"20px"}}>
+            <div className='title'>
+          <h3 className=''>Post Details</h3>
+           <p className='details'>Here are the details about this post</p> 
+           </div>
+            
+                                <div style={{display:"flex"}}>
+                                  <div style={{width:"500px"}}>
+                                  <div style={{display:"flex", marginTop: "10px", marginBottom:"10px"}}>
+                                  <img style={{height:"1.5rem", width:"1.5rem"}} src={user}></img>
+                                  <p style={{padding:"3px", fontSize:"15px", marginTop:"3px"}}>@uesrname</p>
                                   </div>
+                                    <div class="details mb-3">
+                                       <h5 className='h5'>Title</h5>
+                                        <p className='p'>I want a customized dress for school tablo.</p>
+                                    </div>
 
-
-
-                                    <div class="mb-3">
-                                        <lable class="mb-4 "  >Location
-                                        <input  type="Text"
-                                        autoComplete="off"
-                                        name="title"
-                                        id="title"
-                                        placeholder="Write your address here..."
-                                        // value={values.name}
-                                        // onChange={handleChange}
-                                        // onBlur={handleBlur}
-                                        class="form-control rounded-pill border-0 shadow-sm px-4" 
-                                        style={{height:"50px"}}/>
-                                        </lable>    
-                                        {errors.name && touched.name ? (
-                                        <p className="form-error">{errors.name}</p>
-                                        ) : null}             
+                                    <div class="details mb-3">
+                                    <h5 className='h5'>Discription</h5>
+                                        <p className='p'>I want a green color dress with parrot touch gives looks like a leaf and flower patel.</p>
                                     </div>
 
                                     <div class="mb-3">
-                                    <lable class="mb-4 "  >Due Date
-                                        <input
-                                        id="duedate"
-                                        type="Date" 
-                                        placeholder="Select due date"
-                                        // value={values.confirm_password}
-                                        // onChange={handleChange}
-                                        // onBlur={handleBlur}
-                                        required="" autofocus="" 
-                                        class="form-control rounded-pill border-0 shadow-sm px-4" 
-                                        style={{height:"50px"}}/>
-                                        </lable>       
-                                        {errors.confirm_password && touched.confirm_password? (
-                                        <p className="form-error">{errors.confirm_password}</p>
-                                        ) : null}        
+                                       <h5 className='h5'>Category</h5>
+                                        <p className='p'>Cloths</p>
                                     </div>
 
-                                    <div class='mb-3'>
-                                    <lable class=" mb-4 "  >Category
-                                     <Form>
-                                      <Form.Select aria-label="Default select example" class="form-control rounded-pill border-0 shadow-sm px-4">
-                                      <option>Select Catagory</option>
-                                      <option value="1">Food</option>
-                                      <option value="2">Furniture</option>
-                                      <option value="3">Cloths</option>
-                                    </Form.Select>
-                                    </Form>
-                                    </lable>
-                                  </div>
+                                    <div class="mb-3">
+                                       <h5 className='h5'>Due Date</h5>
+                                        <p className='p'>23/03/2023</p>
+                                    </div>
 
-                                  <div class='mb-3'>
-                                    <lable class=" mb-4 " >Profile Image
-                                    {image && (
-                                        <div>
-                                          <img
-                                            alt="not found"
-                                            width={"250px"}
-                                            src={URL.createObjectURL(image)}
-                                          />
-                                          <br />
-                                          <button onClick={() => setImage(null)}>Remove</button>
-                                        </div>
-                                      )}
+                                    <div class="mb-3">
+                                       <h5 className='h5'>Asstimated Amount</h5>
+                                        <p className='p'>5000/Rs</p>
+                                    </div>
 
-                                      <br />
-                                      <br />
-                                      
-                                      <input
-                                        type="file"
-                                        name="myImage"
-                                        onChange={(event) => {
-                                          console.log(event.target.files[0]);
-                                          setImage(event.target.files[0]);
-                                        }}
-                                      />
-                                    </lable>
-                                  </div>
-
-                                    {/* <div class="form-check">
-                                        <input id="customCheck1" type="checkbox" class="form-check-input" />
-                                        <label for="customCheck1" class="form-check-label">Remember password</label>
+                                    <div class="mb-3">
+                                       <h5 className='h5'>City</h5>
+                                        <p className='p'>Lahore</p>
+                                    </div>
+{/* 
+                                    <div class="mb-3">
+                                       <h5 className='h5'>Address</h5>
+                                        <p className='p'></p>
                                     </div> */}
-                                   
-
-                                    {/* <div class="text-center d-flex justify-content-center mt-4">
-                                    <p>Want to join with 
-                                    <a href="#" class="font-italic text-muted" onClick={{}}> 
-                                    <u style={{color: '#00b7ff'}}>Gmail?</u></a></p>
-                                    </div> */}
-                                  
-
-                                    <div className="button">
-                                      <a style={{color: 'white'}}  className="Post-button" type="submit" href='/'>
-                                        Post Order
-                                      </a>
+                                    <div className='image-box'>
+                                    <h5 className='h5'>Reference Image</h5>
+                                    <img style={{ maxWidth :"100%", maxHeight: "100%"}} src={img}></img>
                                     </div>
 
-                                </form>
-                            </div>
-                        </div>
-                                           
-                    </div>
-   
+                                  </div>
+
+                                  <div style={{padding:"30px"}}>
+                                 
+                                  <div className='makeoffer-box'>
+                                    <input
+                                    className='input'
+                                    type='text'
+                                    placeholder='enter amount             /Rs'>
+                                    </input>
+                                    <button className='makeoffer-button' onClick={Alert}>Make Offer</button>
+                                  </div>
+                                  </div>
+                                </div>       
+          </div>
+        </div>
+   </div>
+                       
   )
 }
 

@@ -2,9 +2,10 @@ import React, {useEffect, useState} from 'react'
 import logo3 from '../../images/logo4.png';
 import authServices from '../../Services/AuthServices';
 import axios from 'axios';
+import {Routes, Route, useNavigate} from 'react-router-dom';
 import * as Icon from 'react-bootstrap-icons';
 import { ArrowRight } from 'react-bootstrap-icons';
-import { BoxArrowInRight } from 'react-bootstrap-icons';
+import { BoxArrowInRight, PersonFill } from 'react-bootstrap-icons';
 import './navbar.css'
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -63,6 +64,17 @@ function Navbar() {
         function handleImage(e) {
           setImage(e.target.files[0])
         }
+
+        //navigate to user profile
+        const navigate = useNavigate();
+        const navigateToProfile = () => {
+          navigate('/UserProfile');
+        };
+
+
+
+
+
   return (
       <>
       <div className='container'>
@@ -83,6 +95,7 @@ function Navbar() {
           <li><Link to="/FindJobs" >Find Job</Link></li>
           <li><Link to="/Chat" >chat</Link></li>
           <li><Link to="/Shop" >Shop</Link></li>
+          <li><PersonFill color="#2693b2" style={{cursor:"pointer", marginRight:"10px"}} size={30} onClick={navigateToProfile}/></li>
           <li><BoxArrowInRight color="royalblue" style={{cursor:"pointer"}} size={30} onClick={()=>{
             authServices.logOut()
           }} /></li>
