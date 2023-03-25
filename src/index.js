@@ -10,6 +10,10 @@ import axios from 'axios';
 import Swal from 'sweetalert2'
 // import badrequest from "../src/images/bad"
 
+import { Provider } from 'react-redux';
+import store from "../src/Redux/store"
+
+
 axios.interceptors.request.use((response)=>{
   document.body.classList.add('loading-indicator');
   return response;
@@ -64,14 +68,14 @@ axios.interceptors.response.use((response)=>{
 
 
 
-
-
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+
+  <Provider store = {store}>
   <React.StrictMode>
     <App />
   </React.StrictMode>
+  </Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function

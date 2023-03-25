@@ -21,45 +21,7 @@ import Contact from './Components/Contact/Contact';
 
 function App() {
 
-  let component 
-  switch (window.location.pathname)
-  {
-    case"/":
-    component = <Home />
-    break
-
-    case"/Registration":
-    component = <Registration/>
-    break
-
-    case"/SellerRegistration":
-    component = <SellerRegistration/>
-    break
-
-    case"/Login":
-    component = <Login/>
-    break
-
-    case"/Post":
-    component = <Post/>
-    break
-
-    case"/FindJobs":
-    component = <FindJobs />
-    break
-
-    case"/PostDetails":
-    component = <PostDetails />
-    break
-
-    case"/Shop":
-    component = <Shop />
-    break
-
-    case"/Chat":
-    component = <Conversation />
-    
-  }
+  
 
   return (
     <div className="App">  
@@ -76,7 +38,6 @@ function App() {
         <Route path='/Shop' element={<Shop/>} />
         <Route path='/Chat' element={<Conversation/>} />
         </Routes>
-          
         <Contact/>
       </Router>
       {/* <div className={'loadinganim'} id="#interceptor">

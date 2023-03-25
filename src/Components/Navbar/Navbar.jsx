@@ -6,11 +6,13 @@ import * as Icon from 'react-bootstrap-icons';
 import { ArrowRight } from 'react-bootstrap-icons';
 import { BoxArrowInRight } from 'react-bootstrap-icons';
 import './navbar.css'
-
-
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 
 function Navbar() {
+
+  const value  = useSelector((state) => state.userDetail.loggedIn)
 
   const [form,setForm]=useState()
   const handleForm=(e)=>{
@@ -73,18 +75,20 @@ function Navbar() {
 
       <div className='menu'>
       <ul>
-        {authServices.isLogged() ? (<>
-          <li><a href='/' >Home</a></li>
-          <li><a href='/Post'>Post Order</a></li>
-          <li ><a href='/FindJobs'>Find Job</a></li>
-          <li><a href='/Chat'>chat</a></li>
-          <li><a href='/Shop'>Shop</a></li>
+      {/* authServices.isLogged() */}
+        {value ? (<>
+          {/* <li><a href='/' >Home</a></li> */}
+          <li><Link to="/" >Home</Link></li>
+          <li><Link to="/Post" >Post Order</Link></li>
+          <li><Link to="/FindJobs" >Find Job</Link></li>
+          <li><Link to="/Chat" >chat</Link></li>
+          <li><Link to="/Shop" >Shop</Link></li>
           <li><BoxArrowInRight color="royalblue" style={{cursor:"pointer"}} size={30} onClick={()=>{
             authServices.logOut()
           }} /></li>
         </>) : (<>
-          <li><a href='/Login' style={{color:'#E3BE00'}}>Login</a></li>
-          <a className='nav-btn' style={{borderRadius:2,marginTop:2}} href='/Registration' >Register</a>
+          <li><Link to="/Login"style={{color:'#E3BE00'}} >Login</Link></li>
+          <Link to="/Registration" className='nav-btn' style={{borderRadius:2,marginTop:2}} >Register</Link>
           {/* className='active'  */}  
         </>)}    
       </ul>

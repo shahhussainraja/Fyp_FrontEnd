@@ -1,5 +1,6 @@
 import GenericServices from "./GenericServices"
 // import jwt_decode from "jwt-decode";
+import { Navigate } from "react-router-dom";
 
 class AuthServices extends GenericServices{
     constructor(){
@@ -8,11 +9,9 @@ class AuthServices extends GenericServices{
 
     login = (email ,password) => {
         return new Promise ((resolve,reject)=>{
-            this.post("/signInAsBuyer",{email, password}).then((token)=>{
-                localStorage.setItem("token",token)
-                window.location.reload();
-                window.location.href="/";
-                resolve(token);
+            this.post("/signInAsBuyer",{email, password}).then((data)=>{
+                localStorage.setItem("token",data.token)
+                resolve(data);
             }).catch((err)=>{
                 reject(err);
             })
@@ -28,7 +27,7 @@ class AuthServices extends GenericServices{
     }
     
     isLogged = ()=>{
-        return localStorage.getItem("token")? true : true ;
+        return localStorage.getItem("token")? true : false ;
     }
 
     currentUser = () =>{
