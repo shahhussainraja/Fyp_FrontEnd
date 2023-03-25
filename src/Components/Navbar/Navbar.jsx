@@ -11,14 +11,20 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 
+import Button from 'react-bootstrap/Button';
+import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
+import Modal from 'react-bootstrap/Modal';
+import Row from 'react-bootstrap/Row'
+
+
+
+
 function Navbar() {
 
   const value  = useSelector((state) => state.userDetail.loggedIn)
-
-  const [form,setForm]=useState()
-  const handleForm=(e)=>{
-    setForm(e.target.name)
- }
+  const [modalShow, setModalShow] = useState(false);
+ 
  const [sellerState,setSellerState] = useState(false)
  const [type,setType] = useState("")
 
@@ -101,13 +107,65 @@ function Navbar() {
           }} /></li>
         </>) : (<>
           <li><Link to="/Login"style={{color:'#E3BE00'}} >Login</Link></li>
-          <Link to="/Registration" className='nav-btn' style={{borderRadius:2,marginTop:2}} >Register</Link>
+          <li  className='nav-btn' style={{borderRadius:2,marginTop:2}} onClick={()=>{setModalShow(true)}} >Register</li>
           {/* className='active'  */}  
         </>)}    
       </ul>
      
       </div>
     </nav>
+
+
+
+{/* //model code  */}
+
+
+<Modal show={modalShow} onHide={() => setModalShow(false)} aria-labelledby="contained-modal-title-vcenter">
+      <Modal.Header closeButton>
+        <Modal.Title id="contained-modal-title-vcenter">
+          Register as
+        </Modal.Title>
+      </Modal.Header>
+      <Modal.Body className="show-grid">
+        <Container>
+          <Row>
+            <Col xs={6} md={6} style={{display:'flex',justifyContent:"center",}} onClick={()=>{navigate("/Registration");setModalShow(false)}}>
+            <img src="https://img.icons8.com/external-smashingstocks-flat-smashing-stocks/66/null/external-customer-shopping-and-retail-smashingstocks-flat-smashing-stocks-2.png"/>
+            </Col>
+            <Col xs={6} md={6} style={{display:'flex',justifyContent:"center"}} onClick={()=>{navigate("/SellerRegistration");setModalShow(false)}}>
+            <img src="https://img.icons8.com/doodle/96/null/group.png"/>
+            </Col>
+          </Row>
+          <Row>
+            <Col xs={6} md={6} style={{display:'flex',justifyContent:"center",}}>
+              <h3>Buyer</h3>
+            </Col>
+            <Col xs={6} md={6} style={{display:'flex',justifyContent:"center"}} >
+            <h3>Seller</h3>
+            </Col>
+          </Row>
+
+        </Container>
+      </Modal.Body>
+      <Modal.Footer>
+        <button className='nav-btn' onClick={()=>{
+          setModalShow(false)
+        }} >Close</button>
+      </Modal.Footer>
+    </Modal>
+
+
+
+
+
+
+
+
+
+
+
+
+
     </div>
     </>
   )

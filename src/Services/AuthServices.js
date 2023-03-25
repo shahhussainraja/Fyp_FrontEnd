@@ -18,7 +18,7 @@ class AuthServices extends GenericServices{
         })
     };
 
-    register = (data) =>this.post("/signUp",data);
+    register = (data) =>this.post("/signUpAsBuyer",data);
 
     logOut = ()=>{
         localStorage.clear();

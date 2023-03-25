@@ -7,24 +7,32 @@ import reg_img from '../../images/Login.jpg'
 import { useFormik } from "formik";
 import { registrationSchema } from "../../Schemas/index";
 import Select from "react-select";
+import sellerServices from '../../Services/SellerServices';
+import Swal from 'sweetalert2'
+import { useNavigate } from 'react-router-dom';
 
 
 
 const initialValues = {
+    name: "",
+    email: "",
+    password: "",
+    confirm_password: "",
     accountName: "",
     phoneNumber: "",
     cnic: "",
     address: "",
-    category:"",
-
   };
   
   
 
 function SellerRegistration(){
 
+
 // React state to manage selected options
-const [selectedOptions, setSelectedOptions] = useState();
+const [selectedOptions, setSelectedOptions] = useState(null);
+const [image, setImage] = useState('')
+const navigate = useNavigate()
 
 // Array of all options
 const optionList = [
@@ -48,13 +56,57 @@ function handleSelect(data) {
       initialValues,
       validationSchema: registrationSchema,
       onSubmit: (values, action) => {
-        console.log(
-          "🚀 ~ file: Registration.jsx ~ line 11 ~ Registration ~ values",
-          values
-        );
-        action.resetForm();
+        let formData = new FormData();
+        formData.append("image",image);
+        formData.append("name",values.name);
+        formData.append("email",values.email);
+        formData.append("password",values.password);
+        formData.append("CNIC",values.cnic);
+        formData.append("category",selectedOptions);
+        formData.append("shopName",values.accountName);
+        formData.append("address",values.address);
+        // const data = Object.fromEntries(formData);
+
+        sellerServices.register(formData).then((res)=>{
+          if (res === false){
+            Swal.fire({
+              position: 'center',
+              icon: 'error',
+              title: "User already Exist",
+              showConfirmButton: true,
+            })
+          }else{
+            action.resetForm();
+            setImage("")
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: "Register Successfully",
+              showConfirmButton: true,
+            }).then(()=>{
+              navigate('/Login')
+            })
+
+          }
+        }).catch((e)=>{
+          console.log(e.message)
+        })
+
+
+
+
+
+
+
+
+
+
+
       },
     });
+
+
+  
   console.log(
     "🚀 ~ file: Registration.jsx ~ line 25 ~ Registration ~ errors",
     errors
@@ -62,13 +114,12 @@ function handleSelect(data) {
 
 
   //image handler
-  const [image, setImage] = useState('')
+
   function handleImage(e) {
     setImage(e.target.files[0])
   }
 
- 
-  // const [value, setValue] = useState("Red");
+
    
     return (
         <>
@@ -91,20 +142,90 @@ function handleSelect(data) {
                                       We want some additional information for your seller account
                                     </p>
                                     </div>
-                                    <form>
-                                        <div class="mb-3">
-                                            <lable class="mb-4 " style={{marginBottom:"0px 0px 0px"}} >Account Name
+                                  <form onSubmit={handleSubmit}>
+                                    <div class="mb-3">
+                                            <lable class=" mb-4 " style={{marginBottom:"0px 0px 0px"}} >Name
                                             <input  type="name"
                                             autoComplete="off"
                                             name="name"
                                             id="name"
-                                            placeholder="Write name related to your work"
-                                            value={values.accountName}
+                                            placeholder="Name"
+                                            value={values.name}
                                             onChange={handleChange}
                                             onBlur={handleBlur}
                                             class="form-control rounded-pill border-0 shadow-sm px-4" />
                                             </lable>    
-                                            {errors.accountName && touched.accountName ? (
+                                            {errors.name && touched.name ? (
+                                            <p className="form-error">{errors.name}</p>
+                                            ) : null}             
+                                        </div>
+
+                                        <div class="mb-3">
+                                        <lable class="mb-4 " style={{marginBottom:"0px 0px 0px"}} >E-mail
+                                            <input
+                                                type="email"
+                                                autoComplete="off"
+                                                name="email"
+                                                id="email"
+                                                placeholder="abc@gmail.com"
+                                                value={values.email}
+                                                onChange={handleChange}
+                                                onBlur={handleBlur}
+                                            class="form-control rounded-pill border-0 shadow-sm px-4" />
+                                            </lable>       
+                                            {errors.email && touched.email ? (
+                                            <p className="form-error">{errors.email}</p>
+                                            ) : null}       
+                                        </div>
+
+                                        <div class="mb-3">
+                                        <lable class=" mb-4 " style={{marginBottom:"0px 0px 0px"}} >Password
+                                            <input
+                                            id="password"
+                                            type="password" 
+                                            placeholder="****"
+                                            value={values.password}
+                                            onChange={handleChange}
+                                            onBlur={handleBlur}
+                                            required="" autoFocus="" 
+                                            class="form-control rounded-pill border-0 shadow-sm px-4" />
+                                            </lable>       
+                                            {errors.password && touched.password? (
+                                            <p className="form-error">{errors.password}</p>
+                                            ) : null}          
+                                        </div>
+
+                                        <div class="mb-3">
+                                        <lable class=" mb-4 " style={{marginBottom:"0px 0px 0px"}} >Confirm Password
+                                            <input
+                                            id="confirm_password"
+                                            type="password" 
+                                            placeholder="****"
+                                            value={values.confirm_password}
+                                            onChange={handleChange}
+                                            onBlur={handleBlur}
+                                            required="" autoFocus="" 
+                                            class="form-control rounded-pill border-0 shadow-sm px-4" />
+                                            </lable>       
+                                            {errors.confirm_password && touched.confirm_password? (
+                                            <p className="form-error">{errors.confirm_password}</p>
+                                            ) : null}        
+                                        </div>      
+                                        <div class="mb-3">
+                                            <lable class="mb-4 " style={{marginBottom:"0px 0px 0px"}} >Account Name
+                                            <input  
+                                            type="name"
+                                            autoComplete="off"
+                                            id="accountName"
+                                            name="accountName"
+                                            placeholder="Write name related to your work"
+                                            value={values.accountName}
+                                            onChange={handleChange}
+                                            onBlur={handleBlur}
+                                            required="" autoFocus="" 
+                                            class="form-control rounded-pill border-0 shadow-sm px-4" />
+                                            </lable>    
+                                            {errors.accountName && touched.accountName? (
                                             <p className="form-error">{errors.accountName}</p>
                                             ) : null}             
                                         </div>
@@ -112,14 +233,15 @@ function handleSelect(data) {
                                         <div class="mb-3">
                                         <lable class=" mb-4 " style={{marginBottom:"0px 0px 0px"}} >Phone Number
                                             <input
-                                                type="tel"
+                                                type="Number"
                                                 autoComplete="off"
-                                                name="phoneNo"
-                                                id="phoneNo"
+                                                name="phoneNumber"
+                                                id="phoneNumber"
                                                 placeholder="1234-5678901"
                                                 value={values.phoneNumber}
                                                 onChange={handleChange}
                                                 onBlur={handleBlur}
+                                                required="" autoFocus="" 
                                             class="form-control rounded-pill border-0 shadow-sm px-4" />
                                             </lable>       
                                             {errors.phoneNumber && touched.phoneNumber ? (
@@ -130,7 +252,8 @@ function handleSelect(data) {
                                         <div class="mb-3">
                                         <lable class="mb-4 " style={{marginBottom:"0px 0px 0px"}} >CNIC Number
                                             <input
-                                            id="password"
+                                            id="cnic"
+                                            name="cnic"
                                             type="text" 
                                             placeholder="1234-1234567-1"
                                             value={values.cnic}
@@ -147,8 +270,9 @@ function handleSelect(data) {
                                         <div class="mb-3">
                                         <lable class="mb-4 " style={{marginBottom:"0px 0px 0px"}} >Address
                                             <input
-                                            id="text"
-                                            type="text" 
+                                            id="address"
+                                            name='address'
+                                            type="text"
                                             placeholder="write your address here..."
                                             value={values.address}
                                             onChange={handleChange}
@@ -164,12 +288,14 @@ function handleSelect(data) {
                                         <div class='mb-3'>
                                         <lable class=" mb-4 " style={{marginBottom:"0px 0px 0px"}} >Category
                                         <Select
+                                          name='category'
                                           class="form-control rounded-pill border-0 shadow-sm px-4"
                                           options={optionList}
                                           placeholder="Choose category"
                                           value={selectedOptions}
                                           onChange={handleSelect}
                                           isSearchable={true}
+                                          required="true"
                                           isMulti
                                         />
                                         </lable>
@@ -197,7 +323,8 @@ function handleSelect(data) {
                                           
                                           <input
                                             type="file"
-                                            name="myImage"
+                                            name="image"
+                                            required="true"
                                             onChange={(event) => {
                                               console.log(event.target.files[0]);
                                               setImage(event.target.files[0]);
@@ -220,15 +347,15 @@ function handleSelect(data) {
                                       
 
                                         <div className="modal-buttons">
-                                          <a style={{color: 'white'}}  className="input-button" type="submit" href='/'>
+                                          <button style={{color: 'white'}}  className="input-button" type="submit" >
                                             Registration
-                                          </a>
+                                          </button>
                                         </div>
 
 
                                         <div class="text-center d-flex justify-content-center mt-4">
                                           <p>Already have account?
-                                          <a href="/Login" class="font-italic text-muted" onClick={{}}> 
+                                          <a href="/Login" class="font-italic text-muted" > 
                                           <u style={{color: '#00b7ff'}}>Login</u></a></p>
                                           </div>
                                     </form>
