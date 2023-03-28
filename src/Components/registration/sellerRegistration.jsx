@@ -153,7 +153,7 @@ function handleSelect(data) {
                                             value={values.name}
                                             onChange={handleChange}
                                             onBlur={handleBlur}
-                                            class="form-control rounded-pill border-0 shadow-sm px-4" />
+                                            class="form-control  border-0 shadow-sm px-4" />
                                             </lable>    
                                             {errors.name && touched.name ? (
                                             <p className="form-error">{errors.name}</p>
@@ -171,7 +171,7 @@ function handleSelect(data) {
                                                 value={values.email}
                                                 onChange={handleChange}
                                                 onBlur={handleBlur}
-                                            class="form-control rounded-pill border-0 shadow-sm px-4" />
+                                            class="form-control  border-0 shadow-sm px-4" />
                                             </lable>       
                                             {errors.email && touched.email ? (
                                             <p className="form-error">{errors.email}</p>
@@ -188,7 +188,7 @@ function handleSelect(data) {
                                             onChange={handleChange}
                                             onBlur={handleBlur}
                                             required="" autoFocus="" 
-                                            class="form-control rounded-pill border-0 shadow-sm px-4" />
+                                            class="form-control  border-0 shadow-sm px-4" />
                                             </lable>       
                                             {errors.password && touched.password? (
                                             <p className="form-error">{errors.password}</p>
@@ -205,7 +205,7 @@ function handleSelect(data) {
                                             onChange={handleChange}
                                             onBlur={handleBlur}
                                             required="" autoFocus="" 
-                                            class="form-control rounded-pill border-0 shadow-sm px-4" />
+                                            class="form-control  border-0 shadow-sm px-4" />
                                             </lable>       
                                             {errors.confirm_password && touched.confirm_password? (
                                             <p className="form-error">{errors.confirm_password}</p>
@@ -223,7 +223,7 @@ function handleSelect(data) {
                                             onChange={handleChange}
                                             onBlur={handleBlur}
                                             required="" autoFocus="" 
-                                            class="form-control rounded-pill border-0 shadow-sm px-4" />
+                                            class="form-control  border-0 shadow-sm px-4" />
                                             </lable>    
                                             {errors.accountName && touched.accountName? (
                                             <p className="form-error">{errors.accountName}</p>
@@ -242,7 +242,7 @@ function handleSelect(data) {
                                                 onChange={handleChange}
                                                 onBlur={handleBlur}
                                                 required="" autoFocus="" 
-                                            class="form-control rounded-pill border-0 shadow-sm px-4" />
+                                            class="form-control  border-0 shadow-sm px-4" />
                                             </lable>       
                                             {errors.phoneNumber && touched.phoneNumber ? (
                                             <p className="form-error">{errors.phoneNumber}</p>
@@ -260,7 +260,7 @@ function handleSelect(data) {
                                             onChange={handleChange}
                                             onBlur={handleBlur}
                                             required="" autofocus="" 
-                                            class="form-control rounded-pill border-0 shadow-sm px-4" />
+                                            class="form-control  border-0 shadow-sm px-4" />
                                             </lable>       
                                             {errors.cnic && touched.cnic? (
                                             <p className="form-error">{errors.cnic}</p>
@@ -278,7 +278,7 @@ function handleSelect(data) {
                                             onChange={handleChange}
                                             onBlur={handleBlur}
                                             required="" autofocus="" 
-                                            class="form-control rounded-pill border-0 shadow-sm px-4" />
+                                            class="form-control  border-0 shadow-sm px-4" />
                                             </lable>       
                                             {errors.address && touched.address? (
                                             <p className="form-error">{errors.address}</p>
@@ -289,7 +289,7 @@ function handleSelect(data) {
                                         <lable class=" mb-4 " style={{marginBottom:"0px 0px 0px"}} >Category
                                         <Select
                                           name='category'
-                                          class="form-control rounded-pill border-0 shadow-sm px-4"
+                                          class="form-control  border-0 shadow-sm px-4"
                                           options={optionList}
                                           placeholder="Choose category"
                                           value={selectedOptions}

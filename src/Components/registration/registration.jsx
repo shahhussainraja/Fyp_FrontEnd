@@ -115,7 +115,7 @@ function Registration(){
                                             value={values.name}
                                             onChange={handleChange}
                                             onBlur={handleBlur}
-                                            class="form-control rounded-pill border-0 shadow-sm px-4" />
+                                            class="form-control  border-0 shadow-sm px-4" />
                                             </lable>    
                                             {errors.name && touched.name ? (
                                             <p className="form-error">{errors.name}</p>
@@ -133,7 +133,7 @@ function Registration(){
                                                 value={values.email}
                                                 onChange={handleChange}
                                                 onBlur={handleBlur}
-                                            class="form-control rounded-pill border-0 shadow-sm px-4" />
+                                            class="form-control  border-0 shadow-sm px-4" />
                                             </lable>       
                                             {errors.email && touched.email ? (
                                             <p className="form-error">{errors.email}</p>
@@ -150,7 +150,7 @@ function Registration(){
                                             onChange={handleChange}
                                             onBlur={handleBlur}
                                             required="" autoFocus="" 
-                                            class="form-control rounded-pill border-0 shadow-sm px-4" />
+                                            class="form-control  border-0 shadow-sm px-4" />
                                             </lable>       
                                             {errors.password && touched.password? (
                                             <p className="form-error">{errors.password}</p>
@@ -167,7 +167,7 @@ function Registration(){
                                             onChange={handleChange}
                                             onBlur={handleBlur}
                                             required="" autoFocus="" 
-                                            class="form-control rounded-pill border-0 shadow-sm px-4" />
+                                            class="form-control  border-0 shadow-sm px-4" />
                                             </lable>       
                                             {errors.confirm_password && touched.confirm_password? (
                                             <p className="form-error">{errors.confirm_password}</p>

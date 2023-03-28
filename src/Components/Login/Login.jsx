@@ -47,11 +47,11 @@ function Login(){
                                     <form>
                                         <div class="mb-3">
                                         <lable class=" mb-4 " style={{marginBottom:"0px 0px 0px"}} >E-mail
-                                        <input id="inputEmail" type="email" placeholder="abc@gmail.com" required="" autofocus="" class="form-control rounded-pill border-0 shadow-sm px-4"  onChange={(e)=>setEmail(e.target.value)}/></lable>   
+                                        <input id="inputEmail" type="email" placeholder="abc@gmail.com" required="" autofocus="" class="form-control  border-0 shadow-sm px-4"  onChange={(e)=>setEmail(e.target.value)}/></lable>   
                                         </div>
                                         <div class="mb-3">
                                         <lable class="mb-4">Password
-                                        <input id="inputPassword" type="password" placeholder="*****" required="" class="form-control rounded-pill border-0 shadow-sm px-4 text-primary" onChange={(e)=>setpassword(e.target.value)} />
+                                        <input id="inputPassword" type="password" placeholder="*****" required="" class="form-control  border-0 shadow-sm px-4 text-primary" onChange={(e)=>setpassword(e.target.value)} />
                                         </lable>
                                             
                                         </div>
@@ -65,7 +65,7 @@ function Login(){
                                         </div> */}
                                     </form>
                                         <div class="d-grid gap-2 mt-2">
-                                        <button  class="btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm" className='login-btn' onClick={handleLogin}>Log in</button>
+                                        <button  class="btn btn-primary btn-block text-uppercase mb-2  shadow-sm" className='login-btn' onClick={handleLogin}>Log in</button>
                                         </div>
                                         
                                         <div class="text-center d-flex justify-content-center mt-4"><p>Create new account? <a href="/Registration" class="font-italic text-muted" > 

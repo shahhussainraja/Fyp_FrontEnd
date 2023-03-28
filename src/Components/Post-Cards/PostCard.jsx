@@ -5,7 +5,7 @@ import Popup from 'react-widgets/cjs/Popup';
 import Swal from 'sweetalert2'
 import { Link } from 'react-router-dom';
 
-export function Products(props) {
+export function Products({content}) {
 
     const ipAPI = '//api.ipify.org?format=json'
 
@@ -34,38 +34,31 @@ if (amount) {
 
     }
 
-
-
-
-
-
-
-
     return(
         <div className='productList'>
-            <div key={props.id} className='productCard'>
+            <div key={content.id} className='productCard'>
                 <div className='cardTop'>
                     <div style={{display:"flex"}}>
                     <img style={{height:"1.5rem", width:"1.5rem"}} src={user}></img>
-                    <p style={{padding:"5px", fontSize:"15px", marginTop:"0px"}}>@uesrname</p>
+                    <p style={{padding:"5px", fontSize:"15px", marginTop:"0px"}}>{content.buyerName}</p>
                     </div>
                     <div>
-                    <p className='time'>30 days</p>
+                    <p className='time'>{content.dueDate}</p>
                 <FaClock className={"productCard__clock"} />
                 </div>
                 </div>
                <div style={{height:"250px", width:"280px", justifyContent:"center"}}>
-                <img src={props.image} alt='product-img' className='productImage'></img>
+                <img src={`http://localhost:8080${content.image}`} alt='product-img' className='productImage'></img>
                 </div>
                 <div className='productCard__content'>
-                    <h5>Title</h5>
+                    <h5>{content.postTitle}</h5>
                     <div className='displayStack__1'>
-                        <div className='productPrice'>{props.price}/Rs</div>
-                        <div className='productSales'>Lahore</div>
+                        <div className='productPrice'>{content.price}/Rs</div>
+                        <div className='productSales'>{content.city}</div>
                     </div >
                 </div>
                 <div className='postCardBtn'>
-                    <a className='postCard-btn' ><Link to="/PostDetails" style={{ color: "inherit", textDecoration: "inherit" }}>open</Link></a>
+                    <a className='postCard-btn' ><Link to="/PostDetails" state={content} style={{ color: "inherit", textDecoration: "inherit" }}>open</Link></a>
                     <a className='postCard-btn' onClick={Popup} >Make Offer</a>
                     </div>
             </div>

@@ -24,3 +24,16 @@ export const registrationSchema = Yup.object({
   cnic: Yup.string().min(15).max(15).required("Please enter your CNIC"),
   address: Yup.string().min(5).max(30).required("Please enter your address"),
 });
+
+
+
+export const postSchema = Yup.object({
+  title: Yup.string().min(2).max(25).required("Please enter title"),
+  detail: Yup.string().min(2).max(100).required("Please enter Detail"),
+  amount: Yup.string().max(7).required("Please enter amount"),
+  category:Yup.string().required("Please select category"),
+  dueDate:Yup.string().required("Please Select Due Date"),
+  city:Yup.string().required("Please Select city"),
+  address:Yup.string().required("Please enter your address"),
+
+});

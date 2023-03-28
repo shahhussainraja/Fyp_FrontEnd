@@ -61,6 +61,28 @@ class AuthServices extends GenericServices{
     }
 
 
+    sendPost = (data) =>{
+        return new Promise ((resolve,reject)=>{
+            this.post("/uploadPost",data).then((res)=>{
+                resolve(res);
+            }).catch((err)=>{
+                reject(err);
+            })
+        })
+    }
+
+
+    fetchAllPost = ()=>{
+        return new Promise ((resolve,reject)=>{
+            this.get("/fetchAllPost").then((res)=>{
+                resolve(res);
+            }).catch((err)=>{
+                reject(err);
+            })
+        })
+
+    }
+
 
 
 

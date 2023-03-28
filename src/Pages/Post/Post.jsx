@@ -8,14 +8,21 @@ import { signUpSchema } from "../../Schemas/index";
 import Select from "react-select";
 import './post.css'
 import { Textarea } from 'react-bootstrap-icons';
+import { postSchema } from '../../Schemas/index';
+import { useSelector } from 'react-redux';
+import authServices from '../../Services/AuthServices';
+import Swal from 'sweetalert2';
 
 
 
 const initialValues = {
-  name: "",
-  email: "",
-  password: "",
-  confirm_password: "",
+  title: "",
+  detail: "",
+  city: "",
+  amount:"",
+  category:"",
+  dueDate:"",
+  address:""
 };
 
 
@@ -25,25 +32,48 @@ function Post() {
   // React state to manage selected options
 const [selectedOptions, setSelectedOptions] = useState();
 
+const user = useSelector((state)=>state.userDetail)
+
 
 
   //form validation
     const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
     useFormik({
       initialValues,
-      validationSchema: signUpSchema,
+      validationSchema: postSchema,
       onSubmit: (values, action) => {
-        console.log(
-          "🚀 ~ file: Registration.jsx ~ line 11 ~ Registration ~ values",
-          values
-        );
-        action.resetForm();
+      //  alert(JSON.stringify(values, null, 2));
+       const formData  = new FormData()
+        formData.append("image",image);
+        formData.append("title",values.title);
+        formData.append("detail",values.detail);
+        formData.append("amount",values.amount);
+        formData.append("city",values.city);
+        formData.append("category",values.category);
+        formData.append("dueDate",values.dueDate);
+        formData.append("address",values.address);
+        formData.append("buyerId",user.id);
+        formData.append("buyerName",user.name);
+        const data = Object.fromEntries(formData);
+        
+        authServices.sendPost(formData).then((res)=>{
+          if(res){
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: "Post uploaded Successfully",
+            showConfirmButton: true,
+          }).then(()=>{  action.resetForm();setImage(null)})
+        }
+        }).catch((err)=>{
+          console.log(err.message)
+        })
+
+        
       },
     });
-  console.log(
-    "🚀 ~ file: Registration.jsx ~ line 25 ~ Registration ~ errors",
-    errors
-  );
+ 
+
 
 
   //image handler
@@ -64,72 +94,81 @@ const [selectedOptions, setSelectedOptions] = useState();
                             <div className='title' >
         <h1 className=''>Post Order</h1>
           <p className='details'>Find your dream customized products by sitting at home. Your dreams are our responsinility.</p> 
-          </div>
-                                <form>
+          </div>        
+                                <form  onSubmit={handleSubmit}>
                                     <div class="mb-3">
                                         <lable class="mb-4 "  >Title
                                         <input  type="Text"
                                         autoComplete="off"
                                         name="title"
                                         id="title"
+                                        onChange={handleChange}
+                                        onBlur={handleBlur}
                                         placeholder="e.g Custom Dress"
-                                        // value={values.name}
-                                        // onChange={handleChange}
-                                        // onBlur={handleBlur}
-                                        class="form-control rounded-pill border-0 shadow-sm px-4"
+                                        class="form-control  border-0 shadow-sm px-4"
                                         style={{height:"50px"}} />
                                         </lable>    
-                                        {errors.name && touched.name ? (
-                                        <p className="form-error">{errors.name}</p>
+                                        {errors.title && touched.title ? (
+                                        <p className="form-error">{errors.title}</p>
                                         ) : null}             
                                     </div>
 
                                     <div class="mb-3">
                                     <lable class=" mb-4 "  >Details
-                                        <textarea
+                                        <input
                                             type="Text"
                                             autoComplete="off"
-                                            name="email"
-                                            id="email"
+                                            name="detail"
+                                            id="detail"
+                                            onChange={handleChange}
+                                            onBlur={handleBlur}
                                             placeholder="Write details here..."
                                             // value={values.email}
                                             // onChange={handleChange}
                                             // onBlur={handleBlur}
-                                        class="form-control border-0 shadow-sm px-4" />
+                                        style={{height:"50px"}} 
+                                        className="form-control border-0 shadow-sm px-4" />
+                                       
                                         </lable>       
-                                        {errors.email && touched.email ? (
-                                        <p className="form-error">{errors.email}</p>
+                                        {errors.detail && touched.detail ? (
+                                        <p className="form-error">{errors.detail}</p>
                                         ) : null}       
                                     </div>
 
                                     <div class="mb-3">
                                     <lable class="mb-4 "  > Asstimated Amount
                                         <input
-                                        id="Amount"
-                                        type="text" 
+                                        id="amount"
+                                        name="amount"
+                                        type="number" 
+                                        onChange={handleChange}
+                                        onBlur={handleBlur}
                                         placeholder="e.g 5000 Rs"
                                         // value={values.password}
                                         // onChange={handleChange}
                                         // onBlur={handleBlur}
                                         required="" autofocus="" 
-                                        class="form-control rounded-pill border-0 shadow-sm px-4" 
+                                        class="form-control  border-0 shadow-sm px-4" 
                                         style={{height:"50px"}}/>
                                         </lable>       
-                                        {errors.password && touched.password? (
-                                        <p className="form-error">{errors.password}</p>
+                                        {errors.amount && touched.amount? (
+                                        <p className="form-error">{errors.amount}</p>
                                         ) : null}          
                                     </div> 
                                     
                                     <div class='mb-3'>
                                     <lable class=" mb-4 " >City
-                                     <Form>
-                                      <Form.Select aria-label="Default select example" class="form-control rounded-pill border-0 shadow-sm px-4">
-                                      <option>Select City</option>
-                                      <option value="1">Lahore</option>
-                                      <option value="2">Narowal</option>
-                                      <option value="3">Fasialabad</option>
+                                    
+                                      <Form.Select aria-label="Default select example" class="form-control  border-0 shadow-sm px-4"  name='city' id='city' onChange={handleChange} >
+                                      <option value="" disabled selected>Select City</option>
+                                      <option value="Lahore">Lahore</option>
+                                      <option value="Narowal">Narowal</option>
+                                      <option value="Fasialabad">Fasialabad</option>
                                     </Form.Select>
-                                    </Form>
+                                    {errors.city && touched.city? (
+                                        <p className="form-error">{errors.city}</p>
+                                        ) : null}
+    
                                     </lable>
                                   </div>
 
@@ -139,48 +178,55 @@ const [selectedOptions, setSelectedOptions] = useState();
                                         <lable class="mb-4 "  >Location
                                         <input  type="Text"
                                         autoComplete="off"
-                                        name="title"
-                                        id="title"
+                                        name="address"
+                                        id="address"
+                                        onChange={handleChange}
+                                        onBlur={handleBlur}
                                         placeholder="Write your address here..."
                                         // value={values.name}
                                         // onChange={handleChange}
                                         // onBlur={handleBlur}
-                                        class="form-control rounded-pill border-0 shadow-sm px-4" 
+                                        class="form-control  border-0 shadow-sm px-4" 
                                         style={{height:"50px"}}/>
                                         </lable>    
-                                        {errors.name && touched.name ? (
-                                        <p className="form-error">{errors.name}</p>
+                                        {errors.address && touched.address ? (
+                                        <p className="form-error">{errors.address}</p>
                                         ) : null}             
                                     </div>
 
                                     <div class="mb-3">
                                     <lable class="mb-4 "  >Due Date
                                         <input
-                                        id="duedate"
-                                        type="Date" 
-                                        placeholder="Select due date"
+                                        type = "date"
+                                        id="dueDate"
+                                        name="dueDate" 
+                                        onChange={handleChange}
+                                        placeholder="Select Due Date"
                                         // value={values.confirm_password}
                                         // onChange={handleChange}
                                         // onBlur={handleBlur}
                                         required="" autofocus="" 
-                                        class="form-control rounded-pill border-0 shadow-sm px-4" 
+                                        class="form-control  border-0 shadow-sm px-4" 
                                         style={{height:"50px"}}/>
                                         </lable>       
-                                        {errors.confirm_password && touched.confirm_password? (
-                                        <p className="form-error">{errors.confirm_password}</p>
+                                        {errors.dueDate && touched.dueDate? (
+                                        <p className="form-error">{errors.dueDate}</p>
                                         ) : null}        
                                     </div>
 
                                     <div class='mb-3'>
-                                    <lable class=" mb-4 "  >Category
-                                     <Form>
-                                      <Form.Select aria-label="Default select example" class="form-control rounded-pill border-0 shadow-sm px-4">
-                                      <option>Select Catagory</option>
-                                      <option value="1">Food</option>
-                                      <option value="2">Furniture</option>
-                                      <option value="3">Cloths</option>
+                                    <lable class=" mb-4 "  >category
+                                    
+                                      <Form.Select aria-label="Default select example" class="form-control  border-0 shadow-sm px-4" name="category" id="category" onChange={handleChange}>
+                                      <option value="" disabled selected>Select Catagory</option>
+                                      <option value="Food">Food</option>
+                                      <option value="Furniture">Furniture</option>
+                                      <option value="Cloths">Cloths</option>
                                     </Form.Select>
-                                    </Form>
+                                    {errors.category && touched.category? (
+                                        <p className="form-error">{errors.category}</p>
+                                        ) : null}  
+      
                                     </lable>
                                   </div>
 
@@ -203,7 +249,8 @@ const [selectedOptions, setSelectedOptions] = useState();
                                       
                                       <input
                                         type="file"
-                                        name="myImage"
+                                        name="image"
+                                        required
                                         onChange={(event) => {
                                           console.log(event.target.files[0]);
                                           setImage(event.target.files[0]);
@@ -226,9 +273,9 @@ const [selectedOptions, setSelectedOptions] = useState();
                                   
 
                                     <div className="button">
-                                      <a style={{color: 'white'}}  className="Post-button" type="submit" href='/'>
+                                      <button style={{color: 'white'}}  className="Post-button" type="submit" >
                                         Post Order
-                                      </a>
+                                      </button>
                                     </div>
 
                                 </form>
