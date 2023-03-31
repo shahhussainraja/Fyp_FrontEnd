@@ -5,10 +5,13 @@ import "./Conversation.css"
 import Button from 'react-bootstrap/Button';
 import authServices from '../../Services/AuthServices';
 import { io } from 'socket.io-client';
+import { useSelector } from 'react-redux';
 
 function Conversation() {
 
-  const [currentUser , setCurrentUser] = useState(null);
+  const loginprofile = useSelector((state) => state.userDetail)
+
+  const [currentUser , setCurrentUser] = useState(loginprofile.id);
   const [conversation , setConversation] = useState(null);
   const [currentChat, setCurrentChat] = useState(null);
   const [messages, setMessages] = useState([]);
@@ -37,18 +40,6 @@ function Conversation() {
   },[socketmessages,currentChat])
 
 
-  useEffect(()=>{
-    
-    const fetchUser = ()=>{
-      authServices.currentUser().then(res=>{
-        // console.log(res)
-        setCurrentUser(res.id)
-      }).catch(e=>{
-        console.log(e.message)
-      })
-    }
-    fetchUser();
-  },[])
   
   
   //sending userID to Server

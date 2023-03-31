@@ -37,3 +37,7 @@ export const postSchema = Yup.object({
   address:Yup.string().required("Please enter your address"),
 
 });
+
+export const bidSchema = Yup.object({
+  amount: Yup.number().min(2).required("Please enter Amount"),
+});

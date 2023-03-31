@@ -15,23 +15,59 @@ import Swal from 'sweetalert2'
 import 'animate.css';
 import { useLocation } from 'react-router-dom';
 import { format } from 'timeago.js'
+import { bidSchema } from '../../Schemas/index';
+import { useSelector } from 'react-redux';
+import sellerServices from '../../Services/SellerServices';
 
+const initialValues = {
+  amount:""
+};
 
 function PostDetails(props) {
-
+  
   const {state} = useLocation();
-  console.log(state)
- 
+
+  
+  const Loginprofile = useSelector((state) => state.userDetail)
+  
+  const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
+  useFormik({
+    initialValues,
+    validationSchema: bidSchema,
+    onSubmit: (values,action) =>{
+      // alert(JSON.stringify(values, null, 2));
+      // const data = Object.fromEntries(formData);
+      const message = `Dear ${state.buyerName} I’m writing this to hear back from you about the offer ${values.amount}.We would like to know if you’re still interested and how you’d like to move forward. Looking forward to hearing back from you soon. `
+      sellerServices.newConversation({senderId:Loginprofile.id,receiverId:state.buyerId}).then((res)=>{
+        if(res){
+          sellerServices.sendBidMessage({senderId:Loginprofile.id,message:message,conversationId:res._id}).
+          then((res)=>{
+            if(res){
+              action.resetForm();
+              Swal.fire({
+                title: 'Your offer is successfully sent',
+                showClass: {
+                  popup: 'animate__animated animate__fadeInDown'
+                },
+                hideClass: {
+                  popup: 'animate__animated animate__fadeOutUp'
+                }
+              })
+            }
+          }).catch((e)=>console.log(e.message))
+        }
+      }).catch((e)=>console.log(e.message))
+      
+     
+    }
+  })
+
+
+
+
+
   const Alert = () => {
-    Swal.fire({
-      title: 'Your offer is successfully sent',
-      showClass: {
-        popup: 'animate__animated animate__fadeInDown'
-      },
-      hideClass: {
-        popup: 'animate__animated animate__fadeOutUp'
-      }
-    })
+    
   }
 
   return (      
@@ -110,12 +146,20 @@ function PostDetails(props) {
                                   <div style={{padding:"30px"}}>
                                  
                                   <div className='makeoffer-box'>
+                                    <form onSubmit={handleSubmit}>
                                     <input
+                                    onChange={handleChange}
+                                    onFocus={handleBlur}
+                                    name='amount' id='amount'
                                     className='input'
-                                    type='text'
-                                    placeholder='enter amount             /Rs'>
+                                    type='number' 
+                                    placeholder='Enter Amount/Rs'>
                                     </input>
-                                    <button className='makeoffer-button' onClick={Alert}>Make Offer</button>
+                                    {errors.amount && touched.amount ? (
+                                            <p style={{fontSize:"10",padding:"0px",margin:"0px",color:"red"}}>{errors.amount}</p>
+                                            ) : null} 
+                                    <button className='makeoffer-button' type="submit" >Make Offer</button>
+                                    </form>
                                   </div>
                                   </div>
                                 </div>       

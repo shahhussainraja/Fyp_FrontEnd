@@ -20,6 +20,27 @@ class SellerServices extends GenericServices{
 
     register = (data) =>this.post("/signUpAsSeller",data);
 
+    newConversation = (data) =>this.post("/newConversation",data)
+    
+    sendBidMessage = (data) =>{
+        return new Promise ((resolve,reject)=>{
+            this.post("/sendMessage",data).then((res)=>{
+                resolve(res);
+            }).catch((err)=>{
+                reject(err);
+            })
+        })
+    }
+
+
+
+
+
+
+
+
+
+
     // isLogged = ()=>{
     //     return localStorage.getItem("token")? true : false ;
     // }
