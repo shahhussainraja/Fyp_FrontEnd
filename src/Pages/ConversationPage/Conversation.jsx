@@ -4,6 +4,7 @@ import Message from '../../Components/message/Message'
 import "./Conversation.css"
 import Button from 'react-bootstrap/Button';
 import authServices from '../../Services/AuthServices';
+import imgCover from "../../images/about2.png"
 import { io } from 'socket.io-client';
 import { useSelector } from 'react-redux';
 
@@ -113,6 +114,9 @@ const receiver = currentChat.members.find(member => member != currentUser )
     <>
       <div className='conversation'>
         <div className="chatList">
+          <div className='listHead'>
+            <h4  className='listtop'>Chats</h4>
+          </div>
             <div className="chatListWrapper">
             {
             conversation?.map((e)=>(
@@ -122,29 +126,39 @@ const receiver = currentChat.members.find(member => member != currentUser )
             ))}     
             </div>
         </div>
+       
         <div className="chatMenu">
-     { currentChat ? <> 
-           <div className="chatMenuWrapper">
-                <div className="chatBoxTop">
-                {
-                  messages?.map((e)=>(
-                    <div ref={scrollRef}>
-                    <Message message={e} userId = {currentUser} />
-                    </div>
-                  ))
-                }
-                </div>
-                <div className="chatBoxBottom">
-                  <textarea name="" className='chatMessageInput' id="" cols="30" rows="3" onChange={(e)=>(setNewMessage(e.target.value))} value={newMessage} placeholder="Message"></textarea>
-                  <Button className='SendButton' onClick={()=>{handleSubmit()}}>Send</Button>
-                </div>
+          <div className='chatHead'>
+            <img src={imgCover} className="chatTopImage"  alt="" />
+            <span className='chatTopSpan'>@username</span>
             </div>
-     </> : <>  
-      <span className='chatTitle'>Click to open Conversation</span>
-      </>
-}
+          { currentChat ? <> 
+                <div className="chatMenuWrapper">
+                      <div className="chatBoxTop">
+                      {
+                        messages?.map((e)=>(
+                          <div ref={scrollRef}>
+                          <Message message={e} userId = {currentUser} />
+                          </div>
+                        ))
+                      }
+                      </div>
+                     
+                  </div>
+                  
+                </> : <>  
+               
+      
+             </>
+            }
+             <div className="chatBoxBottom">
+                        <textarea name="" className='chatMessageInput' id="" cols="30" rows="3" onChange={(e)=>(setNewMessage(e.target.value))} value={newMessage} placeholder="Message"></textarea>
+                        <Button className='SendButton' onClick={()=>{handleSubmit()}}>Send</Button>
+                    </div>
+                    
         </div>
     </div>
+   
     </>  
   )
 }

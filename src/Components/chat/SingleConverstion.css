@@ -3,20 +3,30 @@
     flex-direction: row;
     align-items: center;
     margin-top: 10px;
-    background-color: ghostwhite;
+    background-color: transparent;
     border-radius: 2px;
+    padding: 5px;
     
 }
 .chatImageDiv{
     padding-right: 4px;
+    display: flex;
 }
 
+ .chatSpan{
+    padding: 5px;
+    margin-top: 8px;
+    border-bottom: solid 1px;
+    border-color: #5abad4;
+    width: 51vh;
+}
 .chatImage{
     width: 40px;
     border-radius: 50%;
+    margin: 5px;
 }
 .SingleCoversation:hover{
-    background-color: rgb(195, 208, 221);
+    background-color: lightgray;
     border-radius: 2px;
     cursor: pointer;
 }

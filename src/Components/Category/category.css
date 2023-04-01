@@ -12,7 +12,7 @@
     padding: 0px 0;
     border-radius: 5px;
     margin-top: 25px;
-    position: relative;
+    /* position: relative; */
   }
   .category img {
     width: 30px;

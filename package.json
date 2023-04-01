@@ -25,6 +25,7 @@
     "react-scripts": "5.0.1",
     "react-select": "^5.7.0",
     "react-spinkit": "^3.0.0",
+    "react-sticky-box": "^2.0.0",
     "react-widgets": "^5.8.4",
     "socket.io-client": "^4.6.1",
     "style-component": "^0.0.1",

@@ -220,8 +220,10 @@ const user = useSelector((state)=>state.userDetail)
                                       <Form.Select aria-label="Default select example" class="form-control  border-0 shadow-sm px-4" name="category" id="category" onChange={handleChange}>
                                       <option value="" disabled selected>Select Catagory</option>
                                       <option value="Food">Food</option>
+                                      <option value="bakery">Bakery</option>
                                       <option value="Furniture">Furniture</option>
                                       <option value="Cloths">Cloths</option>
+                                      <option value="Interior Designing">Interior Designing</option>
                                     </Form.Select>
                                     {errors.category && touched.category? (
                                         <p className="form-error">{errors.category}</p>

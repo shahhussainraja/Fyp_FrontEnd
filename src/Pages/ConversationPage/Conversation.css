@@ -2,41 +2,136 @@
     height: calc(100vh - 70px);
     display: flex;
     margin-top: 70px;
+ 
     position: relative;
+}
+
+.listHead{
+    background-color: #2693b2;
+    height: 55px;
+    padding: 5px;
+    
+}
+.listtop{
+    padding: 10px;
+    margin-top: 5px;
+    color: #ffffff;
+    font-weight: bold;
+
+}
+
+.chatHead{
+    height: 55px;
+    padding: 5px;
+    padding-right: 4px;
+    display: flex;
+    box-shadow: 5px 10px 30px rgba(0, 0, 0, 0.157);
+    width:100%;
+   
+   
+}
+.chatTopSpan{
+    padding: 5px;
+    margin-top: 8px;
+}
+.chatTopImage{
+    width: 40px;
+    border-radius: 50%;
+    margin: 5px;
+}
+.chatTop{
+    padding: 10px;
+    margin-top: 8px;
+    color: #E3BE00;
 }
 
 .chatList{
     flex: .3;
-    /* background: green; */
-    height: 100vh;
+    /* background: rgb(255, 255, 255); */
+    height: 89vh;
+    border-right: 1px solid;
+    border-color: #5abad4;
+    overflow-y: scroll;
 
 }
+
+.chatList::-webkit-scrollbar {
+    display: none;
+}
+
 .chatMenu{
     flex:0.7;
-    /* background: yellow; */
-    /* height: 100vh; */
-    overflow-y: scroll;
+    height: 69vh;
+    /* background-color: red; */
+   
+    
+    
+}
+.chatMenuWrapper::-webkit-scrollbar {
+    display: none;
 }
 
-.chatListWrapper,.chatMenuWrapper{
+.chatMenuWrapper{
     padding: 10px;
     height: 100%;
+    overflow-y: scroll;
+    
 }
 
 .chatMessageInput{
-    width: 100%;
+    /* width: 100%; */
+    width:100%;
+   
+    border-radius: 5px;
+  background-color: transparent;
+  border:none;
+  outline: none;
+  /* text-align: center; */
+  color:#242425;
+  margin: 5px;
 }
 
 .chatBoxBottom{
-    display: flex;
+    /* display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 20px;
+    margin-top: 20px; */
+
+    width:950px;
+    height:55px;
+    /* background-color:#2693b2; */
+    display:flex;
+    /* justify-content: center; */
+    margin-top: 15px;
+    padding: 2px;
+   
+   
+    box-shadow: 2px 2px 30px rgba(0,0,0,0.15);
+  
+   
 }
 .SendButton{
-    width: 80%;
+    /* width: 80%;
     margin: 10px;
-    background: green;
+    background: green; */
+
+    width:150px;
+  height:35px;
+  background-color:#2693b2;
+  color:#FFFFFF;
+  display: flex;
+  font-size: 0.9rem;
+  justify-content: center;
+  align-items: center;
+  margin: auto 10px;
+  border-radius: 20px;
+    font-weight: 500;
+    transition: 0.4s ease-out;
+    border: 0px;
+}
+
+.SendButton:hover{
+    background-color:#E3BE00;
 }
 
 .chatTitle{

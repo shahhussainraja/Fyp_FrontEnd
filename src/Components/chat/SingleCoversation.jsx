@@ -30,9 +30,10 @@ function SingleCoversation({conversationData , userId}) {
     <div className="SingleCoversation">
         <div className="chatImageDiv">
             <img src={imgCover} className="chatImage"  alt="" />
+            <span className='chatSpan'> {activeChatName?.name}</span>
         </div>
         <div className="chatText">
-           {activeChatName?.name}
+          
         </div>
     </div>
     </>

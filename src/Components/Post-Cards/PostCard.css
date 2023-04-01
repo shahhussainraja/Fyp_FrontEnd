@@ -47,8 +47,9 @@
     max-width: 100%;
     padding: 10px;
     max-height: 100%;
+    object-fit: contain;
     justify-content: center;
-    margin-left: 15px;
+    /* margin-left: 15px; */
   }
   
   /* .productCard__cart{

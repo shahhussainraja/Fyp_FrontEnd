@@ -7,6 +7,7 @@ import { signUpSchema } from "../../Schemas/index";
 import Select from "react-select";
 import { Textarea } from 'react-bootstrap-icons';
 import "./PostDetails.css";
+import StickyBox from "react-sticky-box";
 import Catagories from '../../Components/Category/Catagories';
 import Search from '../../Components/Search/Search';
 import img from '../../images/examplePost.jfif';
@@ -76,11 +77,13 @@ function PostDetails(props) {
     
         <Search></Search>
       
-        <div style={{display:'flex', padding:"30px", marginTop:"0px"}}>
-          <div style={{position:"fixed"}}>
-          <Catagories></Catagories>
+        <div className='main'>
+        <div>
+          <StickyBox offsetTop={120} offsetBottom={20}>
+            <div><Catagories></Catagories></div>
+          </StickyBox>
           </div>
-          <div style={{marginLeft:'300px', padding:"20px"}}>
+          <div style={{marginLeft:'30px', padding:"20px"}}>
             <div className='title'>
           <h3 className=''>Post Details</h3>
            <p className='details'>Here are the details about this post</p> 

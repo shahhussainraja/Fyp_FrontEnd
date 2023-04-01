@@ -47,7 +47,7 @@ if (amount) {
                 <FaClock className={"productCard__clock"} />
                 </div>
                 </div>
-               <div style={{height:"250px", width:"280px", justifyContent:"center"}}>
+               <div style={{height:"250px",width:"250px", justifyContent:"center"}}>
                 <img src={`http://localhost:8080${content.image}`} alt='product-img' className='productImage'></img>
                 </div>
                 <div className='productCard__content'>
@@ -58,8 +58,8 @@ if (amount) {
                     </div >
                 </div>
                 <div className='postCardBtn'>
-                    <a className='postCard-btn' ><Link to="/PostDetails" state={content} style={{ color: "inherit", textDecoration: "inherit" }}>open</Link></a>
-                    <a className='postCard-btn' onClick={Popup} >Make Offer</a>
+                    <button className='postCard-btn' ><Link to="/PostDetails" state={content} style={{ color: "inherit", textDecoration: "inherit" }}>open</Link></button>
+                    <button className='postCard-btn' onClick={Popup} >Make Offer</button>
                     </div>
             </div>
         </div>

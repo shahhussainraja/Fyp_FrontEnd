@@ -9,4 +9,8 @@
 
   }
   
+  .search{
+    position: fixed;
+    background-color: brown;
+  }
   

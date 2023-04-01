@@ -11,7 +11,7 @@ nav{
     z-index: 1;
     height: 4rem;
     background-color: transparent;
-    transition: 0.6s ease-in-out;
+    transition: 0.3s ease-in-out;
   }
   .nav.active{
   box-shadow: 5px 10px 30px rgba(0, 247, 255, 0.157);

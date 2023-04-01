@@ -6,6 +6,8 @@ import { Products } from '../../Components/Post-Cards/PostCard'
 import contents from '../../Components/Post-Cards/content'
 import './FindJobs.css'
 import authServices from '../../Services/AuthServices'
+import StickyBox from "react-sticky-box";
+
 
 function FindJobs() {
 
@@ -27,15 +29,18 @@ function FindJobs() {
 
   return (
     <div className=''>
-      
+      {/* <div className='search'> */}
         <Search></Search>
+        {/* </div> */}
       
         
-        <div style={{display:'flex', padding:"40px"}}>
-          <div style={{position:"fixed", marginBottom:"1000px"}}>
-          {/* <Catagories></Catagories> */}
+        <div style={{display:'flex', padding:"40px", marginTop:"100px"}}>
+          <div>
+          <StickyBox offsetTop={120} offsetBottom={20}>
+            <div><Catagories></Catagories></div>
+          </StickyBox>
           </div>
-          <div style={{marginLeft:'250px'}}>
+          <div style={{marginLeft:'25px'}}>
           <h4 style={{marginLeft:'20px', color:'#2693b2'}}>Posts</h4>
           <div style={{ marginTop:"0px"}} className="PostCard">
                 {allPosts?.map(contents => (
