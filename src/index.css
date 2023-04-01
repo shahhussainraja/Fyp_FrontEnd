@@ -25,17 +25,20 @@ a{
 /* Interceptor animation */
 .loadinganim {
   display: none;
-  background: #ffffffe6;
+  background: #F5F5F5;
   width: 100%;
   position: absolute;
   height: 100%;
-  z-index: 9999999;
+  z-index: 99999999;
   opacity: 0.8;
 }
 
 .loading-indicator .loadinganim {
   display: block !important;
 }
+
+
+
 button{
   outline: none;
   border: none;

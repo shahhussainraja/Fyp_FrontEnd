@@ -12,7 +12,7 @@ import Swal from 'sweetalert2'
 
 import { Provider } from 'react-redux';
 import store from "../src/Redux/store"
-
+import Spinner from 'react-spinkit';
 
 axios.interceptors.request.use((response)=>{
   document.body.classList.add('loading-indicator');
@@ -71,6 +71,7 @@ axios.interceptors.response.use((response)=>{
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 
+  
   <Provider store = {store}>
   <React.StrictMode>
     <App />

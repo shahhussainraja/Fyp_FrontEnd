@@ -86,7 +86,7 @@ function Navbar() {
       <div className='container'>
     <nav className={nav ? 'nav active' : 'nav'}>
       <div>
-      <a href='/' className='logo'>
+      <a  className='logo'>
           <img src={logo3} alt=''/>
       </a>
       </div>
@@ -95,7 +95,6 @@ function Navbar() {
       <ul>
       {/* authServices.isLogged() */}
         {value ? (<>
-          {/* <li><a href='/' >Home</a></li> */}
           <li><Link to="/" >Home</Link></li>
           <li><Link to="/Post" >Post Order</Link></li>
           <li><Link to="/FindJobs" >Find Job</Link></li>
