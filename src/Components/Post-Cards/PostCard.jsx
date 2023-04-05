@@ -1,4 +1,4 @@
-import { FaShoppingCart, FaRegBookmark, FaStar, FaFireAlt, FaClock } from 'react-icons/fa';
+import { FaShoppingCart, FaRegBookmark, FaStar, FaFireAlt, FaClock, FaCircle} from 'react-icons/fa';
 import './PostCard.css'
 import user from '../../images/userProfile.png'
 import Popup from 'react-widgets/cjs/Popup';
@@ -33,6 +33,9 @@ if (amount) {
 }
 
     }
+    
+
+
 
     return(
         <div className='productList'>
@@ -42,12 +45,17 @@ if (amount) {
                     <img style={{height:"1.5rem", width:"1.5rem"}} src={user}></img>
                     <p style={{padding:"5px", fontSize:"15px", marginTop:"0px"}}>{content.buyerName}</p>
                     </div>
-                    <div>
-                    <p className='time'>{content.dueDate}</p>
-                <FaClock className={"productCard__clock"} />
+                    <div style={{display:"flex"}}>
+                      <p className='time'>{content.dueDate}</p>
+                      <FaClock className={"productCard__clock"} /><br/>
+                      </div>
+                      <div style={{display:"flex", marginTop:"25px", padding:"3px"}}>
+                      <p className='status'>Status</p>
+                      <FaCircle className={"status-activity"} />
+                    </div>
+                    
                 </div>
-                </div>
-               <div style={{height:"250px",width:"250px", justifyContent:"center"}}>
+               <div className='imgContainer'>
                 <img src={`http://localhost:8080${content.image}`} alt='product-img' className='productImage'></img>
                 </div>
                 <div className='productCard__content'>
@@ -58,7 +66,7 @@ if (amount) {
                     </div >
                 </div>
                 <div className='postCardBtn'>
-                    <button className='postCard-btn' ><Link to="/PostDetails" state={content} style={{ color: "inherit", textDecoration: "inherit" }}>open</Link></button>
+                    <button className='postCard-btn' ><Link to="/PostDetails" state={content} style={{ color: "inherit", textDecoration: "inherit" }}>Open</Link></button>
                     <button className='postCard-btn' onClick={Popup} >Make Offer</button>
                     </div>
             </div>

@@ -29,14 +29,12 @@ function FindJobs() {
 
   return (
     <div className=''>
-      {/* <div className='search'> */}
+ 
         <Search></Search>
-        {/* </div> */}
-      
-        
-        <div style={{display:'flex', padding:"40px", marginTop:"100px"}}>
+    
+        <div style={{display:'flex', padding:"40px", marginTop:"120px"}}>
           <div>
-          <StickyBox offsetTop={120} offsetBottom={20}>
+          <StickyBox offsetTop={140} offsetBottom={20}>
             <div><Catagories></Catagories></div>
           </StickyBox>
           </div>

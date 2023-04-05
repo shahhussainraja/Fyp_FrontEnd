@@ -305,7 +305,7 @@ function handleSelect(data) {
                                       </div>
 
                                       <div class='mb-3'>
-                                        <lable class=" mb-4 " style={{marginBottom:"0px 0px 0px"}} >Profile Image<sub> (optional)</sub>
+                                        <lable class=" mb-4 " style={{marginBottom:"0px 0px 0px"}} >Profile Image<sub> (Mandatory)</sub>
                                         {image && (
                                             <div>
                                               <img
