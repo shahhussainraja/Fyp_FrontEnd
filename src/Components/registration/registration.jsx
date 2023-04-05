@@ -224,8 +224,8 @@ function Registration(){
 
                                     <div class="text-center d-flex justify-content-center mt-4">
                                       <p>Already have account?
-                                      <a href="/Login" class="font-italic text-muted"> 
-                                      <u style={{color: '#00b7ff'}}>Login</u></a></p>
+                                      <a class="font-italic text-muted"> 
+                                      <u style={{color: '#00b7ff',cursor:"pointer"}} onClick={()=>navigate("/login")}>Login</u></a></p>
                                       </div>
                                     </form>
                                 </div>

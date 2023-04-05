@@ -89,13 +89,25 @@ nav ul{
         transition: all ease 0.5s;
         color: #000000;
       }
+
+.boxContainer{
+  display: flex;
+  align-items: center;
+  justify-items: center;
+}
+
+
 .img-container {
-position: relative;
-border-radius: 10%;
+/* position: relative;
+ */
+ 
+ display: flex;
+ flex-direction: column;
+  border-radius: 5%;
  background-color: transparent;
  justify-content: center;
  align-items: center;
- width: 10rem;
+ width: 14rem;
  padding: 10px;
 
  /* margin: 1rem;
@@ -109,4 +121,5 @@ border-radius: 10%;
         background-color: transparent;
         transform: translateY(-0.5rem);
         box-shadow: 0.5rem 0.75rem 1.5rem #504c4c;
+        -webkit-transition: all 500ms ease
       }
