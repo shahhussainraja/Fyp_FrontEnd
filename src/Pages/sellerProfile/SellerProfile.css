@@ -1,0 +1,39 @@
+.Container{
+display : flex;
+padding-top:70px;
+padding-left: 0px;
+}
+
+
+.Left {
+left: 0px;
+padding-top: 10px;
+font-size: 17px;
+flex: 1;
+display: flex;
+flex-direction: column;
+align-items: left;  
+background-color: #2a4c64;
+color: white;
+border-radius: 0px 5px 5px 0px;
+box-shadow: -5px -5px 9px rgba(255,255,255,0.45), 5px 5px 9px rgba(94,104,121,0.3);
+}
+
+
+.Right{
+flex: 6;
+margin-left:40px;
+margin-right:40px;
+color: black;
+background-color: white;
+height: 80vh;
+}
+
+
+.Link:hover{
+    /* color:"black";
+    background-color:#ccc; */
+    background-color: #163145;
+    transform: scale(1.08);
+    transition: step-end;
+}

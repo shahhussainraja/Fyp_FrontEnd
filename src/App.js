@@ -15,6 +15,10 @@ import SellerRegistration from './Components/registration/sellerRegistration';
 import Contact from './Components/Contact/Contact';
 import UserProfile from './Pages/UserProfile/UserProfile'
 import Spinner from 'react-spinkit';
+import SellerProfile from './Pages/sellerProfile/SellerProfile';
+import Profile from './Pages/sellerProfile/Profile';
+import ProductList from './Pages/sellerProfile/ProductList';
+import Reviews from './Pages/sellerProfile/Reviews';
 
 
 
@@ -44,6 +48,15 @@ function App() {
         <Route path='/Shop' element={<Shop/>} />
         <Route path='/Chat' element={<Conversation/>} />
         <Route path='/UserProfile' element={<UserProfile/>} />
+
+{/* Nested Routes for Seller Profile */}
+          <Route path='/SellerProfle' element={<SellerProfile/>} >
+            <Route index path="profile" element={<Profile />} />
+            <Route index path="ProductList" element={<ProductList />} />
+            <Route index path="Reviews" element={<Reviews />} />
+          </Route>
+
+
         </Routes>
         <Contact/>
       </Router>
