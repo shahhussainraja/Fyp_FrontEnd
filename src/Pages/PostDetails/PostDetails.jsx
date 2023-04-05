@@ -79,7 +79,7 @@ function PostDetails(props) {
       
         <div className='main'>
         <div>
-          <StickyBox offsetTop={120} offsetBottom={20}>
+          <StickyBox offsetTop={140} offsetBottom={20}>
             <div><Catagories></Catagories></div>
           </StickyBox>
           </div>

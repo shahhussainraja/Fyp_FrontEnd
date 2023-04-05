@@ -56,9 +56,7 @@ function App() {
             <Route index path="Reviews" element={<Reviews />} />
           </Route>
 
-
         </Routes>
-        <Contact/>
       </Router>
       {/* <div className={'loadinganim'} id="#interceptor">
             <Spinner name="three-bounce"  style={{color:"#36d7b7",marginTop:'25%',left:'50%',position:'absolute',zIndex:'99999',opacity: 2}} />

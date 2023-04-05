@@ -1,10 +1,6 @@
 import React from 'react'
 import "./SellerProfile.css"
 import { BrowserRouter as Router, Routes, Route,Link ,Outlet} from "react-router-dom"
-import ProductList from './ProductList'
-import Profile from "./Profile"
-import Reviews from "./Reviews"
-
 
 
 
