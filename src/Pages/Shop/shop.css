@@ -1,0 +1,57 @@
+.homeSlide h1 {
+    font-size: 45px;
+    line-height: 55px;
+    margin: 50px 0 20px 0;
+  }
+  .homeSlide p {
+    margin: 20px 0;
+  }
+  .homeSlide ul {
+    position: absolute;
+    bottom: 20px;
+  }
+  .homeSlide ul li {
+    border: 2px solid #b8b7b7;
+    border-radius: 50%;
+    padding: 10px;
+  }
+  .homeSlide ul li button {
+    background: transparent !important;
+    color: transparent !important;
+  }
+  .homeSlide ul li button::before {
+    font-size: 15px !important;
+    color: #0f3460;
+    position: absolute;
+    top: 2px;
+    left: 0;
+    margin: auto;
+  }
+
+  .slider{
+    display: flex;
+    padding: 20px;
+    background-color: ghostwhite;
+
+  }
+
+  .slider-btn{
+    width:200px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    text-transform: uppercase;
+      align-items: center;
+      background-color: #2693b2;
+      box-shadow: 2px 5px 10px rgba(2, 238, 255, 0.336);
+      border-radius: 5px;
+    color:#ffffff;
+    margin-left: 0px;
+  
+    }
+    .slider-btn:hover{
+    background-color: #E3BE00;
+      transition: all ease 0.5s;
+      color: #000000;
+    }
+  
