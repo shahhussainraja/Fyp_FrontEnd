@@ -14,8 +14,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import SellerRegistration from './Components/registration/sellerRegistration';
 import Contact from './Components/Contact/Contact';
 import UserProfile from './Pages/UserProfile/UserProfile'
-import SellerProfile from './Pages/UserProfile/SellerProfile';
 import Spinner from 'react-spinkit';
+import SellerProfile from './Pages/sellerProfile/SellerProfile';
+import Profile from './Pages/sellerProfile/Profile';
+import ProductList from './Pages/sellerProfile/ProductList';
+import Reviews from './Pages/sellerProfile/Reviews';
 
 
 
@@ -45,9 +48,15 @@ function App() {
         <Route path='/Shop' element={<Shop/>} />
         <Route path='/Chat' element={<Conversation/>} />
         <Route path='/UserProfile' element={<UserProfile/>} />
-        <Route path='/SellerProfile' element={<SellerProfile/>} />
+
+{/* Nested Routes for Seller Profile */}
+          <Route path='/SellerProfle' element={<SellerProfile/>} >
+            <Route index path="profile" element={<Profile />} />
+            <Route index path="ProductList" element={<ProductList />} />
+            <Route index path="Reviews" element={<Reviews />} />
+          </Route>
+
         </Routes>
-        <Contact/>
       </Router>
       {/* <div className={'loadinganim'} id="#interceptor">
             <Spinner name="three-bounce"  style={{color:"#36d7b7",marginTop:'25%',left:'50%',position:'absolute',zIndex:'99999',opacity: 2}} />

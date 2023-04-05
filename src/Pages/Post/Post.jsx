@@ -12,6 +12,7 @@ import { postSchema } from '../../Schemas/index';
 import { useSelector } from 'react-redux';
 import authServices from '../../Services/AuthServices';
 import Swal from 'sweetalert2';
+import Contact from '../../Components/Contact/Contact';
 
 
 
@@ -284,6 +285,7 @@ const user = useSelector((state)=>state.userDetail)
                             </div>
                         </div>
                                            
+                        <Contact />
                     </div>
    
   )

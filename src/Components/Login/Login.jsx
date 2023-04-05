@@ -6,7 +6,7 @@ import {useEffect, useState} from 'react'
 import authServices from '../../Services/AuthServices';
 import { updateUserDetail } from '../../Redux/userReducer';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 
 function Login(){
@@ -68,8 +68,8 @@ function Login(){
                                         <button  class="btn btn-primary btn-block text-uppercase mb-2  shadow-sm" className='login-btn' onClick={handleLogin}>Log in</button>
                                         </div>
                                         
-                                        <div class="text-center d-flex justify-content-center mt-4"><p>Create new account? <a href="/Registration" class="font-italic text-muted" > 
-                                                <u style={{color: '#00b7ff'}}>Register</u></a></p></div>
+                                        <div class="text-center d-flex justify-content-center mt-4"><p>Create new account? <a  class="font-italic text-muted"  > 
+                                                <u style={{color: '#00b7ff',cursor:"pointer"}} onClick={()=>navigate("/Registration")}>Register</u></a></p></div>
                                 </div>
                             </div>
                         </div>

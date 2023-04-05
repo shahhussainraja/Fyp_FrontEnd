@@ -78,10 +78,6 @@ function Navbar() {
           navigate('/SellerProfile');
         };
 
-
-
-
-
   return (
       <>
       <div className='container'>
@@ -102,6 +98,7 @@ function Navbar() {
           <li><Link to="/FindJobs" >Find Job</Link></li>
           <li><Link to="/Chat" >chat</Link></li>
           <li><Link to="/Shop" >Shop</Link></li>
+          <li><Link to="/SellerProfle" >SellerProfile</Link></li>
           <li><PersonFill color="#2693b2" style={{cursor:"pointer", marginRight:"10px"}} size={30} onClick={navigateToProfile}/></li>
           <li><BoxArrowInRight color="royalblue" style={{cursor:"pointer"}} size={30} onClick={()=>{
             authServices.logOut()
@@ -130,17 +127,16 @@ function Navbar() {
       <Modal.Body className="show-grid">
         <Container>
           <Row style={{display:"flex"}}>
-            
+            <div className='boxContainer'>
             <Col className='img-container' xs={6} md={6}  onClick={()=>{navigate("/Registration");setModalShow(false)}}>
-            <img style={{marginLeft:"55px", height:"93px",width:"90px"}} src="https://img.icons8.com/external-smashingstocks-flat-smashing-stocks/66/null/external-customer-shopping-and-retail-smashingstocks-flat-smashing-stocks-2.png"/>
-            <h4 style={{marginLeft:"65px", height:""}}>Buyer</h4>
+            <img style={{ height:"70px",width:"70px"}} src={require("../../images/BuyerIcon.png")} />
+            <h4 >Buyer</h4>
             </Col>
             <Col className='img-container' xs={6} md={6}  onClick={()=>{navigate("/SellerRegistration");setModalShow(false)}}>
-            
-            <img  style={{marginLeft:"55px"}} src="https://img.icons8.com/doodle/96/null/group.png"/>
-            <h4 style={{marginLeft:"65px"}}>Seller</h4>
+            <img  style={{ height:"70px",width:"70px"}} src={require("../../images/SellerIcon.png")}/>
+            <h4 >Seller</h4>
             </Col>
-           
+            </div>
           </Row>
           
          
