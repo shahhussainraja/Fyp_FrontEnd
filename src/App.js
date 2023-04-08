@@ -19,6 +19,7 @@ import SellerProfile from './Pages/sellerProfile/SellerProfile';
 import Profile from './Pages/sellerProfile/Profile';
 import ProductList from './Pages/sellerProfile/ProductList';
 import Reviews from './Pages/sellerProfile/Reviews';
+import Orders from './Pages/sellerProfile/Orders';
 
 
 
@@ -53,6 +54,7 @@ function App() {
           <Route path='/SellerProfle' element={<SellerProfile/>} >
             <Route index path="profile" element={<Profile />} />
             <Route index path="ProductList" element={<ProductList />} />
+            <Route index path="Orders" element={<Orders />} />
             <Route index path="Reviews" element={<Reviews />} />
           </Route>
 

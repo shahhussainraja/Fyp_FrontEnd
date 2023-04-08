@@ -7,6 +7,7 @@ import contents from '../../Components/Post-Cards/content'
 import './FindJobs.css'
 import authServices from '../../Services/AuthServices'
 import StickyBox from "react-sticky-box";
+import Contact from "../../Components/Contact/Contact"
 
 
 function FindJobs() {
@@ -49,6 +50,7 @@ function FindJobs() {
             </div>
           </div>
         </div>
+        <Contact></Contact>
    </div>
   )
 }

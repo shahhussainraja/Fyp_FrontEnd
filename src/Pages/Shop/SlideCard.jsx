@@ -23,13 +23,13 @@ const SlideCard = () => {
           return (
             <>
               <div className='slider box top' key={index}>
-                <div className='left' style={{width:'600px', marginLeft:"30px", marginTop:"20px"}}>
+                <div className='left' style={{ marginLeft:"30px", marginTop:"20px"}}>
                   <h1>{value.title}</h1>
                   <p>{value.desc}</p>
                   <button className='slider-btn'>Visit Collections</button>
                 </div>
                 <div className='right' style={{height:"30rem", justifyContent:"center"}}>
-                  <img src={bg} alt='' style={{justifyContent:"center", display:"block"}}/>
+                  <img src={bg} alt=''/>
                 </div>
               </div>
             </>

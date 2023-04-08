@@ -4,6 +4,9 @@ import Catagories from '../../Components/Category/Catagories'
 import StickyBox from 'react-sticky-box'
 import "./shop.css"
 import SliderHome from "./Slider"
+import Contact from "../../Components/Contact/Contact"
+import Wrapper from './Wrapper'
+import Discount from './discount/Discount'
 
 function Shop() {
   return (
@@ -15,8 +18,11 @@ function Shop() {
             <div><Catagories></Catagories></div>
           </StickyBox>
           </div>
-          <SliderHome />
+          <SliderHome /> 
     </div>
+    <Discount></Discount>
+    <Wrapper></Wrapper>
+    <Contact></Contact>
     </>
   )
 }
