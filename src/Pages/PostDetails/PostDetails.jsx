@@ -19,6 +19,7 @@ import { format } from 'timeago.js'
 import { bidSchema } from '../../Schemas/index';
 import { useSelector } from 'react-redux';
 import sellerServices from '../../Services/SellerServices';
+import Contact from "../../Components/Contact/Contact"
 
 const initialValues = {
   amount:""
@@ -163,6 +164,7 @@ function PostDetails(props) {
                                 </div>       
           </div>
         </div>
+        <Contact></Contact>
    </div>
                        
   )
