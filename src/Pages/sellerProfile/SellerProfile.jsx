@@ -13,7 +13,7 @@ export default function SellerProfile() {
         <div className='Container'>
           <div className="Left">
           <Link to="Profile" className='Link' style={{ color: "inherit", textDecoration: "inherit",marginBottom:"3px",paddingLeft:"20px"}}>Profile</Link> 
-          <Link to="ProductList" className='Link' style={{ color: "inherit", textDecoration: "inherit",marginBottom:"3px",paddingLeft:"20px"}}>Invertry</Link> 
+          <Link to="ProductList" className='Link' style={{ color: "inherit", textDecoration: "inherit",marginBottom:"3px",paddingLeft:"20px"}}>ChatGPT</Link> 
           <Link to="Reviews" className='Link' style={{ color: "inherit", textDecoration: "inherit",marginBottom:"3px",paddingLeft:"20px"}}>Reviews</Link> 
 
           </div>

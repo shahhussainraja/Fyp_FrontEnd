@@ -26,7 +26,6 @@ import Reviews from './Pages/sellerProfile/Reviews';
 function App() {
 
   
-
   return (
     <>
     {/* inetercepter  */}
@@ -46,8 +45,8 @@ function App() {
         <Route path='/PostDetails' element={<PostDetails/>} />
         <Route path='/FindJobs' element={<FindJobs/>} />
         <Route path='/Shop' element={<Shop/>} />
-        <Route path='/Chat' element={<Conversation/>} />
-        <Route path='/UserProfile' element={<UserProfile/>} />
+        <Route path='/Chat' element={<Conversation />} />
+        <Route path='/UserProfile' element={<UserProfile />} />
 
 {/* Nested Routes for Seller Profile */}
           <Route path='/SellerProfle' element={<SellerProfile/>} >

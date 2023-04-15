@@ -4,26 +4,49 @@ import user from '../../images/userProfile.png'
 import Popup from 'react-widgets/cjs/Popup';
 import Swal from 'sweetalert2'
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import sellerServices from '../../Services/SellerServices';
+import { Button } from 'react-bootstrap';
 
 export function Products({content}) {
 
-    const ipAPI = '//api.ipify.org?format=json'
+  const Loginprofile = useSelector((state) => state.userDetail)
 
-const inputValue = fetch(ipAPI)
-  .then(response => response.json())
-  .then(data => data.ip)
+  let   inputValue = "";
 
-    const Popup = () => {
+const Popup = () => {
 
 const { value: amount } = Swal.fire({
   title: 'Enter your expected price',
-  input: 'text',
+  input: 'number',
   inputLabel: 'Asstimated Amount',
   inputValue: inputValue,
   showCancelButton: true,
   inputValidator: (value) => {
     if (!value) {
-      return 'You need to write something!'
+      return 'Please enter amount!'
+    }else{
+      const message = `Dear ${content.buyerName} I’m writing this to hear back from you about the offer ${value}.We would like to know if you’re still interested and how you’d like to move forward. Looking forward to hearing back from you soon. `
+      sellerServices.newConversation({senderId:Loginprofile.id,receiverId:content.buyerId}).then((res)=>{
+        if(res){
+          sellerServices.sendBidMessage({senderId:Loginprofile.id,message:message,conversationId:res._id,offerMessage:true}).
+          then((res)=>{
+            if(res){
+              Swal.fire({
+                title: 'Your offer is successfully sent',
+                showClass: {
+                  popup: 'animate__animated animate__fadeInDown'
+                },
+                hideClass: {
+                  popup: 'animate__animated animate__fadeOutUp'
+                }
+              })
+            }
+          }).catch((e)=>console.log(e.message))
+        }
+      }).catch((e)=>console.log(e.message))
+
+
     }
   }
 })
@@ -66,10 +89,13 @@ if (amount) {
                     </div >
                 </div>
                 <div className='postCardBtn'>
-                    <button className='postCard-btn' ><Link to="/PostDetails" state={content} style={{ color: "inherit", textDecoration: "inherit" }}>Open</Link></button>
-                    <button className='postCard-btn' onClick={Popup} >Make Offer</button>
+                    <Link to="/PostDetails" state={content} style={{ color: "white", textDecoration: "inherit" }} className='postCard-btn' >Open</Link>
+                    {
+                      Loginprofile.userType === "seller" &&
+                      <Link className='postCard-btn' style={{color:"inherit", textDecoration: "inherit" }} onClick={Popup} >Make Offer</Link>
+                    }
                     </div>
             </div>
-        </div>
+        </div>  
     )
 }

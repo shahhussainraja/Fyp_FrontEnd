@@ -2,11 +2,13 @@ import React, { useEffect, useRef, useState } from 'react'
 import SingleCoversation from '../../Components/chat/SingleCoversation'
 import Message from '../../Components/message/Message'
 import "./Conversation.css"
+import inboxImage from "../../images/message.png"
 import Button from 'react-bootstrap/Button';
 import authServices from '../../Services/AuthServices';
 import imgCover from "../../images/about2.png"
 import { io } from 'socket.io-client';
 import { useSelector } from 'react-redux';
+import { TypeAnimation } from 'react-type-animation'
 
 function Conversation() {
 
@@ -129,8 +131,8 @@ const receiver = currentChat.members.find(member => member != currentUser )
        
         <div className="chatMenu">
           <div className='chatHead'>
-            <img src={imgCover} className="chatTopImage"  alt="" />
-            <span className='chatTopSpan'>@username</span>
+            {/* <img src={imgCover} className="chatTopImage"  alt="" /> */}
+            <span className='chatTopSpan'>Inbox</span>
             </div>
           { currentChat ? <> 
                 <div className="chatMenuWrapper">
@@ -145,16 +147,26 @@ const receiver = currentChat.members.find(member => member != currentUser )
                       </div>
                      
                   </div>
-                  
-                </> : <>  
-               
-      
-             </>
-            }
-             <div className="chatBoxBottom">
+                  <div className="chatBoxBottom">
                         <textarea name="" className='chatMessageInput' id="" cols="30" rows="3" onChange={(e)=>(setNewMessage(e.target.value))} value={newMessage} placeholder="Message"></textarea>
                         <Button className='SendButton' onClick={()=>{handleSubmit()}}>Send</Button>
                     </div>
+                </> : <>  
+               <div className='chatMenuWrapper'>
+      
+                      <div className='inboxImageContainer'>
+                       <img src={inboxImage} className='inboxImage' alt="" />
+                       <h4 style={{paddingTop:"10px",fontWeight:"bolder"}}>
+                       Start Conversation 
+                       </h4 >
+
+                      </div>
+
+               </div>
+      
+             </>
+            }
+             
                     
         </div>
     </div>

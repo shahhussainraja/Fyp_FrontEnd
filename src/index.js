@@ -11,9 +11,12 @@ import Swal from 'sweetalert2'
 // import badrequest from "../src/images/bad"
 
 import { Provider } from 'react-redux';
-import store from "../src/Redux/store"
+import {store , persistor} from "../src/Redux/store"
 import Spinner from 'react-spinkit';
+import { PersistGate } from 'redux-persist/integration/react';
 
+
+//interceptor config
 axios.interceptors.request.use((response)=>{
   document.body.classList.add('loading-indicator');
   return response;
@@ -40,16 +43,14 @@ axios.interceptors.response.use((response)=>{
       text: "",
       footer: '<a href="">Why do I have this issue?</a>'
     })
-  } 
-  //   if(error.response.status === 401 ){
-  //   Swal.fire({
-  //     icon: 'error',
-  //     title: 'Oops...',
-  //     text: `Unathorized for this Request`,
-  //   }).then(()=>{
-  //     authServices.logOut();
-  //   })
-  // }
+  }
+    if(error.response.status === 401 ){
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: `Invalid Credentials`,
+    })
+  }
 
   //   if(error.response.status === 500 ){
   //   Swal.fire({
@@ -59,9 +60,7 @@ axios.interceptors.response.use((response)=>{
   //   })
 
   // }
-  
-
-
+    
  return Promise.reject(error)
 })
 
@@ -72,11 +71,13 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 
   
-  <Provider store = {store}>
   <React.StrictMode>
+    <Provider store = {store}>
+    <PersistGate loading={null} persistor={persistor}>
     <App />
-  </React.StrictMode>
+    </PersistGate>
   </Provider>
+  </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
