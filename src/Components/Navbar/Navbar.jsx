@@ -75,7 +75,7 @@ function Navbar() {
         //navigate to user profile
         const navigate = useNavigate();
         const navigateToProfile = () => {
-          navigate('/SellerProfile');
+          navigate('/UserProfile');
         };
 
   return (
@@ -98,9 +98,9 @@ function Navbar() {
           <li><Link to="/FindJobs" >Find Job</Link></li>
           <li><Link to="/Chat" >chat</Link></li>
           <li><Link to="/Shop" >Shop</Link></li>
-          <li><Link to="/SellerProfle" >SellerProfile</Link></li>
+          <li><Link to="/admin" >SellerProfile</Link></li>
           <li><PersonFill color="#2693b2" style={{cursor:"pointer", marginRight:"10px"}} size={30} onClick={navigateToProfile}/></li>
-          <li><BoxArrowInRight color="royalblue" style={{cursor:"pointer"}} size={30} onClick={()=>{
+          <li><BoxArrowInRight color="#2693b2" style={{cursor:"pointer"}} size={30} onClick={()=>{
             authServices.logOut()
           }} /></li>
         </>) : (<>

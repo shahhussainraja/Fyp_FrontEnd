@@ -1,0 +1,233 @@
+body {
+  font-family: Roboto, sans-serif;
+}
+
+.trigger {
+  padding: 0 24px;
+  font-size: 18px;
+  line-height: 64px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.trigger:hover {
+  color: #5490c7;
+}
+
+.logo {
+  height: 32px;
+  margin: 16px;
+  background: rgba(255, 255, 255, 0.3);
+}
+.ant-layout {
+  min-height: 100vh;
+}
+.ant-layout-sider {
+  flex: 0 0 250px !important;
+  max-width: 250px !important;
+  min-width: 250px !important;
+  width: 250px !important;
+}
+.ant-layout-sider-collapsed {
+  flex: 0 0 80px !important;
+  max-width: 80px !important;
+  min-width: 80px !important;
+  width: 80px !important;
+}
+.sm-logo {
+  display: none;
+}
+
+.ant-layout-sider-collapsed .sm-logo {
+  display: block;
+}
+.ant-layout-sider-collapsed .lg-logo {
+  display: none;
+}
+.logo {
+  background-color:#E3BE00;
+  ;
+  margin: 0;
+  height: 64px;
+}
+main {
+  height: 85vh;
+  overflow-y: scroll;
+  background-color: transparent !important;
+}
+main::-webkit-scrollbar {
+  width: 0px;
+}
+.ant-menu-title-content {
+  font-size: 16px;
+}
+.ant-layout-header h5 {
+  line-height: 20px;
+  font-size: 14px;
+}
+.ant-layout-header p {
+  line-height: 20px;
+  font-size: 13px;
+}
+.ant-layout-header div .badge {
+  top: 16px;
+  right: -6px;
+}
+.error {
+  color: red;
+  font-size: 12px;
+}
+
+
+/* App wali  */
+
+:root {
+  --color-212529: #212529;
+  --color-ffd333: #ffd333;
+  --color-47ad24: #47ad24;
+  --color-e52e2e: #e52e2e;
+  --color-828599: #828599;
+  --color-3d464d: #ed464d;
+  --color-c3d4da: #ced4da;
+}
+
+.green {
+  color: var(--color-47ad24);
+  font-size: 14px;
+  font-family: Roboto !important;
+}
+.red {
+  color: var(--color-212529);
+  font-size: 14px;
+  font-family: Roboto !important;
+}
+.quill {
+  background-color: white;
+}
+
+.form-control {
+  box-shadow: none;
+  border-color: var(--color-c3d4da);
+}
+.title {
+  font: 28px;
+  font-family: Roboto !important;
+  color: var(--color-212529);
+}
+
+.sub-title {
+  font: 24px;
+  font-family: Roboto !important;
+  color: var(--color-212529);
+}
+.desc {
+  font: 14px;
+  font-family: Roboto !important;
+  color: var(--color-828599);
+}
+
+.productAdd-btn{
+  width:450px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  text-transform: uppercase;
+    align-items: center;
+    background-color: #2693b2;
+    box-shadow: 2px 5px 10px rgba(2, 238, 255, 0.336);
+    border-radius: 5px;
+  color:#ffffff;
+  margin-left: 250px;
+  
+
+  }
+  .productAdd-btn:hover{
+  background-color: #E3BE00;
+    transition: all ease 0.5s;
+    color: #000000;
+  }
+
+  /* User Profile */
+
+  .UserProfile{
+    background-color: rgb(255, 255, 255);
+    padding: 50px;
+    
+}
+
+.profileEdit-btn{
+    width:120px;
+  height: 40px;
+ 
+  margin-top: 5px;
+  justify-content: center;
+    align-items: center;
+    background-color: #2693b2;
+    box-shadow: 2px 5px 10px #02eeff56;
+    border-radius: 2px;
+  color:#ffffff;
+  margin: 10px;
+  }
+  .profileEdit-btn:hover{
+    background-color: #E3BE00;
+      transition: all ease 0.5s;
+      color: #000000;
+    }
+
+    .cancle{
+      width:120px;
+      height: 40px;
+     
+      margin-top: 5px;
+      justify-content: center;
+        align-items: center;
+        background-color: gray;
+        box-shadow: 2px 5px 10px #fdfdfd56;
+        border-radius: 2px;
+      color:#ffffff;
+      margin: 10px;
+    }
+
+    .cancle:hover{
+      background-color: lightgrey;
+        transition: all ease 0.5s;
+        color: #000000;
+      }
+.profileName{
+  padding: 5px;
+  margin-top: 5%;
+  margin-left:40%;
+  text-align: right;
+
+}
+
+.profileName .pnh3{
+  margin-left: 150px;
+  color:  #2693b2;
+}
+
+.profileFlex{
+  display: flex;
+  padding: 5px;
+  margin: 20px;
+  justify-content: center;
+}
+
+.p{
+  margin-top: 20px;
+  /* border-bottom: solid 1px lightgrey; */
+  
+}
+.pdata{
+  margin-left: 200px;
+  width: 500px;
+
+}
+
+.pdata .p{
+  margin-top: 20px;
+  border-bottom: solid 1px lightgrey;
+  text-align: center;
+  
+}
+
