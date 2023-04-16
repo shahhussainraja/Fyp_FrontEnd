@@ -1,0 +1,20 @@
+.chatbox{
+  display: flex;
+  flex-direction: column;
+  background-color: ghostwhite;
+  color: black;
+  padding: 10px;
+}
+
+.buttonBox{
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 5px;
+}
+.inputField{
+  background-color: #2a4c64;
+  color: white;
+  width: 300px;
+  height:50px
+}
+

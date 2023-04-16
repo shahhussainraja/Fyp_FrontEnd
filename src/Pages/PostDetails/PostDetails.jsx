@@ -29,7 +29,6 @@ function PostDetails(props) {
   
   const {state} = useLocation();
 
-  
   const Loginprofile = useSelector((state) => state.userDetail)
   
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
@@ -42,7 +41,7 @@ function PostDetails(props) {
       const message = `Dear ${state.buyerName} I’m writing this to hear back from you about the offer ${values.amount}.We would like to know if you’re still interested and how you’d like to move forward. Looking forward to hearing back from you soon. `
       sellerServices.newConversation({senderId:Loginprofile.id,receiverId:state.buyerId}).then((res)=>{
         if(res){
-          sellerServices.sendBidMessage({senderId:Loginprofile.id,message:message,conversationId:res._id}).
+          sellerServices.sendBidMessage({senderId:Loginprofile.id,message:message,conversationId:res._id,offerMessage:true}).
           then((res)=>{
             if(res){
               action.resetForm();
@@ -59,18 +58,9 @@ function PostDetails(props) {
           }).catch((e)=>console.log(e.message))
         }
       }).catch((e)=>console.log(e.message))
-      
-     
     }
   })
 
-
-
-
-
-  const Alert = () => {
-    
-  }
 
   return (      
 
@@ -149,6 +139,8 @@ function PostDetails(props) {
 
                                   <div style={{padding:"30px"}}>
                                  
+                                 {Loginprofile.userType  === "seller" &&
+
                                   <div className='makeoffer-box'>
                                     <form onSubmit={handleSubmit}>
                                     <input
@@ -165,6 +157,9 @@ function PostDetails(props) {
                                     <button className='makeoffer-button' type="submit" >Make Offer</button>
                                     </form>
                                   </div>
+
+                                }
+
                                   </div>
                                 </div>       
           </div>

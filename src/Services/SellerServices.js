@@ -7,16 +7,16 @@ class SellerServices extends GenericServices{
         super();
     }
 
-    // login = (email ,password) => {
-    //     return new Promise ((resolve,reject)=>{
-    //         this.post("/signInAsBuyer",{email, password}).then((data)=>{
-    //             localStorage.setItem("token",data.token)
-    //             resolve(data);
-    //         }).catch((err)=>{
-    //             reject(err);
-    //         })
-    //     })
-    // };
+    login = (email ,password) => {
+        return new Promise ((resolve,reject)=>{
+            this.post("/signInAsSeller",{email, password}).then((data)=>{
+                localStorage.setItem("token",data.token)
+                resolve(data);
+            }).catch((err)=>{
+                reject(err);
+            })
+        })
+    };
 
     register = (data) =>this.post("/signUpAsSeller",data);
 

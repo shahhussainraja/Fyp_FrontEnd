@@ -1,5 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit'
 import userReducer from './userReducer'
+import { persistReducer, persistStore } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 
 // Seller
 
@@ -13,10 +15,37 @@ import enquiryReducer from "../Pages/sellerProfile/features/enquiry/enquirySlice
 import uploadReducer from "../Pages/sellerProfile/features/upload/uploadSlice";
 import couponReducer from "../Pages/sellerProfile/features/coupon/couponSlice";
 
-export default configureStore({
+// export default configureStore({
+    // reducer: {
+    //     //here userDetail is collection or reducer Name all will store
+    //     userDetail : userReducer,
+    //     //Seller
+    //     auth: authReducer,
+    //     customer: customerReducer,
+    //     product: productReducer,
+    //     brand: brandReducer,
+    //     pCategory: pCategoryReducer,
+    //     color: colorReducer,
+    //     enquiry: enquiryReducer,
+    //     upload: uploadReducer,
+    //     coupon: couponReducer,
+    // }
+
+//fro redux store to make it persistent 
+const persistConfig = {
+    key: 'root',
+    storage,
+  }
+
+  const persistedReducer = persistReducer(persistConfig, userReducer);
+
+
+
+
+export const store = configureStore({
     reducer: {
         //here userDetail is collection or reducer Name all will store
-        userDetail : userReducer,
+        userDetail : persistedReducer,
         //Seller
         auth: authReducer,
         customer: customerReducer,
@@ -28,4 +57,6 @@ export default configureStore({
         upload: uploadReducer,
         coupon: couponReducer,
     },
-  })    
+  });
+
+  export const persistor  = persistStore(store);

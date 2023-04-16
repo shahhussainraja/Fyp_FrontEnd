@@ -139,3 +139,23 @@
  align-items: center;
  justify-content: center;
 }
+
+.inboxImage{
+    height: 120px;
+    width: 120px;
+    object-fit: cover;
+}
+.inboxImageContainer{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+.inboxImageDiv{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}

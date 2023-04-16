@@ -43,7 +43,6 @@ import ViewOrder from './Pages/sellerProfile/SellerDashboardPages/ViewOrder';
 function App() {
 
   
-
   return (
     <>
     {/* inetercepter  */}
@@ -65,20 +64,6 @@ function App() {
         <Route path='/Shop' element={<Shop/>} />
         <Route path='/Chat' element={<Conversation/>} />
         <Route path='/UserProfile' element={<UserProfile/>} />
-        
-
-        {/* Seller */}
-
-        <Route path="/admin" element={<MainLayout />}>
-          <Route index element={<Dashboard />} />
-          <Route path="enquiries" element={<Enquiries />} />
-          <Route path="enquiries/:id" element={<ViewEnq />} />
-          <Route path="orders" element={<Orders />} />
-          <Route path="order/:id" element={<ViewOrder />} />
-          <Route path="customers" element={<Customers />} />
-          <Route path="list-product" element={<Productlist />} />
-          <Route path="product" element={<Addproduct />} />
-          </Route>
 
 {/* Nested Routes for Seller Profile */}
           {/* <Route path='/SellerProfle' element={<SellerProfile/>} >
@@ -87,6 +72,17 @@ function App() {
             <Route index path="Orders" element={<Orders />} />
             <Route index path="Reviews" element={<Reviews />} />
           </Route> */}
+
+<Route path="/admin" element={<MainLayout />}>
+          <Route index element={<Dashboard />} />
+          <Route path="enquiries" element={<Enquiries />} />
+          <Route path="enquiries/:id" element={<ViewEnq />} />
+          <Route path="orders" element={<Orders />} />
+          <Route path="order/:id" element={<ViewOrder />} />
+          <Route path="customers" element={<Customers />} />
+          <Route path="list-product" element={<Productlist />} />
+          <Route path="product" element={<Addproduct />} />
+        </Route>
           
 
         </Routes>

@@ -2,15 +2,50 @@ import "./Message.css"
 import imgCover from "../../images/about2.png"
 import { format } from 'timeago.js'
 import { Button } from "react-bootstrap"
+import { Display } from "react-bootstrap-icons"
+import Swal from "sweetalert2"
+import { useNavigate } from "react-router-dom"
+import { useSelector } from "react-redux"
 
 export default function Message({message , userId}) {
+
+const navigate = useNavigate();
+const Loginprofile = useSelector((state) => state.userDetail)
+
+const handleAcceptOffer = ()=>{
+  Swal.fire({
+    title: 'Do you want to save Accept offer?',
+    showDenyButton: false,
+    showCancelButton: true,
+    confirmButtonText: 'Accept',
+  }).then((result) => {
+    /* Read more about isConfirmed, isDenied below */
+    if (result.isConfirmed) {
+      Swal.fire('Offer Accepted Proceed to Payment', '', 'success').then(()=>{
+        navigate("./Shop")
+      })
+    } else if (result.isDenied) {
+      Swal.fire('Changes are not saved', '', 'info')
+    }
+  })
+}
+
+
+
   return (
     <div className={ message.senderId === userId ? "message own" : "message" }>
         <div className="messageTop">
         <img src={imgCover} className="messageImg" alt="" />
-         <p className="messageText">{message.message}</p>
+         <p className="messageText">{message.message}
+
+      { Loginprofile.userType === "buyer"  && message.offerMessage === "true" &&
+         <div style={{display:"flex",justifyContent:"center"}}>
+          <Button variant="warning" size="sm"  onClick={handleAcceptOffer} >Accept offer </Button>
+          </div>
+      }
+        </p>
+
         </div>
-        <Button variant="primary">Accept offer </Button>
 
         <div className="messageBottom">
             {format(message.createdAt)}

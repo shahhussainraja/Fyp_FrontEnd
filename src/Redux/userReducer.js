@@ -11,6 +11,7 @@ export const userSlice = createSlice({
         name:null,
         email:null,
         image:null,
+        userType:null,
         loggedIn : false 
     
     }
@@ -21,6 +22,7 @@ reducers : {
         state.name = action.payload.name
         state.email = action.payload.email
         state.image = action.payload.image
+        state.userType = action.payload.userType
         state.loggedIn = action.payload.loggedIn
     }
 

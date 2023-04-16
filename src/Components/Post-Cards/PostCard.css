@@ -144,20 +144,20 @@
   }
 
   .postCard-btn{
-    width: 280px;
-  height: 35px;
-  display: flex;
-  margin-bottom: 3px;
-  justify-content: center;
+  width: 280px;
+    height: 35px;
+    display: flex;
+    margin-bottom: 3px;
+    justify-content: center;
     align-items: center;
     background-color: #2693b2;
     box-shadow: 2px 5px 15px rgba(2, 238, 255, 0.336);
     border-radius: 5px;
-  color:#ffffff;
-  font-size: large;
+    color: white;
+    font-size: large;
   }
   .postCard-btn:hover{
     background-color: #E3BE00;
       transition: all ease 0.5s;
-      color: #000000;
+      color: white;
     }

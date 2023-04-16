@@ -57,7 +57,7 @@
 .makeoffer-button:hover {
   background-color: #E3BE00;
   transition: all ease 0.5s;
-  color: black;
+  color: white;
 }  
 
 .makeoffer-box .input{
