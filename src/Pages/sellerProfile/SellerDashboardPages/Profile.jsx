@@ -1,6 +1,6 @@
-import React, {useState} from 'react'
-import { FaEdit} from 'react-icons/fa';
-import './SellerProfile.css'
+import React, { useState} from "react";
+import '../SellerDashboard.css';
+import Select from "react-select";
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
 const initialValues = {
@@ -12,9 +12,14 @@ const initialValues = {
   phoneNumber: "",
   cnic: "",
   address: "",
+  category:"",
+  bio:""
 };
 
-function Profile() {
+
+
+const Customers = () => {
+
   const [editing, setEditing] = useState(false);
   const [username, setUsername] = useState('Shah Hussain');
   const [shopName, setShopName] = useState('Shah_Foods');
@@ -22,6 +27,7 @@ function Profile() {
   const [phoneNumber, setPhoneNumber] = useState('123-456-7890');
   const [CNIC, setCNIC] = useState('12321-2242456-7');
   const [category, setCategory] = useState('Food');
+  const [bio, setBio] = useState(' bio includes professional experiences and accomplishments gained over the course of their career.');
   
 
  
@@ -29,8 +35,27 @@ function Profile() {
     setUsername(event.target.value);
   };
 
+  const handleShopNameChange = (event) => {
+    setShopName(event.target.value);
+  };
+
+  const handleCategoryChange = (event) => {
+    setCategory(event.target.value);
+  };
+
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
+  };
+
+  const handleCNICChange = (event) => {
+    setCNIC(event.target.value);
+  };
+
   const handlePhoneNumberChange = (event) => {
     setPhoneNumber(event.target.value);
+  };
+  const handleBioChange = (event) => {
+    setBio(event.target.value);
   };
 
   const handleEditProfile = () => {
@@ -62,30 +87,48 @@ const optionList = [
 // Function triggered on selection
 function handleSelect(data) {
   setSelectedOptions(data);
+  
 }
 
 
   return (
     <div className="container">
 
-      <div className="UserProfile mt-5">
-            <div className="row">
-              <div className="col-md-3 offset-md-3">
-                <div className="text-center">
+      <div className="UserProfile">
+              <div classname='' style={{display:"flex", borderBottom:"solid black 1px", padding: "10px"}}>
+                <div>
                   <img
-                    src="https://via.placeholder.com/150"
+                    src="https://stroyka-admin.html.themeforest.scompiler.ru/variants/ltr/images/customers/customer-4-64x64.jpg"
                     alt="profile pic"
                     className="rounded-circle mb-3"
+                    style={{height:"150px", width:"150px", objectFit:"cover"}}
                   />
-                  <h1>{username}</h1>
-                  <p>{shopName}</p>
-                  <p>{email}</p>
-                  <p>{phoneNumber}</p>
-                  <p>{CNIC}</p>
-                  <p>{category}</p>
+                  </div>
+                  <div className="profileName">
+                  <h3 className="pnh3">{username}</h3>
+                  <p>Welcome {username} you can edit your profile</p>
+                  </div>
+              </div>
+              <div className="profileFlex">
+                <div>
+                <p className="p"><b>Shop Name</b></p>
+                <p className="p"><b>Email</b></p>
+                <p className="p"><b>Phone Number</b></p>
+                <p className="p"><b>CNIC Number</b></p>
+                <p className="p"><b>Specialities</b></p>   
+                <p className="p"><b>About Me</b></p>  
+              </div>
+              <div className="pdata">
+                  <p className="p">{shopName}</p>
+                  <p className="p">{email}</p>
+                  <p className="p">{phoneNumber}</p>
+                  <p className="p">{CNIC}</p>
+                  <p className="p">{category}</p>
+                  <p className="p">{bio}</p>
                 </div>
+              </div>
                 {editing ? (
-                  <Form onSubmit={handleSubmit} className='text-center'>
+                  <Form onSubmit={handleSubmit} className=''>
                     <FormGroup>
                       <Label for="username">Username</Label>
                       <Input
@@ -103,9 +146,10 @@ function handleSelect(data) {
                         name="shopName"
                         id="shopName"
                         value={shopName}
-                        onChange={handleUsernameChange}
+                        onChange={handleShopNameChange}
                       />
                     </FormGroup>
+                 
                     <FormGroup>
                       <Label for="email">Email</Label>
                       <Input
@@ -113,7 +157,7 @@ function handleSelect(data) {
                         name="email"
                         id="email"
                         value={email}
-                        onChange={handleUsernameChange}
+                        onChange={handleEmailChange}
                       />
                     </FormGroup>
                     <FormGroup>
@@ -133,14 +177,24 @@ function handleSelect(data) {
                         name="CNIC"
                         id="CNIC"
                         value={CNIC}
-                        onChange={handleUsernameChange}
+                        onChange={handleCNICChange}
                       />
                     </FormGroup>
                     {/* <FormGroup>
-                      <Label for="username">Username
-                      <Form.Select
+                      <Label for="category">Specialities</Label>
+                      <Input
+                        type="text"
+                        name="category"
+                        id="category"
+                        value={category}
+                        onChange={handleUsernameChange}
+                      />
+                    </FormGroup> */}
+                    <FormGroup>
+                      <Label for="category">Specialities
+                      <Select
                                           name='category'
-                                          class="form-control  border-0 shadow-sm px-4"
+                                          id="category"
                                           options={optionList}
                                           placeholder="Choose category"
                                           value={selectedOptions}
@@ -151,30 +205,41 @@ function handleSelect(data) {
                                         />
                     </Label>
                      
-                    </FormGroup> */}
-                    <Button type="submit" color="primary" className="mr-2">
+                    </FormGroup>
+                    <FormGroup>
+                      <Label for="bio">Bio</Label>
+                      <Input
+                        type="text"
+                        name="bio"
+                        id="bio"
+                        value={bio}
+                        onChange={handleBioChange}
+                      />
+                      </FormGroup>
+                    <button className="profileEdit-btn">
                       Save
-                    </Button>
-                    <Button color="secondary" onClick={handleEditProfile}>
+                    </button>
+                    <button color="secondary" className="cancle" onClick={handleEditProfile}>
                       Cancel
-                    </Button>
+                    </button>
                   </Form>
                 ) : (
                   <div className='text-center'>
-                    <p>Bespoke your Profile too</p>
-                  <Button className='edit-btn' onClick={handleEditProfile}>
+                  <p>Edit your Profile here</p>
+                  <button className='profileEdit-btn' onClick={handleEditProfile}>
                     Edit Profile
-                  </Button>
+                  </button>
                   </div>
+                  
+                  
                 )}
+                
               </div>
             </div>
-            <div className='col-md-3 offset-md-3'>
-              <h1>heiuy</h1>
-            </div>
-          </div>
-          </div>
+            
+          
+          
   )
-}
+};
 
-export default Profile
+export default Customers;
