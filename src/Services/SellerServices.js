@@ -32,15 +32,6 @@ class SellerServices extends GenericServices{
         })
     }
 
-
-
-
-
-
-
-
-
-
     // isLogged = ()=>{
     //     return localStorage.getItem("token")? true : false ;
     // }

@@ -38,20 +38,15 @@ function Login(){
             }).catch((err)=>{
                 console.log(err.message)
             })
-        }
-
-
-
-       
+        }       
     };
-    
+
     return (
         <>
-     
        <div className="maincontainer" >
         <div class="container-fluid">
             <div class="row no-gutter" >
-            <div class="col-md-6" style={{padding: '0px, 0px', backgroundColor: 'white'}}>
+                <div class="col-md-6" style={{padding: '0px, 0px', backgroundColor: 'white'}}>
                     <div class="login d-flex align-items-center py-5" >
                         <div class="container" >
                             <div class="row">
@@ -62,22 +57,26 @@ function Login(){
                                     </p>
                                     
                                     <form onSubmit={handleLogin}>
+
                                         <div class="mb-3">
                                         <lable class=" mb-4 " style={{marginBottom:"0px 0px 0px"}} >E-mail
-                                        <input id="inputEmail"  name="email" type="email" placeholder="abc@gmail.com" required="" autofocus="" class="form-control  border-0 shadow-sm px-4"  onChange={(e)=>setEmail(e.target.value)}/></lable>   
+                                        <input id="inputEmail"  name="email" type="email" placeholder="abc@gmail.com" required="" autofocus="" class="form-control  border-0 shadow-sm px-4"  onChange={(e)=>setEmail(e.target.value)}  /></lable>   
                                         </div>
+
                                         <div class="mb-3">
                                         <lable class="mb-4">Password
                                         <input id="inputPassword"  name="password" type="password" placeholder="*****" required="" class="form-control  border-0 shadow-sm px-4 text-primary" onChange={(e)=>setpassword(e.target.value)} />
                                         </lable>
                                         </div>
+
                                         <div class="form-check">
                                             <input id="customCheck1" name="checkBox" type="checkbox" class="form-check-input" />
                                             <label for="customCheck1" class="form-check-label">Login as Seller</label>
                                         </div>
 
                                         <div class="text-center d-flex justify-content-center mt-4"> <a href="#" class="font-italic text-muted" style={{alignItems:"center"}}> 
-                                                <u style={{color: '#00b7ff'}}>Forget Password?</u></a></div>
+                                                <u style={{color: '#00b7ff'}}>Forget Password?</u></a>
+                                        </div>
                                                 
                                         <div class="d-grid gap-2 mt-2">
                                         <button  class="btn btn-primary btn-block text-uppercase mb-2  shadow-sm" className='login-btn' type='submit'>Log in</button>
@@ -91,10 +90,10 @@ function Login(){
                         </div>
                     </div>
                 </div>
-            <div class="col-md-6 d-none d-md-flex bg-image" style={{marginTop: '50px'}} ></div>
+             <div class="col-md-6 d-none d-md-flex bg-image" style={{marginTop: '50px'}} ></div>
          </div>
-        </div>
-      </div> 
+    </div>
+        </div> 
       </>
     )
  }

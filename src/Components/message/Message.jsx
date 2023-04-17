@@ -2,7 +2,6 @@ import "./Message.css"
 import imgCover from "../../images/about2.png"
 import { format } from 'timeago.js'
 import { Button } from "react-bootstrap"
-import { Display } from "react-bootstrap-icons"
 import Swal from "sweetalert2"
 import { useNavigate } from "react-router-dom"
 import { useSelector } from "react-redux"

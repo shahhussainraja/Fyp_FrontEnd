@@ -83,8 +83,26 @@ class AuthServices extends GenericServices{
 
     }
 
+    //to get gateway token form user
+    getToken = () =>{
+        return new Promise ((resolve,reject)=>{
+            this.get("/getToken").then((res)=>{
+                resolve(res);
+            }).catch((err)=>{
+                reject(err);
+            })
+        })
+    }
 
-
+    makePayment = (data) =>{
+        return new Promise ((resolve,reject)=>{
+            this.post("/makePayement",data).then((res)=>{
+                resolve(res);
+            }).catch((err)=>{
+                reject(err);
+            })
+        })
+    }
 
 
 
