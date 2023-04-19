@@ -26,10 +26,10 @@ const { value: amount } = Swal.fire({
     if (!value) {
       return 'Please enter amount!'
     }else{
-      const message = `Dear ${content.buyerName} I’m writing this to hear back from you about the offer ${value}.We would like to know if you’re still interested and how you’d like to move forward. Looking forward to hearing back from you soon. `
+      const message = `Dear ${content.buyerName} I’m writing this to hear back from you about My offer ${value} On your post ${content.postTitle}. We would like to know if you’re still interested and how you’d like to move forward. Looking forward to hearing back from you soon.`
       sellerServices.newConversation({senderId:Loginprofile.id,receiverId:content.buyerId}).then((res)=>{
         if(res){
-          sellerServices.sendBidMessage({senderId:Loginprofile.id,message:message,conversationId:res._id,offerMessage:true}).
+          sellerServices.sendBidMessage({senderId:Loginprofile.id,message:message,conversationId:res._id,offerMessage:true,sellerId:Loginprofile.id,sellerName:Loginprofile.name,buyerId:content.buyerId,buyerName:content.buyerName,postTitle:content.postTitle,postDetail:content.postDetail,amount:value,city:content.city,deliveryLocation:content.deliveryLocation,image:content.image}).
           then((res)=>{
             if(res){
               Swal.fire({

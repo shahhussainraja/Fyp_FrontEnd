@@ -1,0 +1,12 @@
+
+.containerSuccess {
+    display:flex;
+    height: 30vh;
+    justify-content: center;
+    align-items: center;
+    font-weight: bolder;
+    color: green;
+   
+
+}
+

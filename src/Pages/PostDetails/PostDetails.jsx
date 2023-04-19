@@ -38,10 +38,10 @@ function PostDetails(props) {
     onSubmit: (values,action) =>{
       // alert(JSON.stringify(values, null, 2));
       // const data = Object.fromEntries(formData);
-      const message = `Dear ${state.buyerName} I’m writing this to hear back from you about the offer ${values.amount}.We would like to know if you’re still interested and how you’d like to move forward. Looking forward to hearing back from you soon. `
+      const message = `Dear ${state.buyerName} I’m writing this to hear back from you about My offer ${values.amount} On your post ${state.postTitle}. We would like to know if you’re still interested and how you’d like to move forward. Looking forward to hearing back from you soon. `
       sellerServices.newConversation({senderId:Loginprofile.id,receiverId:state.buyerId}).then((res)=>{
         if(res){
-          sellerServices.sendBidMessage({senderId:Loginprofile.id,message:message,conversationId:res._id,offerMessage:true}).
+          sellerServices.sendBidMessage({senderId:Loginprofile.id,message:message,conversationId:res._id,offerMessage:true,sellerId:Loginprofile.id,sellerName:Loginprofile.name,buyerId:state.buyerId,buyerName:state.buyerName,postTitle:state.postTitle,postDetail:state.postDetail,amount:values.amount,city:state.city,deliveryLocation:state.deliveryLocation,image:state.image}).
           then((res)=>{
             if(res){
               action.resetForm();

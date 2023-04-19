@@ -5,6 +5,8 @@ import { Button } from "react-bootstrap"
 import Swal from "sweetalert2"
 import { useNavigate } from "react-router-dom"
 import { useSelector } from "react-redux"
+import authServices from "../../Services/AuthServices"
+
 
 export default function Message({message , userId}) {
 
@@ -21,7 +23,18 @@ const handleAcceptOffer = ()=>{
     /* Read more about isConfirmed, isDenied below */
     if (result.isConfirmed) {
       Swal.fire('Offer Accepted Proceed to Payment', '', 'success').then(()=>{
-        navigate("./Shop")
+        authServices.makePayment(message).then((res)=>{
+        if(res.url){
+            console.log(res.url);
+            window.location.href = res.url;
+          }
+        
+        }).catch((e)=>{
+          console.log(e.message)
+        })
+
+
+
       })
     } else if (result.isDenied) {
       Swal.fire('Changes are not saved', '', 'info')

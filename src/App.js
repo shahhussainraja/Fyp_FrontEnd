@@ -35,9 +35,7 @@ import Addproduct from './Pages/sellerProfile/SellerDashboardPages/Addproduct'
 import Productlist from './Pages/sellerProfile/SellerDashboardPages/Productlist';
 import ViewEnq from './Pages/sellerProfile/SellerDashboardPages/ViewRev';
 import ViewOrder from './Pages/sellerProfile/SellerDashboardPages/ViewOrder';
-
-
-
+import Success from './Pages/Payment/Success';
 
 
 function App() {
@@ -63,6 +61,7 @@ function App() {
         <Route path='/FindJobs' element={<FindJobs/>} />
         <Route path='/Shop' element={<Shop/>} />
         <Route path='/Chat' element={<Conversation/>} />
+        <Route path='/PaymentSuccess' element={<Success />} />
         <Route path='/UserProfile' element={<UserProfile/>} />
 
 {/* Nested Routes for Seller Profile */}
