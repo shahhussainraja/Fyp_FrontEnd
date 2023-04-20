@@ -10,3 +10,34 @@
 
 }
 
+.transaction-message {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #f8fafb;
+    color: black;
+    padding: 10px 20px;
+    border-radius: 5px;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .transaction-message-show {
+    opacity: 1;
+  }
+  
+  
+  .paymentImage{
+    width: 150px;
+    height: 150px;
+  }
+  
+  
+  
+  

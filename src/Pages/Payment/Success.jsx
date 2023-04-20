@@ -1,6 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
 import "./Success.css"
+import inboxImage from "../../images/PaymentDone.png"
+import { useEffect, useRef } from 'react';
+
+
+
 
 let container = styled.div`
     display:flex;
@@ -15,9 +20,30 @@ let container = styled.div`
 
 
 function Success() {
+
+  const messageRef = useRef(null);
+
+  useEffect(() => {
+    // messageRef.current.classList.add('transaction-message-show');
+    setTimeout(() => {
+      messageRef.current.classList.add('transaction-message-show');
+    }, 1000);
+  }, []);
+
+
+
+
+
+
+
+
   return (
-    <div className="containerSuccess">
-         Payment done Successfully
+    // <div className="containerSuccess">
+    //      Payment done Successfully
+    // </div>
+    <div className="transaction-message" ref={messageRef}>
+      <img src={inboxImage} className='paymentImage' alt="" />
+      Transaction done!
     </div>
   )
 }

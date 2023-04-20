@@ -25,9 +25,9 @@ const handleAcceptOffer = ()=>{
       Swal.fire('Offer Accepted Proceed to Payment', '', 'success').then(()=>{
         authServices.makePayment(message).then((res)=>{
         if(res.url){
-            console.log(res.url);
             window.location.href = res.url;
           }
+         
         
         }).catch((e)=>{
           console.log(e.message)
