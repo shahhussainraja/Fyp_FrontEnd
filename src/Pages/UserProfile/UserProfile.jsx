@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { FaEdit} from 'react-icons/fa';
-import { Table , Descriptions , Button , Dropdown ,message} from "antd";
+import { Descriptions , } from "antd";
 import { useSelector } from 'react-redux';
 import authServices from '../../Services/AuthServices';
 import { Spin } from 'antd';
 import { Steps } from 'antd'
+import { format } from 'timeago.js'
 
 
 const stepsDetail = [
@@ -129,6 +130,9 @@ useEffect(getAllorder,[]);
                  </Descriptions.Item>
                  <Descriptions.Item label="Order Status" contentStyle={{color:"green" , fontWeight:"bolder"}}>
                    {data.orderStatus}
+                 </Descriptions.Item> 
+                 <Descriptions.Item label="Date" >
+                   {format(data.createdAt)}
                  </Descriptions.Item>
                  </Descriptions>
                  {data?.products?.map((product)=>(
