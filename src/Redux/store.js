@@ -47,15 +47,15 @@ export const store = configureStore({
         //here userDetail is collection or reducer Name all will store
         userDetail : persistedReducer,
         //Seller
-        auth: authReducer,
-        customer: customerReducer,
-        product: productReducer,
-        brand: brandReducer,
-        pCategory: pCategoryReducer,
-        color: colorReducer,
-        enquiry: enquiryReducer,
-        upload: uploadReducer,
-        coupon: couponReducer,
+        // auth: authReducer,
+        // customer: customerReducer,
+        // product: productReducer,
+        // brand: brandReducer,
+        // pCategory: pCategoryReducer,
+        // color: colorReducer,
+        // enquiry: enquiryReducer,
+        // upload: uploadReducer,
+        // coupon: couponReducer,
     },
   });
 

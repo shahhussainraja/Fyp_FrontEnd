@@ -1,7 +1,9 @@
-import React, { useState} from "react";
+import React, { useEffect, useState} from "react";
 import '../SellerDashboard.css';
 import Select from "react-select";
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { useSelector } from "react-redux";
+import sellerServices from "../../../Services/SellerServices";
 
 const initialValues = {
   name: "",
@@ -21,15 +23,32 @@ const initialValues = {
 const Customers = () => {
 
   const [editing, setEditing] = useState(false);
-  const [username, setUsername] = useState('Shah Hussain');
-  const [shopName, setShopName] = useState('Shah_Foods');
-  const [email, setEmail] = useState ('shahhussain@gmail.com');
-  const [phoneNumber, setPhoneNumber] = useState('123-456-7890');
-  const [CNIC, setCNIC] = useState('12321-2242456-7');
-  const [category, setCategory] = useState('Food');
+  const [username, setUsername] = useState('');
+  const [shopName, setShopName] = useState('');
+  const [email, setEmail] = useState ('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [CNIC, setCNIC] = useState('');
+  const [category, setCategory] = useState('');
   const [bio, setBio] = useState(' bio includes professional experiences and accomplishments gained over the course of their career.');
-  
+  const user = useSelector((state)=>state.userDetail)
 
+  const [data,setData] = useState([])
+
+
+const getProfileData = ()=>{
+  sellerServices.getSellerProfile(user.id).then((res)=>{
+    setData(res)
+    setUsername(res.name);
+    setShopName(res.shopName);
+    setEmail(res.email);
+    setPhoneNumber(res.phone || "N/A") ;
+    setCNIC(res.CNIC || "N/A");
+    setCategory(JSON.stringify(res.category) || "N/A")
+    console.log(res)
+  }).catch((e)=>console.log(e.message))
+}
+
+useEffect(getProfileData,[]);
  
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
@@ -97,16 +116,14 @@ function handleSelect(data) {
       <div className="UserProfile">
               <div classname='' style={{display:"flex", borderBottom:"solid black 1px", padding: "10px"}}>
                 <div>
-                  <img
-                    src="https://stroyka-admin.html.themeforest.scompiler.ru/variants/ltr/images/customers/customer-4-64x64.jpg"
-                    alt="profile pic"
+                  <img src={`http://localhost:8080${data?.image}`}  
                     className="rounded-circle mb-3"
                     style={{height:"150px", width:"150px", objectFit:"cover"}}
                   />
                   </div>
                   <div className="profileName">
-                  <h3 className="pnh3">{username}</h3>
-                  <p>Welcome {username} you can edit your profile</p>
+                  <h3 className="pnh3">{data?.name}</h3>
+                  <p>Welcome {data?.name} you can edit your profile</p>
                   </div>
               </div>
               <div className="profileFlex">
@@ -135,11 +152,11 @@ function handleSelect(data) {
                         type="text"
                         name="username"
                         id="username"
-                        value={username}
+                        value={data?.name}
                         onChange={handleUsernameChange}
                       />
                     </FormGroup>
-                    <FormGroup>
+                    <FormGroup> 
                       <Label for="shopName">Shop Name</Label>
                       <Input
                         type="text"

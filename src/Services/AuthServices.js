@@ -104,6 +104,23 @@ class AuthServices extends GenericServices{
         })
     }
 
+
+    getOrderDetails = (buyerId) =>{
+        return new Promise ((resolve,reject)=>{
+            this.get("/getBuyerAllOrder/"+buyerId).then((res)=>{
+                resolve(res);
+            }).catch((err)=>{
+                reject(err);
+            })
+        })
+    }
+
+
+
+
+
+
+
     // isAdmin = ()=>{
         
     //     let token = localStorage.getItem("token");

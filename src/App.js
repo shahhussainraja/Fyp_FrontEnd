@@ -36,11 +36,11 @@ import Productlist from './Pages/sellerProfile/SellerDashboardPages/Productlist'
 import ViewEnq from './Pages/sellerProfile/SellerDashboardPages/ViewRev';
 import ViewOrder from './Pages/sellerProfile/SellerDashboardPages/ViewOrder';
 import Success from './Pages/Payment/Success';
+import { useSelector } from 'react-redux';
 
 
 function App() {
-
-  
+const user = useSelector((state)=>state.userDetail)
   return (
     <>
     {/* inetercepter  */}
@@ -62,17 +62,13 @@ function App() {
         <Route path='/Shop' element={<Shop/>} />
         <Route path='/Chat' element={<Conversation/>} />
         <Route path='/PaymentSuccess' element={<Success />} />
+
+        {user.userType === "buyer" ? <>
         <Route path='/UserProfile' element={<UserProfile/>} />
-
-{/* Nested Routes for Seller Profile */}
-          {/* <Route path='/SellerProfle' element={<SellerProfile/>} >
-            <Route index path="profile" element={<Profile />} />
-            <Route index path="ProductList" element={<ProductList />} />
-            <Route index path="Orders" element={<Orders />} />
-            <Route index path="Reviews" element={<Reviews />} />
-          </Route> */}
-
-<Route path="/admin" element={<MainLayout />}>
+        </> : <></>}      
+      
+        {user.userType === "seller"  ? <>
+          <Route path="/admin" element={<MainLayout />}>
           <Route index element={<Dashboard />} />
           <Route path="enquiries" element={<Enquiries />} />
           <Route path="enquiries/:id" element={<ViewEnq />} />
@@ -82,7 +78,7 @@ function App() {
           <Route path="list-product" element={<Productlist />} />
           <Route path="product" element={<Addproduct />} />
         </Route>
-          
+        </>:<></>}
 
         </Routes>
       </Router>

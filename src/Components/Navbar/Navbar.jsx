@@ -22,7 +22,9 @@ import Row from 'react-bootstrap/Row'
 
 function Navbar() {
 
-  const value = useSelector((state) => state.userDetail.loggedIn)
+  const islogged = useSelector((state) => state.userDetail.loggedIn)
+  const user = useSelector((state)=>state.userDetail)
+
   // const value  = true;
   const [modalShow, setModalShow] = useState(false);
 
@@ -89,16 +91,22 @@ function Navbar() {
 
           <div className='menu'>
             <ul>
-              {/* authServices.isLogged() */}
-              {value ? (<>
+              {islogged ? (<>
                 {/* <li><a href='/' >Home</a></li> */}
                 <li><Link to="/">Home</Link></li>
                 <li><Link to="/Post">Post Order</Link></li>
                 <li><Link to="/FindJobs" >Find Job</Link></li>
                 <li><Link to="/Chat">chat</Link></li>
                 <li><Link to="/Shop" >Shop</Link></li>
+                
+                {user.userType === "seller" ? <>
                 <li><Link to="/admin" >SellerProfile</Link></li>
+                </> : <></>}
+
+                {user.userType === "buyer" ? <>
                 <li><PersonFill color="#2693b2" style={{ cursor: "pointer", marginRight: "10px" }} size={30} onClick={navigateToProfile} /></li>
+                </>:<></> }
+
                 <li><BoxArrowInRight color="#2693b2" style={{ cursor: "pointer" }} size={30} onClick={() => {
                   authServices.logOut()
                 }} /></li>
