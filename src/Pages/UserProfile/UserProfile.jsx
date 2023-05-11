@@ -29,12 +29,6 @@ const stepsDetail = [
 
 
 
-
-
-
-
-
-
 export default function UserProfile() {
 
 

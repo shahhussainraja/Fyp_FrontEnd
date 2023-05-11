@@ -37,7 +37,7 @@ import ViewEnq from './Pages/sellerProfile/SellerDashboardPages/ViewRev';
 import ViewOrder from './Pages/sellerProfile/SellerDashboardPages/ViewOrder';
 import Success from './Pages/Payment/Success';
 import { useSelector } from 'react-redux';
-
+import PageNotFound from './Components/PageNotFound/PageNotFound';
 
 function App() {
 const user = useSelector((state)=>state.userDetail)
@@ -56,7 +56,6 @@ const user = useSelector((state)=>state.userDetail)
         <Route path='/Login' element={<Login/>} />
         <Route path='/Registration' element={<Registration/>} />
         <Route path='/SellerRegistration' element={<SellerRegistration/>} />
-        <Route path='/Post' element={<Post/>} />
         <Route path='/PostDetails' element={<PostDetails/>} />
         <Route path='/FindJobs' element={<FindJobs/>} />
         <Route path='/Shop' element={<Shop/>} />
@@ -65,6 +64,7 @@ const user = useSelector((state)=>state.userDetail)
 
         {user.userType === "buyer" ? <>
         <Route path='/UserProfile' element={<UserProfile/>} />
+        <Route path='/Post' element={<Post/>} />
         </> : <></>}      
       
         {user.userType === "seller"  ? <>
@@ -80,6 +80,8 @@ const user = useSelector((state)=>state.userDetail)
         </Route>
         </>:<></>}
 
+        
+        <Route path="*" element={<PageNotFound />} />
         </Routes>
       </Router>
       {/* <div className={'loadinganim'} id="#interceptor">

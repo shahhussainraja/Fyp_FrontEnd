@@ -5,6 +5,7 @@ import sellerServices from "../../../Services/SellerServices";
 import { Spin } from 'antd';
 import { Display } from "react-bootstrap-icons";
 import Swal from "sweetalert2";
+import { useForceUpdate } from "framer-motion";
 
 
 
@@ -13,6 +14,7 @@ const Orders = () => {
 const user = useSelector((state)=>state.userDetail)
 const [data,setData] = useState([]);
 const [loading , isLoading] = useState(true)
+const forceUpdate = useForceUpdate();
 
 const getAllorder = ()=>{
   sellerServices.getOrderDetails(user.id).then((res)=>{
@@ -46,6 +48,7 @@ const changeOrderStatus = (orderId)=>{
       ).then(()=>{
         sellerServices.changeOrderStatus(orderId,{status :"Shipped"}).then((e)=>{
           console.log(e).catch(e=>console.log(e.message))
+          forceUpdate();
         })
       })
     }
@@ -98,12 +101,9 @@ const changeOrderStatus = (orderId)=>{
                  </div>
      
                 </>)      
-            }
-           
-         
+            }    
 })}
 
-        
       <h3 className="mb-4 title">Complete Orders </h3> 
       {data?.map((data)=>{
         if(data.orderStatus === "Shipped"){

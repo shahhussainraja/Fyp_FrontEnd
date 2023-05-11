@@ -41,3 +41,11 @@ export const postSchema = Yup.object({
 export const bidSchema = Yup.object({
   amount: Yup.number().min(2).required("Please enter Amount"),
 });
+
+
+export const addProductSchema = Yup.object({
+  title: Yup.string().min(2).max(25).required("Please enter title"),
+  detail: Yup.string().min(2).max(500).required("Please enter Detail"),
+  amount: Yup.string().max(7).required("Please enter amount"),
+  category:Yup.string().required("Please select category"),
+});

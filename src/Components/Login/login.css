@@ -120,3 +120,8 @@
       border-radius: 10;
       
     }
+
+    .errFont{
+      font-size: medium;
+      color: red;
+    }

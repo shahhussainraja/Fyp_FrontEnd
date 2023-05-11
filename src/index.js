@@ -44,13 +44,13 @@ axios.interceptors.response.use((response)=>{
       footer: '<a href="">Why do I have this issue?</a>'
     })
   }
-    if(error.response.status === 401 ){
-    Swal.fire({
-      icon: 'error',
-      title: 'Oops...',
-      text: `Invalid Credentials`,
-    })
-  }
+  //   if(error.response.status === 401 ){
+  //   Swal.fire({
+  //     icon: 'error',
+  //     title: 'Oops...',
+  //     text: `Invalid Credentials`,
+  //   })
+  // }  
 
   //   if(error.response.status === 500 ){
   //   Swal.fire({

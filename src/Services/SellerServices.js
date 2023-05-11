@@ -7,6 +7,17 @@ class SellerServices extends GenericServices{
         super();
     }
 
+    addProductItem = (data) =>{
+        return new Promise ((resolve,reject)=>{
+            this.post("/addProduct",data).then((res)=>{
+                resolve(res);
+            }).catch((err)=>{
+                reject(err);
+            })
+        })
+    }
+
+
     login = (email ,password) => {
         return new Promise ((resolve,reject)=>{
             this.post("/signInAsSeller",{email, password}).then((data)=>{
@@ -19,6 +30,8 @@ class SellerServices extends GenericServices{
     };
 
     register = (data) =>this.post("/signUpAsSeller",data);
+
+
 
     newConversation = (data) =>this.post("/newConversation",data)
     
@@ -41,7 +54,27 @@ class SellerServices extends GenericServices{
             })
         })
     }
- getSellerProfile = (sellerId) =>{
+    
+    getAllItems = (sellerId) =>{
+        return new Promise ((resolve,reject)=>{
+            this.get("/getAllItems/"+sellerId).then((res)=>{
+                resolve(res);
+            }).catch((err)=>{
+                reject(err);
+            })
+        })
+    } 
+
+    deleteItem = (sellerId,productId) =>{
+        return new Promise ((resolve,reject)=>{
+            this.get(`/deleteItem?sellerId=${sellerId}&productId=${productId}`).then((res)=>{
+                resolve(res);
+            }).catch((err)=>{
+                reject(err);
+            })
+        })
+    }
+    getSellerProfile = (sellerId) =>{
         return new Promise ((resolve,reject)=>{
             this.get("/sellerDetail/"+sellerId).then((res)=>{
                 resolve(res);
@@ -61,7 +94,7 @@ class SellerServices extends GenericServices{
         })
     }
 
-
+    
 
 
 

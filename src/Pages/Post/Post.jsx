@@ -14,8 +14,6 @@ import authServices from '../../Services/AuthServices';
 import Swal from 'sweetalert2';
 import Contact from '../../Components/Contact/Contact';
 
-
-
 const initialValues = {
   title: "",
   detail: "",
@@ -28,15 +26,9 @@ const initialValues = {
 
 
 function Post() {
-
-
   // React state to manage selected options
 const [selectedOptions, setSelectedOptions] = useState();
-
 const user = useSelector((state)=>state.userDetail)
-
-
-
   //form validation
     const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
     useFormik({

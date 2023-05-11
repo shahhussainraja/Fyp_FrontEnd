@@ -94,7 +94,10 @@ function Navbar() {
               {islogged ? (<>
                 {/* <li><a href='/' >Home</a></li> */}
                 <li><Link to="/">Home</Link></li>
+
+                {user.userType === "buyer" ? <>
                 <li><Link to="/Post">Post Order</Link></li>
+                </> : <></>}
                 <li><Link to="/FindJobs" >Find Job</Link></li>
                 <li><Link to="/Chat">chat</Link></li>
                 <li><Link to="/Shop" >Shop</Link></li>

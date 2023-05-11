@@ -1,176 +1,193 @@
-import { React, useEffect, useState } from "react";
-import CustomInput from "../SellerComponents/CustomInput";
-import { useNavigate } from "react-router-dom";
-import "react-quill/dist/quill.snow.css";
-import { toast } from "react-toastify";
-import * as yup from "yup";
+import React, {useState} from 'react';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import { useForm } from "react-cool-form";
 import { useFormik } from "formik";
-import { useDispatch, useSelector } from "react-redux";
-import { Select } from "antd";
-import Dropzone from "react-dropzone";
-import { delImg, uploadImg } from "../features/upload/uploadSlice";
-import { createProducts, resetState } from "../features/product/productSlice";
+import { useSelector } from 'react-redux';
+import Swal from 'sweetalert2';
+import { addProductSchema } from "../../../Schemas/index"
+import "./AddProduct.css"
+import sellerServices from '../../../Services/SellerServices';
+import authService from '../features/auth/authServices';
 
-let schema = yup.object().shape({
-  title: yup.string().required("Title is Required"),
-  description: yup.string().required("Description is Required"),
-  price: yup.number().required("Price is Required"),
-  category: yup.string().required("Category is Required"),
-});
+
+const initialValues = {
+  title: "",
+  detail: "",
+  amount:"",
+  category:"",
+};
+
 
 const Addproduct = () => {
 
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const [images, setImages] = useState([]);
-  const imgState = useSelector((state) => state.upload.images);
-  const newProduct = useSelector((state) => state.product);
-  const { isSuccess, isError, isLoading, createdProduct } = newProduct;
-  useEffect(() => {
-    if (isSuccess && createdProduct) {
-      toast.success("Product Added Successfullly!");
-    }
-    if (isError) {
-      toast.error("Something Went Wrong!");
-    }
-  }, [isSuccess, isError, isLoading]);
+  // React state to manage selected options
+  const [selectedOptions, setSelectedOptions] = useState();
+  const user = useSelector((state)=>state.userDetail)
 
-  const img = [];
-  imgState.forEach((i) => {
-    img.push({
-      public_id: i.public_id,
-      url: i.url,
-    });
-  });
+    //form validation
+      const { values, errors, touched, handleBlur,
+        handleChange, handleSubmit } = useFormik({
+        initialValues,
+        validationSchema: addProductSchema,
+        onSubmit: (values, action) => {
+        //  alert(JSON.stringify(values, null, 2));
+         const formData  = new FormData()
+          formData.append("image",image);
+          formData.append("productName",values.title);
+          formData.append("productDetail",values.detail);
+          formData.append("productAmount",values.amount);
+          formData.append("category",values.category);
+          formData.append("sellerId",user.id);
+          formData.append("sellerName",user.name);
+          // formData.append("status","instock");
+          const data = Object.fromEntries(formData);
+          sellerServices.addProductItem(formData).then((res)=>{
+            if(res){
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: "product added Successfully",
+              showConfirmButton: true,
+            }).then(()=>{  action.resetForm();setImage(null)})
+          }
+          }).catch((err)=>{
+            console.log(err.message)
+          })
+        },
 
-  useEffect(() => {
-    // formik.values.color = color ? color : " ";
-    formik.values.images = img;
-  }, [img]);
-  const formik = useFormik({
-    initialValues: {
-      title: "",
-      description: "",
-      price: "",
-      category: "",
-      images: "",
-    },
-    validationSchema: schema,
-    onSubmit: (values) => {
-      dispatch(createProducts(values));
-      formik.resetForm();
-      setTimeout(() => {
-        dispatch(resetState());
-      }, 3000);
-    },
-  });
+      });
   
-  return (
-    <div>
-      <h3 className="mb-4 title">Add Product</h3>
+    //image handler
+    const [image, setImage] = useState('')
+    function handleImage(e) {
+      setImage(e.target.files[0])
+    }
+   
+    return (
       <div>
-        <form
-          onSubmit={formik.handleSubmit}
-          className="d-flex gap-3 flex-column"
-        >
-          <CustomInput
-            type="text"
-            label="Enter Product Title"
-            name="title"
-            onChng={formik.handleChange("title")}
-            onBlr={formik.handleBlur("title")}
-            val={formik.values.title}
-          />
-          <div className="error">
-            {formik.touched.title && formik.errors.title}
-          </div>
-          <CustomInput
-            type="text"
-            label="Enter Product description"
-            name="description"
-            onChng={formik.handleChange("description")}
-            onBlr={formik.handleBlur("description")}
-            val={formik.values.description}
-          />
-          <div className="error">
-            {formik.touched.description && formik.errors.description}
-          </div>
-          <CustomInput
-            type="number"
-            label="Enter Product Price"
-            name="price"
-            onChng={formik.handleChange("price")}
-            onBlr={formik.handleBlur("price")}
-            val={formik.values.price}
-          />
-          <div className="error">
-            {formik.touched.price && formik.errors.price}
-          </div>
-          
-          <select
-            name="category"
-            onChange={formik.handleChange("category")}
-            onBlur={formik.handleBlur("category")}
-            value={formik.values.category}
-            className="form-control py-3 mb-3"
-            id=""
-          >
-            <option value="" disabled>
-              Select Category
-            </option>
-            <option value="furniture">Furniture</option>
-            <option value="food">Food</option>
-            <option value="baking">Baking</option>
-            <option value="clothing">Clothing</option>
-            <option value="interionDesign">Interior Design</option>
-          </select>
-          <div className="error">
-            {formik.touched.category && formik.errors.category}
-          </div>
-
-
-          <div className="bg-white border-1 p-5 text-center">
-            <Dropzone
-              onDrop={(acceptedFiles) => dispatch(uploadImg(acceptedFiles))}
-            >
-              {({ getRootProps, getInputProps }) => (
-                <section>
-                  <div {...getRootProps()}>
-                    <input {...getInputProps()} />
-                    <p>
-                      Drag 'n' drop some files here, or click to select files
-                    </p>
-                  </div>
-                </section>
-              )}
-            </Dropzone>
-          </div>
-          <div className="showimages d-flex flex-wrap gap-3">
-            {imgState?.map((i, j) => {
-              return (
-                <div className=" position-relative" key={j}>
-                  <button
-                    type="button"
-                    onClick={() => dispatch(delImg(i.public_id))}
-                    className="btn-close position-absolute"
-                    style={{ top: "10px", right: "10px" }}
-                  ></button>
-                  <img src={i.url} alt="" width={200} height={200} />
-                </div>
-              );
-            })}
-          </div>
-          <button
-            className="productAdd-btn"
-            type="submit"
-            
-          >
-            Add Product
-          </button>
-        </form>
-      </div>
-    </div>
-  );
-};
+      <div className="maincontainer" >
+                             <div class="col-lg-9 col-xl-12 mx-auto" style={{backgroundColor:"white", padding:'50px', borderRadius:'2%'}}>
+                              <div className='title'>
+                                <h1 className=''>Add Product</h1>
+                                  </div>        
+                                      <form  onSubmit={handleSubmit}>
+                                      <div class="mb-3">
+                                          <lable class="mb-4 ">Title
+                                          <input  type="Text"
+                                          autoComplete="off"
+                                          name="title"
+                                          id="title"
+                                          onChange={handleChange}
+                                          onBlur={handleBlur}
+                                          value={values.title}
+                                          placeholder="e.g Custom Dress"
+                                          class="form-control  border-0 shadow-sm px-4"
+                                          style={{height:"50px"}} />
+                                          </lable>    
+                                          {errors.title && touched.title ? (
+                                          <p className="form-error errFont">{errors.title}</p>
+                                          ) : null}             
+                                      </div>
+  
+                                      <div class="mb-3">
+                                      <lable class=" mb-4 ">Description
+                                          <input
+                                              type="Text"
+                                              autoComplete="off"
+                                              name="detail"
+                                              id="detail"
+                                              value={values.detail}
+                                              onChange={handleChange}
+                                              onBlur={handleBlur}
+                                              placeholder="Write description here..."
+                                              // value={values.email}
+                                              // onChange={handleChange}
+                                              // onBlur={handleBlur}
+                                          style={{height:"50px"}} 
+                                          className="form-control border-0 shadow-sm px-4" />
+                                         
+                                          </lable>       
+                                          {errors.detail && touched.detail ? (
+                                          <p className="form-error errFont">{errors.detail}</p>
+                                          ) : null}       
+                                      </div>
+  
+                                      <div class="mb-3">
+                                      <lable class="mb-4 "  > Price
+                                          <input
+                                          id="amount"
+                                          name="amount"
+                                          type="number" 
+                                          value={values.amount}
+                                          onChange={handleChange}
+                                          onBlur={handleBlur}
+                                          placeholder="e.g 5000 Rs"
+                                          // value={values.password}
+                                          // onChange={handleChange}
+                                          // onBlur={handleBlur}
+                                          required="" autofocus="" 
+                                          class="form-control  border-0 shadow-sm px-4" 
+                                          style={{height:"50px"}}/>
+                                          </lable>       
+                                          {errors.amount && touched.amount? (
+                                          <p className="form-error errFont">{errors.amount}</p>
+                                          ) : null}          
+                                      </div> 
+                                      <div class='mb-3'>
+                                      <lable class=" mb-4 "  >category
+                                      
+                                        <Form.Select aria-label="Default select example" class="form-control  border-0 shadow-sm px-4" name="category" id="category" onChange={handleChange} value={values.category}>
+                                        <option value="" disabled selected>Select Catagory</option>
+                                        <option value="Food">Food</option>
+                                        <option value="bakery">Bakery</option>
+                                        <option value="Furniture">Furniture</option>
+                                        <option value="Cloths">Cloths</option>
+                                        <option value="Interior Designing">Interior Designing</option>
+                                      </Form.Select>
+                                      {errors.category && touched.category? (
+                                          <p className="form-error errFont">{errors.category}</p>
+                                          ) : null}  
+        
+                                      </lable>
+                                    </div>
+                                    <div class='mb-3'>
+                                      <lable class=" mb-4 " >Profile Image
+                                      {image && (
+                                          <div>
+                                            <img
+                                              alt="not found"
+                                              width={"250px"}
+                                              src={URL.createObjectURL(image)}
+                                            />
+                                            <br />
+                                            <button onClick={() => setImage(null)}>Remove</button>
+                                          </div>
+                                        )}
+  
+                                        <br />
+                                        <br />
+                                        
+                                        <input
+                                          type="file"
+                                          name="image"
+                                          required
+                                          onChange={(event) => {
+                                            console.log(event.target.files[0]);
+                                            setImage(event.target.files[0]);
+                                          }}
+                                        />
+                                      </lable>
+                                    </div>
+                                      <div className="button">
+                                        <button style={{color: 'white'}}  className="Post-button" type='submit' >
+                                          Add Product
+                                        </button>
+                                      </div>
+                                  </form>
+                              </div>
+                          </div>                                       
+                      </div>
+)}
 
 export default Addproduct;

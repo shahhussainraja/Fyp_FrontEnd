@@ -118,7 +118,7 @@ function Registration(){
                                             class="form-control  border-0 shadow-sm px-4" />
                                             </lable>    
                                             {errors.name && touched.name ? (
-                                            <p className="form-error">{errors.name}</p>
+                                            <p className="form-error errFont">{errors.name}</p>
                                             ) : null}             
                                         </div>
 
@@ -136,7 +136,7 @@ function Registration(){
                                             class="form-control  border-0 shadow-sm px-4" />
                                             </lable>       
                                             {errors.email && touched.email ? (
-                                            <p className="form-error">{errors.email}</p>
+                                            <p className="form-error errFont">{errors.email}</p>
                                             ) : null}       
                                         </div>
 
@@ -153,7 +153,7 @@ function Registration(){
                                             class="form-control  border-0 shadow-sm px-4" />
                                             </lable>       
                                             {errors.password && touched.password? (
-                                            <p className="form-error">{errors.password}</p>
+                                            <p className="form-error errFont">{errors.password}</p>
                                             ) : null}          
                                         </div>
 
@@ -170,7 +170,7 @@ function Registration(){
                                             class="form-control  border-0 shadow-sm px-4" />
                                             </lable>       
                                             {errors.confirm_password && touched.confirm_password? (
-                                            <p className="form-error">{errors.confirm_password}</p>
+                                            <p className="form-error errFont">{errors.confirm_password}</p>
                                             ) : null}        
                                         </div>
                                         <div class='mb-3'>

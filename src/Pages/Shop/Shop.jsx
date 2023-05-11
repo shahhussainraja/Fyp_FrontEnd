@@ -11,18 +11,21 @@ import Discount from './discount/Discount'
 function Shop() {
   return (
     <>
-      <Search></Search>
-    <div style={{display:'flex', padding:"40px", marginTop:"120px"}}>
+    <div className="shopContainer">     
+     <Search></Search>
+      <div style={{display:'flex', padding:"40px", marginTop:"120px"}}>
           <div>
-          <StickyBox offsetTop={140} offsetBottom={20}>
+          {/* <StickyBox offsetTop={140} offsetBottom={20}> */}
             <div><Catagories></Catagories></div>
-          </StickyBox>
+          {/* </StickyBox> */}
           </div>
           <SliderHome /> 
     </div>
     <Discount></Discount>
     <Wrapper></Wrapper>
     <Contact></Contact>
+    </div>
+
     </>
   )
 }

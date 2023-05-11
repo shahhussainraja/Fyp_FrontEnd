@@ -7,7 +7,6 @@ import authServices from '../../Services/AuthServices';
 import { updateUserDetail } from '../../Redux/userReducer';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate, useNavigate } from 'react-router-dom';
-import { object } from 'yup';
 import sellerServices from '../../Services/SellerServices';
 
 
@@ -17,6 +16,8 @@ function Login(){
 
     const [email,setEmail] = useState(null) 
     const [password,setpassword] = useState(null) 
+    const [error,setError] = useState(false) 
+
 
 
     const handleLogin = (e) => {
@@ -26,16 +27,22 @@ function Login(){
 
         if(data.checkBox){
             sellerServices.login(data.email,data.password).then((res)=>{
-            dispatch(updateUserDetail(res.payload));
-            navigate("/");
+                    dispatch(updateUserDetail(res.payload));
+                    navigate("/");
             }).catch((err)=>{
+                if(err.response.status === 401){
+                    setError(true)
+                }
                 console.log(err.message)
             })
         }else{
             authServices.login(data.email,data.password).then((res)=>{
-            dispatch(updateUserDetail(res.payload));
-            navigate("/");
+                    dispatch(updateUserDetail(res.payload));
+                    navigate("/");
             }).catch((err)=>{
+                if(err.response.status === 401){
+                    setError(true)
+                }
                 console.log(err.message)
             })
         }       
@@ -60,12 +67,12 @@ function Login(){
 
                                         <div class="mb-3">
                                         <lable class=" mb-4 " style={{marginBottom:"0px 0px 0px"}} >E-mail
-                                        <input id="inputEmail"  name="email" type="email" placeholder="abc@gmail.com" required="" autofocus="" class="form-control  border-0 shadow-sm px-4"  onChange={(e)=>setEmail(e.target.value)}  /></lable>   
+                                        <input id="inputEmail"  name="email" type="email" placeholder="abc@gmail.com" required="true" autofocus="" class="form-control  border-0 shadow-sm px-4"  onChange={(e)=>setEmail(e.target.value)} onClick={()=>{setError(false)}} /></lable>   
                                         </div>
 
                                         <div class="mb-3">
                                         <lable class="mb-4">Password
-                                        <input id="inputPassword"  name="password" type="password" placeholder="*****" required="" class="form-control  border-0 shadow-sm px-4 text-primary" onChange={(e)=>setpassword(e.target.value)} />
+                                        <input id="inputPassword"  name="password" type="password" placeholder="*****" required="true" class="form-control  border-0 shadow-sm px-4 text-primary" onChange={(e)=>setpassword(e.target.value)} onClick={()=>{setError(false)}}/>
                                         </lable>
                                         </div>
 
@@ -74,6 +81,13 @@ function Login(){
                                             <label for="customCheck1" class="form-check-label">Login as Seller</label>
                                         </div>
 
+
+                                        {error && <>
+                                                <span style={{color:"red",display:"flex",justifyContent:"center"}}>
+                                                    <h6>Invalid Email/Password</h6>
+                                                </span>
+                                        </> }
+
                                         <div class="text-center d-flex justify-content-center mt-4"> <a href="#" class="font-italic text-muted" style={{alignItems:"center"}}> 
                                                 <u style={{color: '#00b7ff'}}>Forget Password?</u></a>
                                         </div>
@@ -81,6 +95,7 @@ function Login(){
                                         <div class="d-grid gap-2 mt-2">
                                         <button  class="btn btn-primary btn-block text-uppercase mb-2  shadow-sm" className='login-btn' type='submit'>Log in</button>
                                         </div>
+
                                     </form>
                                         
                                         <div class="text-center d-flex justify-content-center mt-4"><p>Create new account? <a  class="font-italic text-muted"  > 

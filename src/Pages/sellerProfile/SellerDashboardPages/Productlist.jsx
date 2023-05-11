@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "../features/product/productSlice";
 import { Link } from "react-router-dom";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import sellerServices from "../../../Services/SellerServices";
+import Swal from "sweetalert2";
 const columns = [
   {
     title: "SNo",
@@ -16,20 +18,11 @@ const columns = [
     dataIndex: "title",
     sorter: (a, b) => a.title.length - b.title.length,
   },
-  // {
-  //   title: "Brand",
-  //   dataIndex: "brand",
-  //   sorter: (a, b) => a.brand.length - b.brand.length,
-  // },
   {
     title: "Category",
     dataIndex: "category",
     sorter: (a, b) => a.category.length - b.category.length,
   },
-  // {
-  //   title: "Color",
-  //   dataIndex: "color",
-  // },
   {
     title: "Price",
     dataIndex: "price",
@@ -51,20 +44,53 @@ const columns = [
 
 const Productlist = () => {
 
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getProducts());
-  }, []);
-  const productState = useSelector((state) => state.product.products);
+  const [data,setData] = useState(null)
+  const user = useSelector((state)=>state.userDetail)
+
+const getAllData = ()=>{
+  sellerServices.getAllItems(user.id).then((res)=>{
+    setData(res.products)
+    console.log(res.product)
+  }).catch((e)=>{
+    console.log(e.message)
+  })
+}
+
+useEffect(getAllData,[])
+
+
+const deleteitem = (sellerId,productId)=>{
+  Swal.fire({
+    title: 'Are you sure?',
+    text: "You won't be able to revert this!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes, Delete it!'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      Swal.fire(
+        'Deleted!',
+        'Product delete Successfully',
+        'success'
+      ).then(()=>{
+        sellerServices.deleteItem(sellerId,productId).then((e)=>{
+          console.log(e).catch(e=>console.log(e.message))
+        })
+      })
+    }
+  })
+}
+
   const data1 = [];
-  for (let i = 0; i < 20; i++) {
+  if(data){
+  for (let i = 0; i < data.length; i++) {
     data1.push({
       key: i ,
-      title: `Food ${i}`,
-      // brand: productState[i].brand,
-      category: `stauts ${i}`,
-      // color: productState[i].color,
-      price: 45,
+      title: `${data[i].productName}`,
+      category: `${data[i].productCategory}`,
+      price: `${data[i].productAmount}`,
       image: `null ${i}`,
       status: (
         <>
@@ -84,26 +110,27 @@ const Productlist = () => {
       ),
       action: (
         <>
-          <Link to='/' className=" fs-3 text-danger">
+          <button  className=" fs-3 text-danger">
             <BiEdit />
-          </Link>
-          <Link className="ms-3 fs-3 text-danger" to="/">
-            <AiFillDelete />
-          </Link>
+          </button>
+          <button className="ms-3 fs-3 text-danger" >
+            <AiFillDelete  onClick={()=>{deleteitem(user.id,data[i]._id)}}/>
+          </button>
         </>
       ),
     });
   }
-  console.log(data1);
+}
+  // console.log(data1);
+
+
+
   return (
     <div>
       <h3 className="mb-4 title">Products</h3>
       <div>
         <Table columns={columns} dataSource={data1} />
       </div>
-
-
-
     </div>
   );
 };
