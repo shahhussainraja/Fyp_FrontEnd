@@ -107,15 +107,16 @@ function Navbar() {
                 </> : <></>}
 
                 {user.userType === "buyer" ? <>
-                <li><PersonFill color="#2693b2" style={{ cursor: "pointer", marginRight: "10px" }} size={30} onClick={navigateToProfile} /></li>
+                <li><PersonFill color="#2693b2" style={{ cursor: "pointer", marginRight: "10px" }} className='Profile-btn' size={30} onClick={navigateToProfile} /></li>
                 </>:<></> }
 
-                <li><BoxArrowInRight color="#2693b2" style={{ cursor: "pointer" }} size={30} onClick={() => {
+                <li><BoxArrowInRight color="#2693b2" style={{ cursor: "pointer" }} className='logout-btn' title='logout' size={30} onClick={() => {
                   authServices.logOut()
                 }} /></li>
               </>) : (<>
-                <li><Link to="/Login" style={{ color: '#E3BE00' }} >Login</Link></li>
+                <button className='nav-btn' style={{marginRight:"5px"}} onClick={()=>navigate("/Login")}>Login</button>
                 <button className='nav-btn' onClick={() => { setModalShow(true) }} >Register</button>
+
                 {/* className='active'  */}
               </>)}
             </ul>

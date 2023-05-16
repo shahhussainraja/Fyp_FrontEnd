@@ -30,7 +30,7 @@ function Login(){
                     dispatch(updateUserDetail(res.payload));
                     navigate("/");
             }).catch((err)=>{
-                if(err.response.status === 401){
+                if(err.response.status === 410){
                     setError(true)
                 }
                 console.log(err.message)
@@ -40,7 +40,7 @@ function Login(){
                     dispatch(updateUserDetail(res.payload));
                     navigate("/");
             }).catch((err)=>{
-                if(err.response.status === 401){
+                if(err.response.status === 410  ){
                     setError(true)
                 }
                 console.log(err.message)

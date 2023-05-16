@@ -6,7 +6,7 @@ import Swal from "sweetalert2"
 import { useNavigate } from "react-router-dom"
 import { useSelector } from "react-redux"
 import authServices from "../../Services/AuthServices"
-
+import {  FaUserShield ,FaUser } from "react-icons/fa";
 
 export default function Message({message , userId}) {
 
@@ -47,11 +47,15 @@ const handleAcceptOffer = ()=>{
   return (
     <div className={ message.senderId === userId ? "message own" : "message" }>
         <div className="messageTop">
-        <img src={imgCover} className="messageImg" alt="" />
+
+        {message.senderId === userId ? <></>: <>
+        <FaUserShield className="messageImg" />
+        </> }
+
          <p className="messageText">{message.message}
 
       { Loginprofile.userType === "buyer"  && message.offerMessage === "true" &&
-         <div style={{display:"flex",justifyContent:"center"}}>
+         <div style={{display:"flex",justifyContent:"center",marginTop:"20px"}}>
           <Button variant="warning" size="sm"  onClick={handleAcceptOffer} >Accept offer </Button>
           </div>
       }

@@ -6,6 +6,7 @@ import { Spin } from 'antd';
 import { Display } from "react-bootstrap-icons";
 import Swal from "sweetalert2";
 import { useForceUpdate } from "framer-motion";
+import { Mail } from "@material-ui/icons";
 
 
 
@@ -14,7 +15,9 @@ const Orders = () => {
 const user = useSelector((state)=>state.userDetail)
 const [data,setData] = useState([]);
 const [loading , isLoading] = useState(true)
-const forceUpdate = useForceUpdate();
+const [forceupadate , setForceUpdate]  = useState(0)
+
+
 
 const getAllorder = ()=>{
   sellerServices.getOrderDetails(user.id).then((res)=>{
@@ -25,7 +28,7 @@ const getAllorder = ()=>{
     console.log(e.message);
   })
 }
-useEffect(getAllorder,[]);
+useEffect(getAllorder,[forceupadate]);
 
 
 
@@ -47,9 +50,8 @@ const changeOrderStatus = (orderId)=>{
         'success'
       ).then(()=>{
         sellerServices.changeOrderStatus(orderId,{status :"Shipped"}).then((e)=>{
-          console.log(e).catch(e=>console.log(e.message))
-          forceUpdate();
-        })
+          setForceUpdate(Math.random()  *   10000);
+        }).catch(e=>console.log(e.message));
       })
     }
   })

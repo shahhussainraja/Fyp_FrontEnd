@@ -65,15 +65,7 @@ function PostDetails(props) {
   return (      
 
     <div className='maincontainer'>
-    
-        <Search></Search>
-      
         <div className='main'>
-        <div>
-          <StickyBox offsetTop={140} offsetBottom={20}>
-            <div><Catagories></Catagories></div>
-          </StickyBox>
-          </div>
           <div style={{marginLeft:'30px', padding:"20px"}}>
             <div className='title'>
           <h3 className=''>Post Details</h3>
@@ -85,12 +77,12 @@ function PostDetails(props) {
                                   <img style={{height:"1.5rem", width:"1.5rem"}} src={user}></img>
                                   <p style={{padding:"3px", fontSize:"15px", marginTop:"3px"}}>{state.buyerName}</p>
                                   </div>
-                                    <div class="details mb-3">
+                                    <div class=" mb-3">
                                        <h5 className='h5'>Title</h5>
                                         <p className='p'>{state.postTitle}</p>
                                     </div>
 
-                                    <div class="details mb-3">
+                                    <div class=" mb-3">
                                     <h5 className='h5'>Discription</h5>
                                         <p className='p'>{state.postDetail}</p>
                                     </div>

@@ -6,7 +6,6 @@ import {
   AiOutlineUser,
   AiOutlineBgColors,
 } from "react-icons/ai";
-import { RiCouponLine } from "react-icons/ri";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Link } from "react-router-dom";
@@ -81,7 +80,7 @@ const MainLayout = () => {
               label: "Profile",
             },
             {
-              key: "enquiries",
+              key: "Reviews",
               icon: <FaClipboardList className="fs-4" />,
               label: "Reviews",
             },

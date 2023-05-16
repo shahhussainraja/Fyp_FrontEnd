@@ -6,7 +6,9 @@ import authServices from '../../Services/AuthServices';
 import { Spin } from 'antd';
 import { Steps } from 'antd'
 import { format } from 'timeago.js'
-
+import { Button, Modal,Input } from 'antd';
+import Swal from 'sweetalert2';
+import "./UserProfile.css"
 
 const stepsDetail = [
   {
@@ -36,6 +38,10 @@ const user = useSelector((state)=>state.userDetail)
 const [data,setData] = useState([]);
 const [loading , isLoading] = useState(true)
 
+const [review, setReview] = useState("")
+const {TextArea} = Input;
+const [forceupadate , setForceUpdate]  = useState(0)
+
 const getAllorder = ()=>{
   authServices.getOrderDetails(user.id).then((res)=>{
     setData(res)
@@ -45,7 +51,35 @@ const getAllorder = ()=>{
     console.log(e.message);
   })
 }
-useEffect(getAllorder,[]);
+useEffect(getAllorder,[forceupadate]);
+
+const [isModalOpen, setIsModalOpen] = useState(false);
+const showModal = () => {
+  setIsModalOpen(true);
+};
+const handleOk = (id) => {
+  if(review !== ""){
+    console.log(review)
+    authServices.addReview(id,{review : review}).then((res)=>{
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: "Review Submitted Succesfully",
+        showConfirmButton: true,
+      }).then(()=>{ setIsModalOpen(false);
+      setForceUpdate(Math.random()  *   10000);
+      setReview("");
+      })
+    })
+  }
+};
+const handleCancel = () => {
+  setReview("");
+  setIsModalOpen(false);
+};
+
+
+
 
   return (
     <div className="container">
@@ -148,7 +182,6 @@ useEffect(getAllorder,[]);
          
 })}
 
-        
       <h3 className="mb-4 title">Complete Orders </h3> 
       {data?.map((data)=>{
         if(data.orderStatus === "Shipped"){
@@ -171,6 +204,26 @@ useEffect(getAllorder,[]);
             <Descriptions.Item label="Order Status" contentStyle={{color:"green" , fontWeight:"bolder"}}>
               {data.orderStatus}
             </Descriptions.Item>
+            <Descriptions.Item label="Review" contentStyle={{color:"green" , fontWeight:"bolder"}}>
+              {data.review === "false" ? 
+            <>
+              <Button type="primary" onClick={showModal} >
+                Add Review
+              </Button>
+              <Modal title="Add Review" open={isModalOpen}
+               footer={[
+                <Button key="back" onClick={handleCancel}>
+                  cancel
+                </Button>,
+                <Button key="submit" type="primary" onClick={()=>{handleOk(data._id)}}>
+                  Submit
+                </Button>,
+              ]}>
+                <TextArea rows={4}  onChange={(e)=>setReview(e.target.value)} value={review} placeholder='Enter Review here'/>
+              </Modal>
+            </>  : <>submitted</>
+            }
+            </Descriptions.Item>
             </Descriptions>
             {data?.products?.map((product)=>(
               <>
@@ -182,7 +235,15 @@ useEffect(getAllorder,[]);
               </Descriptions>
               </>
             ))}
+
             <Steps current={3} items={stepsDetail} />
+            {data?.review !== "false" && <>
+            <Descriptions title="" layout="vertical"  style={{paddingBottom:"1px"}}>
+                <Descriptions.Item label="Review" className='ReviewText'>{data.review}</Descriptions.Item>
+            </Descriptions>
+            </>}
+
+
             </div>
 
             </>)

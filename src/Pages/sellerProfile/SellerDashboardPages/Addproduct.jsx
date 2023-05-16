@@ -8,7 +8,6 @@ import Swal from 'sweetalert2';
 import { addProductSchema } from "../../../Schemas/index"
 import "./AddProduct.css"
 import sellerServices from '../../../Services/SellerServices';
-import authService from '../features/auth/authServices';
 
 
 const initialValues = {

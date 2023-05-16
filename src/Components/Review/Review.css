@@ -1,0 +1,50 @@
+.card {
+    width: 100%;
+    /* margin: auto; */
+    margin-bottom: 5px;
+  }
+  .card-title {
+    margin-bottom: 20px;
+    font-size: x-large;
+    font-weight: 800;
+    text-align: center;
+  }
+  .reviews-top {
+    box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.4);
+    padding: 20px;
+  }
+  .user-details {
+    align-items: center;
+    display: flex;
+  }
+  
+  .avatar1 {
+    border-radius: 90px;
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    margin: 2px;
+  }
+  h6 {
+    font-size: larger;
+    font-weight: 700;
+    margin-right: 10px;
+  }
+  .reviews-form {
+    padding: 5px;
+    width: 50vw;
+    border-radius: 20px;
+  }
+  
+  .form-container {
+    padding: 20px;
+    background: #eedfdf;
+    width: 60%;
+    border-radius: 20px;
+    margin: auto;
+  }
+
+  .cardText{
+    font-size: medium;
+    font-style: italic;
+  }

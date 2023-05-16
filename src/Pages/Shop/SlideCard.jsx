@@ -4,7 +4,7 @@ import Slider from "react-slick"
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
 import bg from '../../images/SlideCard/slide-1.png'
-
+import cover from "../../images/SlideCard/slider1.jpg"
 const SlideCard = () => {
   const settings = {
     dots: true,

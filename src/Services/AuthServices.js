@@ -114,11 +114,37 @@ class AuthServices extends GenericServices{
             })
         })
     }
+    
+    searchData = (data1,data2)=>{
+        return new Promise ((resolve,reject)=>{
+            this.post(`/searchData?key=${data1}&Category=${data2}`,).then((res)=>{
+                resolve(res);
+            }).catch((err)=>{
+                reject(err);
+            })
+        })
+    }
+    
+    
+    searchJobs = (data1,data2)=>{
+        return new Promise ((resolve,reject)=>{
+            this.post(`/searchJobs?key=${data1}&Category=${data2}`,).then((res)=>{
+                resolve(res);
+            }).catch((err)=>{
+                reject(err);
+            })
+        })
+    }
 
-
-
-
-
+ addReview = (id,review)=>{
+        return new Promise ((resolve,reject)=>{
+            this.post(`/AddReview/${id}`,review).then((res)=>{
+                resolve(res);
+            }).catch((err)=>{
+                reject(err);
+            })
+        })
+    }
 
 
     // isAdmin = ()=>{

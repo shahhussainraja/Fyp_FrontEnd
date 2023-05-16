@@ -33,6 +33,11 @@ background-color: #ffffff;
   grid-column: 3/4;
 }
 
+.menu ul  {
+  align-items: center;
+}
+
+
 /* nav list */
 
 nav ul{
@@ -41,6 +46,9 @@ nav ul{
     justify-content: space-around;
     align-items: center;
   }
+
+
+
   .active{
     background-color: #2693b2;
     color:#ffffff;
@@ -122,4 +130,21 @@ nav ul{
         transform: translateY(-0.5rem);
         box-shadow: 0.5rem 0.75rem 1.5rem #504c4c;
         -webkit-transition: all 500ms ease
+      }
+
+
+      .logout-btn{
+        transition: transform 0.3s ease;
+      }
+
+      .logout-btn:hover{
+        transform: translateX(5px);
+      }
+
+      .Profile-btn{
+        transition: transform 0.3s ease;
+      }
+
+      .Profile-btn:hover{
+        transform: scale(1.09);
       }

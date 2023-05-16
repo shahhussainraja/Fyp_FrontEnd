@@ -1,0 +1,25 @@
+.ResultNotFoundContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 100px;
+}
+
+.image_ResultNotFound{
+    height: 200px;
+    width: 200px;
+    object-fit: contain;
+    margin-top: 50px;
+}
+.ResultNotFoundContainer h1{
+    color:black;
+    font-weight: bold;
+
+}
+.ResultNotFoundContainer p{
+    color: black;
+    margin: 0px;
+    padding: 0px;
+
+}

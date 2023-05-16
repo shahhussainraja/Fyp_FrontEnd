@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import sellerServices from '../../Services/SellerServices';
 import { Button } from 'react-bootstrap';
+import { Image } from 'antd';
 
 export function Products({content}) {
 
@@ -45,8 +46,6 @@ const { value: amount } = Swal.fire({
           }).catch((e)=>console.log(e.message))
         }
       }).catch((e)=>console.log(e.message))
-
-
     }
   }
 })
@@ -54,12 +53,8 @@ const { value: amount } = Swal.fire({
 if (amount) {
   Swal.fire(`Your asstimated amount is ${amount}`)
 }
-
-    }
+ }
     
-
-
-
     return(
         <div className='productList'>
             <div key={content.id} className='productCard'>
@@ -79,7 +74,8 @@ if (amount) {
                     
                 </div>
                <div className='imgContainer'>
-                <img src={`http://localhost:8080${content.image}`} alt='product-img' className='productImage'></img>
+                {/* <img src={`http://localhost:8080${content?.image}`} alt='product-img' className='productImage'></img> */}
+                <Image  src={`http://localhost:8080${content?.image}`}  className='productImage' />
                 </div>
                 <div className='productCard__content'>
                     <h5>{content.postTitle}</h5>

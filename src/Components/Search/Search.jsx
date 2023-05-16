@@ -14,8 +14,7 @@ const Search = (props) => {
         <form className='search-form'>
             <input type='search' placeholder='search here'/>
             <button type='submit'>Send</button>
-        </form>                  
-                                     
+        </form>                                            
     </div>
   )
 }

@@ -4,7 +4,7 @@ import image from '../../images/cover.png'
 import { motion } from "framer-motion";
 import './header.css'
 import { TypeAnimation } from 'react-type-animation';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function Header() {
   const navigation = useNavigate();
@@ -47,7 +47,7 @@ function Header() {
 
         <div className='header-btns'>
           <a className='cv-btn' style={{ borderRadius: 1, marginLeft: 0, textDecoration: "inherit", cursor: "pointer" }} onClick={() => navigation("/Post")}>Post Order</a>
-          <a href='#' className='cv-btn' style={{ borderRadius: 1 }}>Get Order</a>
+          <Link to="/FindJobs" className='cv-btn' style={{ borderRadius: 1 }}>Get Order</Link>
           <a className='cv-btn' style={{ borderRadius: 1, textDecoration: "inherit", cursor: "pointer" }} onClick={() => navigation("/Shop")}>Shop</a>
         </div>
 

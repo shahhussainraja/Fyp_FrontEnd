@@ -14,17 +14,20 @@ import { Provider } from 'react-redux';
 import {store , persistor} from "../src/Redux/store"
 import Spinner from 'react-spinkit';
 import { PersistGate } from 'redux-persist/integration/react';
+import authServices from './Services/AuthServices';
 
 
 //interceptor config
 axios.interceptors.request.use((response)=>{
   document.body.classList.add('loading-indicator');
+  const token = localStorage.getItem("token")
+  response.headers.Authorization = token;
   return response;
 },(error) =>{
   document.body.classList.remove('loading-indicator');
   console.log("error "+error);
   return Promise.reject(error);
-}
+} 
 )
 
 // here logic will be written aganist token check 
@@ -43,6 +46,17 @@ axios.interceptors.response.use((response)=>{
       text: "",
       footer: '<a href="">Why do I have this issue?</a>'
     })
+
+  }
+
+  if(error.response.status === 401 ){
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: `Session Expire. Please LogIn Again`,
+    }).then(()=>{
+      authServices.logOut();
+    })
   }
   //   if(error.response.status === 401 ){
   //   Swal.fire({
@@ -52,14 +66,14 @@ axios.interceptors.response.use((response)=>{
   //   })
   // }  
 
-  //   if(error.response.status === 500 ){
-  //   Swal.fire({
-  //     icon: 'error',
-  //     title: 'Oops...',
-  //     text: `Oops Something Went Wrong`,
-  //   })
+    if(error.response.status === 500 ){
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: `Oops Something Went Wrong`,
+    })
+  }
 
-  // }
     
  return Promise.reject(error)
 })

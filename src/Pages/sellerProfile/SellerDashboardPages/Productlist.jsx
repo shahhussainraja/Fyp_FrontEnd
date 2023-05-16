@@ -3,8 +3,6 @@ import { Table } from "antd";
 import { BiEdit } from "react-icons/bi";
 import { AiFillDelete } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
-import { getProducts } from "../features/product/productSlice";
-import { Link } from "react-router-dom";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import sellerServices from "../../../Services/SellerServices";
 import Swal from "sweetalert2";
@@ -46,7 +44,7 @@ const Productlist = () => {
 
   const [data,setData] = useState(null)
   const user = useSelector((state)=>state.userDetail)
-
+  const [forceupadate , setForceUpdate]  = useState(0)
 const getAllData = ()=>{
   sellerServices.getAllItems(user.id).then((res)=>{
     setData(res.products)
@@ -56,8 +54,7 @@ const getAllData = ()=>{
   })
 }
 
-useEffect(getAllData,[])
-
+useEffect(getAllData,[forceupadate])
 
 const deleteitem = (sellerId,productId)=>{
   Swal.fire({
@@ -76,8 +73,9 @@ const deleteitem = (sellerId,productId)=>{
         'success'
       ).then(()=>{
         sellerServices.deleteItem(sellerId,productId).then((e)=>{
-          console.log(e).catch(e=>console.log(e.message))
-        })
+          setForceUpdate(Math.random()  *   10000);
+          console.log(e);
+        }).catch(e=>console.log(e.message))
       })
     }
   })

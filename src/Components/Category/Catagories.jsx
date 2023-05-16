@@ -1,11 +1,19 @@
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import image from '../../images/logoIcon.png'
 import './category.css'
+import { useDispatch } from 'react-redux'
+import { updateFilter } from '../../Redux/FilterReducer';
 
 function Catagories() {
+  const dispatch =  useDispatch();
+  const spanRef  = useRef()
+  const [selected,setSelected] = useState("All");
 
-    
     const data = [
+        {
+          cateImg: "../images/category/123.png" ,
+          cateName: "All",
+        },
         {
           cateImg: "../images/category/123.png" ,
           cateName: "Cloths",
@@ -16,11 +24,11 @@ function Catagories() {
         },
         {
           cateImg: "./images/category/cat3.png",
-          cateName: "Bakery Items",
+          cateName: "Bakery-Items",
         },
         {
           cateImg: "./images/category/cat4.png",
-          cateName: "Home & Garden",
+          cateName: "Home&Garden",
         },
         {
           cateImg: "./images/category/cat5.png",
@@ -32,7 +40,7 @@ function Catagories() {
         },
         {
           cateImg: "./images/category/cat7.png",
-          cateName: "Interior Design",
+          cateName: "Interior-Design",
         },
         {
           cateImg: "./images/category/cat8.png",
@@ -45,6 +53,11 @@ function Catagories() {
        
       ]
 
+      const handleDispatch = ()=>{
+        dispatch(updateFilter({selectedCategory : selected}))
+      }
+      useEffect(handleDispatch,[selected]);
+
 
   return (
     <div style={{Position:"fixed"}}>
@@ -52,7 +65,7 @@ function Catagories() {
        <div className='category'>
         {data.map((value, index) => {
           return (
-            <div className='box f_flex' key={index}>
+            <div className='box f_flex' key={index} onClick={()=>setSelected(value.cateName)}>
               <img src={image} alt='' />
               <span>{value.cateName}</span>
             </div>

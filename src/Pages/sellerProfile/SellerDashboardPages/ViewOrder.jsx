@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { BiEdit } from "react-icons/bi";
 import { AiFillDelete } from "react-icons/ai";
 import { Link, useLocation } from "react-router-dom";
-import { getOrderByUser, getOrders } from "../features/auth/authSlice";
 const columns = [
   {
     title: "SNo",
@@ -45,9 +44,9 @@ const ViewOrder = () => {
   const location = useLocation();
   const userId = location.pathname.split("/")[3];
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getOrderByUser(userId));
-  }, []);
+  // useEffect(() => {
+  //   dispatch(getOrderByUser(userId));
+  // }, []);
   const orderState = useSelector((state) => state.auth.orderbyuser[0].products);
   console.log(orderState);
   const data1 = [];

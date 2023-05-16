@@ -1,133 +1,32 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react'
+import sellerServices from '../../../Services/SellerServices';
+import { useSelector } from 'react-redux';
+import Review from '../../../Components/Review/Review';
 
-import { Table } from "antd";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  deleteAEnquiry,
-  getEnquiries,
-  resetState,
-  updateAEnquiry,
-} from "../features/enquiry/enquirySlice";
-import { AiFillDelete, AiOutlineEye } from "react-icons/ai";
-import { Link } from "react-router-dom";
-import CustomModal from "../SellerComponents/CustomModal";
+function Reviews() {
+const [data, setdata] = useState([]);
+const userId = useSelector((state)=>state.userDetail.id)
+const getAllReviews = ()=>{
+    sellerServices.getAllReviews(userId).then((res)=>{
+        setdata(res);
+    }).catch(e=>console.log(e.message))   
+}
 
-const columns = [
-  {
-    title: "SNo",
-    dataIndex: "key",
-  },
-  {
-    title: "Name",
-    dataIndex: "name",
-  },
-  {
-    title: "Email",
-    dataIndex: "email",
-  },
-  {
-    title: "Review",
-    dataIndex: "review",
-  },
-  {
-    title: "Rating",
-    dataIndex: "rating",
-  },
-
-  {
-    title: "Action",
-    dataIndex: "action",
-  },
-];
-
-const Enquiries = () => {
-  const dispatch = useDispatch();
-  const [open, setOpen] = useState(false);
-  const [enqId, setenqId] = useState("");
-  const showModal = (e) => {
-    setOpen(true);
-    setenqId(e);
-  };
-
-  const hideModal = () => {
-    setOpen(false);
-  };
-  useEffect(() => {
-    dispatch(resetState());
-    dispatch(getEnquiries());
-  }, []);
-  const enqState = useSelector((state) => state.enquiry.enquiries);
-  const data1 = [];
-  for (let i = 0; i < enqState.length; i++) {
-    data1.push({
-      key: i + 1,
-      name: enqState[i].name,
-      email: enqState[i].email,
-      review: enqState[i].review,
-      rating: enqState[i].rating,
-      // status: (
-      //   <>
-      //     <select
-      //       name=""
-      //       defaultValue={enqState[i].status ? enqState[i].status : "Submitted"}
-      //       className="form-control form-select"
-      //       id=""
-      //       onChange={(e) => setEnquiryStatus(e.target.value, enqState[i]._id)}
-      //     >
-      //       <option value="Submitted">Submitted</option>
-      //       <option value="Contacted">Contacted</option>
-      //       <option value="In Progress">In Progress</option>
-      //       <option value="Resolved">Resolved</option>
-      //     </select>
-      //   </>
-      // ),
-
-      action: (
-        <>
-          <Link
-            className="ms-3 fs-3 text-danger"
-            to={`/admin/enquiries/${enqState[i]._id}`}
-          >
-            <AiOutlineEye />
-          </Link>
-          <button
-            className="ms-3 fs-3 text-danger bg-transparent border-0"
-            onClick={() => showModal(enqState[i]._id)}
-          >
-            <AiFillDelete />
-          </button>
-        </>
-      ),
-    });
-  }
-  const setEnquiryStatus = (e, i) => {
-    console.log(e, i);
-    const data = { id: i, enqData: e };
-    dispatch(updateAEnquiry(data));
-  };
-  const deleteEnq = (e) => {
-    dispatch(deleteAEnquiry(e));
-    setOpen(false);
-    setTimeout(() => {
-      dispatch(getEnquiries());
-    }, 100);
-  };
+useEffect(getAllReviews,[]);
+console.log(data)
   return (
     <div>
-      <h3 className="mb-4 title">Reviews</h3>
-      <div>
-        <Table columns={columns} dataSource={data1} />
-      </div>
-      <CustomModal
-        hideModal={hideModal}
-        open={open}
-        performAction={() => {
-          deleteEnq(enqId);
-        }}
-        title="Are you sure you want to delete this enquiry?"
-      />
-    </div>
-  );
-};
+      {data[0]?.reviews?.length === 0 ? <><h3>Data Not found</h3></>: <>
+        {data[0]?.reviews?.map((rev)=>(
+            <>
+            <Review data = {rev}></Review>
+            </>
+        ))}
+      
+      </>}
 
-export default Enquiries;
+    </div>
+  )
+}
+
+export default Reviews

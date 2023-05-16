@@ -1,7 +1,7 @@
 //i ihave change something in app.js
 import React from 'react';
 import "./Pages/sellerProfile/SellerDashboard.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import { BrowserRouter as Router, Routes, Route,Navigate } from "react-router-dom"
 import Home from './Pages/Home';
 import FindJobs from './Pages/FindJobs/FindJobs';
 import Navbar from './Components/Navbar/Navbar';
@@ -16,17 +16,8 @@ import SellerRegistration from './Components/registration/sellerRegistration';
 import Contact from './Components/Contact/Contact';
 import UserProfile from './Pages/UserProfile/UserProfile'
 import Spinner from 'react-spinkit';
-// import SellerProfile from './Pages/sellerProfile/SellerProfile';
-// import Profile from './Pages/sellerProfile/Profile';
-// import ProductList from './Pages/sellerProfile/ProductList';
-// import Reviews from './Pages/sellerProfile/Reviews';
-// import Orders from './Pages/sellerProfile/Orders';
-
-//Seller
 
 import Dashboard from './Pages/sellerProfile/SellerDashboardPages/Dashboard';
-import Resetpassword from './Pages/sellerProfile/SellerDashboardPages/Resetpassword';
-import Forgotpassword from './Pages/sellerProfile/SellerDashboardPages/Forgotpassword';
 import MainLayout from './Pages/sellerProfile/SellerComponents/MainLayout';
 import Enquiries from './Pages/sellerProfile/SellerDashboardPages/Reviews';
 import Orders from './Pages/sellerProfile/SellerDashboardPages/Orders';
@@ -38,6 +29,8 @@ import ViewOrder from './Pages/sellerProfile/SellerDashboardPages/ViewOrder';
 import Success from './Pages/Payment/Success';
 import { useSelector } from 'react-redux';
 import PageNotFound from './Components/PageNotFound/PageNotFound';
+import ProductView from './Components/ProductView/ProductView';
+import Reviews from './Pages/sellerProfile/SellerDashboardPages/Reviews';
 
 function App() {
 const user = useSelector((state)=>state.userDetail)
@@ -55,33 +48,33 @@ const user = useSelector((state)=>state.userDetail)
         <Route path='/' element={<Home/>} />
         <Route path='/Login' element={<Login/>} />
         <Route path='/Registration' element={<Registration/>} />
-        <Route path='/SellerRegistration' element={<SellerRegistration/>} />
-        <Route path='/PostDetails' element={<PostDetails/>} />
-        <Route path='/FindJobs' element={<FindJobs/>} />
-        <Route path='/Shop' element={<Shop/>} />
-        <Route path='/Chat' element={<Conversation/>} />
-        <Route path='/PaymentSuccess' element={<Success />} />
+        <Route path='/SellerRegistration' element={<SellerRegistration/> } />
+        <Route path='/PostDetails' element={user.loggedIn ? <PostDetails/> :  <Navigate to="/Login"></Navigate> } />
+        <Route path='/FindJobs' element={user.loggedIn ? <FindJobs/> : <Navigate to="/Login"></Navigate>} />
+        <Route path='/Shop' element={user.loggedIn ? <Shop/> : <Navigate to="/Login"></Navigate>} />
+        <Route path='/Chat' element={user.loggedIn ? <Conversation/> : <Navigate to="/Login"></Navigate>} />
+        <Route path='/PaymentSuccess' element={user.loggedIn ? <Success /> : <Navigate to="/Login"></Navigate>} />
+        <Route path='/ProductView' element={user.loggedIn ? <ProductView/> : <Navigate to="/Login"></Navigate>} />
 
         {user.userType === "buyer" ? <>
-        <Route path='/UserProfile' element={<UserProfile/>} />
-        <Route path='/Post' element={<Post/>} />
+        <Route path='/UserProfile' element={user.loggedIn ? <UserProfile/>: <Navigate to="/Login"></Navigate>} />
+        <Route path='/Post' element={user.loggedIn ? <Post/>:<Navigate to="/Login"></Navigate>} />
         </> : <></>}      
       
         {user.userType === "seller"  ? <>
-          <Route path="/admin" element={<MainLayout />}>
-          <Route index element={<Dashboard />} />
-          <Route path="enquiries" element={<Enquiries />} />
-          <Route path="enquiries/:id" element={<ViewEnq />} />
-          <Route path="orders" element={<Orders />} />
-          <Route path="order/:id" element={<ViewOrder />} />
-          <Route path="customers" element={<Customers />} />
-          <Route path="list-product" element={<Productlist />} />
-          <Route path="product" element={<Addproduct />} />
+          <Route path="/admin" element={user.loggedIn ? <MainLayout /> : <Navigate to="/Login"></Navigate>}>
+          <Route index element={user.loggedIn ? <Dashboard /> :<Navigate to="/Login"></Navigate>} />
+          <Route path="Reviews" element={user.loggedIn ? <Reviews /> : <Navigate to="/Login"></Navigate>}  />
+          <Route path="orders" element={user.loggedIn ? <Orders /> : <Navigate to="/Login"></Navigate>} />
+          <Route path="order/:id" element={user.loggedIn ? <ViewOrder /> : <Navigate to="/Login"></Navigate>} />
+          <Route path="customers" element={user.loggedIn ? <Customers /> : <Navigate to="/Login"></Navigate>} />
+          <Route path="list-product" element={user.loggedIn ? <Productlist /> : <Navigate to="/Login"></Navigate>} />
+          <Route path="product" element={user.loggedIn ? <Addproduct /> : <Navigate to="/Login"></Navigate>} />
         </Route>
         </>:<></>}
 
         
-        <Route path="*" element={<PageNotFound />} />
+        <Route path="*" element={user.loggedIn ? <PageNotFound /> :<Navigate to="/Login"></Navigate>} />
         </Routes>
       </Router>
       {/* <div className={'loadinganim'} id="#interceptor">
