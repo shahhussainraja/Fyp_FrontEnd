@@ -103,6 +103,7 @@ searchRequest(searchData,selectedTags)
         
           {(selectedTags=="" && searchData==="" )? <>
           <SliderHome /> 
+          <h4 style={{margin:"20px", color:'#E3BE00'}}>New Products</h4>
               <div className='grid2'>
               {data?.map((val)=>(
                   val.products?.map((e)=>(

@@ -106,7 +106,7 @@ function Registration(){
                                     </p>
                                     <form onSubmit={handleSubmit}>
                                         <div class="mb-3">
-                                            <lable class=" mb-4 " style={{marginBottom:"0px 0px 0px"}} >Name
+                                            <lable class=" mb-4 " style={{marginBottom:"0px 0px 0px"}} >Name<span style={{color:"red"}}>*</span>
                                             <input  type="name"
                                             autoComplete="off"
                                             name="name"
@@ -123,7 +123,7 @@ function Registration(){
                                         </div>
 
                                         <div class="mb-3">
-                                        <lable class="mb-4 " style={{marginBottom:"0px 0px 0px"}} >E-mail
+                                        <lable class="mb-4 " style={{marginBottom:"0px 0px 0px"}} >E-mail<span style={{color:"red"}}>*</span>
                                             <input
                                                 type="email"
                                                 autoComplete="off"
@@ -141,7 +141,7 @@ function Registration(){
                                         </div>
 
                                         <div class="mb-3">
-                                        <lable class=" mb-4 " style={{marginBottom:"0px 0px 0px"}} >Password
+                                        <lable class=" mb-4 " style={{marginBottom:"0px 0px 0px"}} >Password<span style={{color:"red"}}>*</span>
                                             <input
                                             id="password"
                                             type="password" 
@@ -158,7 +158,7 @@ function Registration(){
                                         </div>
 
                                         <div class="mb-3">
-                                        <lable class=" mb-4 " style={{marginBottom:"0px 0px 0px"}} >Confirm Password
+                                        <lable class=" mb-4 " style={{marginBottom:"0px 0px 0px"}} >Confirm Password<span style={{color:"red"}}>*</span>
                                             <input
                                             id="confirm_password"
                                             type="password" 
@@ -174,7 +174,7 @@ function Registration(){
                                             ) : null}        
                                         </div>
                                         <div class='mb-3'>
-                                        <lable class=" mb-4 " style={{marginBottom:"0px 0px 0px"}} >Profile Image<sub> (Mandatory)</sub>
+                                        <lable class=" mb-4 " style={{marginBottom:"0px 0px 0px"}} >Profile Image<span style={{color:"red"}}>*</span>
                                         {image && (
                                             <div>
                                               <img
@@ -207,11 +207,12 @@ function Registration(){
                                             <label for="customCheck1" class="form-check-label">Remember password</label>
                                         </div> */}
                                        
-
+                                       <p className='text-muted' style={{fontSize: "small"}}><span style={{color:"red"}}>*</span>means field is required</p>
                                       <div class="text-center d-flex justify-content-center mt-4">
-                                        <p>Want to join with 
+                                      
+                                        <p>Login with 
                                         <a href="#" class="font-italic text-muted" > 
-                                        <u style={{color: '#00b7ff'}}>Gmail?</u></a></p>
+                                        <u style={{color: '#00b7ff'}}> Google account?</u></a></p>
                                       </div>
                                     
 

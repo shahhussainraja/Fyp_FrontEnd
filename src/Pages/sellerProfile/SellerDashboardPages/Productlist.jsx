@@ -47,7 +47,7 @@ const Productlist = () => {
   const [forceupadate , setForceUpdate]  = useState(0)
 const getAllData = ()=>{
   sellerServices.getAllItems(user.id).then((res)=>{
-    setData(res.products)
+    setData(res[0].products)
     console.log(res.product)
   }).catch((e)=>{
     console.log(e.message)

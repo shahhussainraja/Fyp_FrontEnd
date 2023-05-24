@@ -5,13 +5,8 @@ import { useForm } from "react-cool-form";
 import { useFormik } from "formik";
 import { signUpSchema } from "../../Schemas/index";
 import Select from "react-select";
-import { Textarea } from 'react-bootstrap-icons';
+import { Calendar, GeoAltFill, Clipboard2Fill } from 'react-bootstrap-icons';
 import "./PostDetails.css";
-import StickyBox from "react-sticky-box";
-import Catagories from '../../Components/Category/Catagories';
-import Search from '../../Components/Search/Search';
-import img from '../../images/examplePost.jfif';
-import user from '../../images/userProfile.png'
 import Swal from 'sweetalert2'
 import 'animate.css';
 import { useLocation } from 'react-router-dom';
@@ -64,100 +59,125 @@ function PostDetails(props) {
 
   return (      
 
-    <div className='maincontainer'>
-        <div className='main'>
-          <div style={{marginLeft:'30px', padding:"20px"}}>
-            <div className='title'>
-          <h3 className=''>Post Details</h3>
-           <p className='details'>Here are the details about this post</p> 
-           </div>
-                                <div style={{display:"flex"}}>
-                                  <div style={{width:"500px"}}>
-                                  <div style={{display:"flex", marginTop: "10px", marginBottom:"10px"}}>
-                                  <img style={{height:"1.5rem", width:"1.5rem"}} src={user}></img>
-                                  <p style={{padding:"3px", fontSize:"15px", marginTop:"3px"}}>{state.buyerName}</p>
-                                  </div>
-                                    <div class=" mb-3">
-                                       <h5 className='h5'>Title</h5>
-                                        <p className='p'>{state.postTitle}</p>
-                                    </div>
+//     <div className='maincontainer'>
+//         <div className='main'>
+//           <div style={{marginLeft:'30px', padding:"20px"}}>
+//             <div className='title'>
+//           <h3 className=''>Post Details</h3>
+//            <p className='details'>Here are the details about this post</p> 
+//            </div>
+//                                 <div style={{display:"flex"}}>
+//                                   <div style={{width:"500px"}}>
+//                                   <div style={{display:"flex", marginTop: "10px", marginBottom:"10px"}}>
+//                                   <img style={{height:"1.5rem", width:"1.5rem"}} src={user}></img>
+//                                   <p style={{padding:"3px", fontSize:"15px", marginTop:"3px"}}>{state.buyerName}</p>
+//                                   </div>
+//                                     <div class=" mb-3">
+//                                        <h5 className='h5'>Title</h5>
+//                                         <p className='p'>{state.postTitle}</p>
+//                                     </div>
 
-                                    <div class=" mb-3">
-                                    <h5 className='h5'>Discription</h5>
-                                        <p className='p'>{state.postDetail}</p>
-                                    </div>
+//                                     <div class=" mb-3">
+//                                     <h5 className='h5'>Discription</h5>
+//                                         <p className='p'>{state.postDetail}</p>
+//                                     </div>
 
-                                    <div class="mb-3">
-                                       <h5 className='h5'>Category</h5>
-                                        <p className='p'>{state.category}</p>
-                                    </div>
+//                                     <div class="mb-3">
+//                                        <h5 className='h5'>Category</h5>
+//                                         <p className='p'>{state.category}</p>
+//                                     </div>
 
-                                    <div class="mb-3">
-                                       <h5 className='h5'>Post Date</h5>
-                                        <p className='p'>{format(state.createdAt)}</p>
-                                    </div>
+//                                     <div class="mb-3">
+//                                        <h5 className='h5'>Post Date</h5>
+//                                         <p className='p'>{format(state.createdAt)}</p>
+//                                     </div>
                                     
-                                    <div class="mb-3">
-                                       <h5 className='h5'>Due Date</h5>
-                                        <p className='p'>{state.dueDate}</p>
-                                    </div>
+//                                     <div class="mb-3">
+//                                        <h5 className='h5'>Due Date</h5>
+//                                         <p className='p'>{state.dueDate}</p>
+//                                     </div>
 
-                                    <div class="mb-3">
-                                       <h5 className='h5'>Asstimated Amount</h5>
-                                        <p className='p'>{state.price}</p>
-                                    </div>
+//                                     <div class="mb-3">
+//                                        <h5 className='h5'>Asstimated Amount</h5>
+//                                         <p className='p'>{state.price}</p>
+//                                     </div>
 
-                                    <div class="mb-3">
-                                       <h5 className='h5'>City</h5>
-                                        <p className='p'>{state.city}</p>
-                                    </div>
-                                    <div class="mb-3">
-                                       <h5 className='h5'>Delivery Address</h5>
-                                        <p className='p'>{state.deliveryLocation}</p>
-                                    </div>
-{/* 
-                                    <div class="mb-3">
-                                       <h5 className='h5'>Address</h5>
-                                        <p className='p'></p>
-                                    </div> */}
+//                                     <div class="mb-3">
+//                                        <h5 className='h5'>City</h5>
+//                                         <p className='p'>{state.city}</p>
+//                                     </div>
+//                                     <div class="mb-3">
+//                                        <h5 className='h5'>Delivery Address</h5>
+//                                         <p className='p'>{state.deliveryLocation}</p>
+//                                     </div>
+// {/* 
+//                                     <div class="mb-3">
+//                                        <h5 className='h5'>Address</h5>
+//                                         <p className='p'></p>
+//                                     </div> */}
 
                                     
-                                    <div className='image-box'>
-                                    <h5 className='h5'>Reference Image</h5>
-                                    <img style={{ maxWidth :"100%", maxHeight: "100%"}} src={`http://localhost:8080${state.image}`}></img>
-                                    </div>
+//                                     <div className='image-box'>
+//                                     <h5 className='h5'>Reference Image</h5>
+//                                     <img style={{ maxWidth :"100%", maxHeight: "100%"}} src={`http://localhost:8080${state.image}`}></img>
+//                                     </div>
 
-                                  </div>
+//                                   </div>
 
-                                  <div style={{padding:"30px"}}>
+//                                   <div style={{padding:"30px"}}>
                                  
-                                 {Loginprofile.userType  === "seller" &&
+//                                  {Loginprofile.userType  === "seller" &&
 
-                                  <div className='makeoffer-box'>
-                                    <form onSubmit={handleSubmit}>
-                                    <input
-                                    onChange={handleChange}
-                                    onFocus={handleBlur}
-                                    name='amount' id='amount'
-                                    className='input'
-                                    type='number' 
-                                    placeholder='Enter Amount/Rs'>
-                                    </input>
-                                    {errors.amount && touched.amount ? (
-                                            <p style={{fontSize:"10",padding:"0px",margin:"0px",color:"red"}}>{errors.amount}</p>
-                                            ) : null} 
-                                    <button className='makeoffer-button' type="submit" >Make Offer</button>
-                                    </form>
-                                  </div>
+//                                   <div className='makeoffer-box'>
+//                                     <form onSubmit={handleSubmit}>
+//                                     <input
+//                                     onChange={handleChange}
+//                                     onFocus={handleBlur}
+//                                     name='amount' id='amount'
+//                                     className='input'
+//                                     type='number' 
+//                                     placeholder='Enter Amount/Rs'>
+//                                     </input>
+//                                     {errors.amount && touched.amount ? (
+//                                             <p style={{fontSize:"10",padding:"0px",margin:"0px",color:"red"}}>{errors.amount}</p>
+//                                             ) : null} 
+//                                     <button className='makeoffer-button' type="submit" >Make Offer</button>
+//                                     </form>
+//                                   </div>
 
-                                }
+//                                 }
 
-                                  </div>
-                                </div>       
+//                                   </div>
+//                                 </div>       
+//           </div>
+//         </div>
+//         <Contact></Contact>
+//    </div>
+
+<div className="app">
+        
+        <div className="details" >
+          <div className="big-img">
+            <img src={`http://localhost:8080${state.image}`} alt=""/>
+          </div>
+
+          <div className="box">
+            <div className="row">
+              <h2>{state.postTitle}</h2>
+              <span>Rs{state.price}</span>
+              <p>{state.category} category</p>
+            </div>
+
+            <p><Clipboard2Fill style={{margin:"5px"}}/>{state.postDetail}</p>
+            <p><Calendar style={{margin:"5px"}}/>{state.dueDate}</p>
+            <p><GeoAltFill style={{margin:"5px"}}/>{state.deliveryLocation}<span style={{fontWeight:"bold"}}> {state.city} </span></p>
+            {/* <p><GeoAltFill style={{margin:"5px"}}/>{state.city}</p> */}
+
+            <button className="cart">Add to cart</button>
+
           </div>
         </div>
-        <Contact></Contact>
-   </div>
+  </div>
                        
   )
 }

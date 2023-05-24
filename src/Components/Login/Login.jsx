@@ -66,12 +66,12 @@ function Login(){
                                     <form onSubmit={handleLogin}>
 
                                         <div class="mb-3">
-                                        <lable class=" mb-4 " style={{marginBottom:"0px 0px 0px"}} >E-mail
+                                        <lable class=" mb-4 " style={{marginBottom:"0px 0px 0px"}} >E-mail<span style={{color:"red"}}>*</span>
                                         <input id="inputEmail"  name="email" type="email" placeholder="abc@gmail.com" required="true" autofocus="" class="form-control  border-0 shadow-sm px-4"  onChange={(e)=>setEmail(e.target.value)} onClick={()=>{setError(false)}} /></lable>   
                                         </div>
 
                                         <div class="mb-3">
-                                        <lable class="mb-4">Password
+                                        <lable class="mb-4">Password<span style={{color:"red"}}>*</span>
                                         <input id="inputPassword"  name="password" type="password" placeholder="*****" required="true" class="form-control  border-0 shadow-sm px-4 text-primary" onChange={(e)=>setpassword(e.target.value)} onClick={()=>{setError(false)}}/>
                                         </lable>
                                         </div>
@@ -87,8 +87,9 @@ function Login(){
                                                     <h6>Invalid Email/Password</h6>
                                                 </span>
                                         </> }
-
+                                        <p className='text-muted' style={{fontSize: "small"}}><span style={{color:"red"}}>*</span>means field is required</p>
                                         <div class="text-center d-flex justify-content-center mt-4"> <a href="#" class="font-italic text-muted" style={{alignItems:"center"}}> 
+                                                
                                                 <u style={{color: '#00b7ff'}}>Forget Password?</u></a>
                                         </div>
                                                 

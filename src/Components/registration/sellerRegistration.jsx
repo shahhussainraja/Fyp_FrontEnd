@@ -144,7 +144,7 @@ function handleSelect(data) {
                                     </div>
                                   <form onSubmit={handleSubmit}>
                                     <div class="mb-3">
-                                            <lable class=" mb-4 " style={{marginBottom:"0px 0px 0px"}} >Name
+                                            <lable class=" mb-4 " style={{marginBottom:"0px 0px 0px"}} >Name<span style={{color:"red"}}>*</span>
                                             <input  type="name"
                                             autoComplete="off"
                                             name="name"
@@ -161,7 +161,7 @@ function handleSelect(data) {
                                         </div>
 
                                         <div class="mb-3">
-                                        <lable class="mb-4 " style={{marginBottom:"0px 0px 0px"}} >E-mail
+                                        <lable class="mb-4 " style={{marginBottom:"0px 0px 0px"}} >E-mail<span style={{color:"red"}}>*</span>
                                             <input
                                                 type="email"
                                                 autoComplete="off"
@@ -179,7 +179,7 @@ function handleSelect(data) {
                                         </div>
 
                                         <div class="mb-3">
-                                        <lable class=" mb-4 " style={{marginBottom:"0px 0px 0px"}} >Password
+                                        <lable class=" mb-4 " style={{marginBottom:"0px 0px 0px"}} >Password<span style={{color:"red"}}>*</span>
                                             <input
                                             id="password"
                                             type="password" 
@@ -196,7 +196,7 @@ function handleSelect(data) {
                                         </div>
 
                                         <div class="mb-3">
-                                        <lable class=" mb-4 " style={{marginBottom:"0px 0px 0px"}} >Confirm Password
+                                        <lable class=" mb-4 " style={{marginBottom:"0px 0px 0px"}} >Confirm Password<span style={{color:"red"}}>*</span>
                                             <input
                                             id="confirm_password"
                                             type="password" 
@@ -212,7 +212,7 @@ function handleSelect(data) {
                                             ) : null}        
                                         </div>      
                                         <div class="mb-3">
-                                            <lable class="mb-4 " style={{marginBottom:"0px 0px 0px"}} >Account Name
+                                            <lable class="mb-4 " style={{marginBottom:"0px 0px 0px"}} >Shop Name
                                             <input  
                                             type="name"
                                             autoComplete="off"
@@ -231,7 +231,7 @@ function handleSelect(data) {
                                         </div>
 
                                         <div class="mb-3">
-                                        <lable class=" mb-4 " style={{marginBottom:"0px 0px 0px"}} >Phone Number
+                                        <lable class=" mb-4 " style={{marginBottom:"0px 0px 0px"}} >Phone Number<span style={{color:"red"}}>*</span>
                                             <input
                                                 type="Number"
                                                 autoComplete="off"
@@ -250,7 +250,7 @@ function handleSelect(data) {
                                         </div>
 
                                         <div class="mb-3">
-                                        <lable class="mb-4 " style={{marginBottom:"0px 0px 0px"}} >CNIC Number
+                                        <lable class="mb-4 " style={{marginBottom:"0px 0px 0px"}} >CNIC Number<span style={{color:"red"}}>*</span>
                                             <input
                                             id="cnic"
                                             name="cnic"
@@ -268,7 +268,7 @@ function handleSelect(data) {
                                         </div>
 
                                         <div class="mb-3">
-                                        <lable class="mb-4 " style={{marginBottom:"0px 0px 0px"}} >Address
+                                        <lable class="mb-4 " style={{marginBottom:"0px 0px 0px"}} >Address<span style={{color:"red"}}>*</span>
                                             <input
                                             id="address"
                                             name='address'
@@ -286,7 +286,7 @@ function handleSelect(data) {
                                         </div>
 
                                         <div class='mb-3'>
-                                        <lable class=" mb-4 " style={{marginBottom:"0px 0px 0px"}} >Category
+                                        <lable class=" mb-4 " style={{marginBottom:"0px 0px 0px"}} >Category<span style={{color:"red"}}>*</span>
                                         <Select
                                           name='category'
                                           class="form-control  border-0 shadow-sm px-4"
@@ -305,7 +305,7 @@ function handleSelect(data) {
                                       </div>
 
                                       <div class='mb-3'>
-                                        <lable class=" mb-4 " style={{marginBottom:"0px 0px 0px"}} >Profile Image<sub> (Mandatory)</sub>
+                                        <lable class=" mb-4 " style={{marginBottom:"0px 0px 0px"}} >Profile Image <span style={{color:"red"}}>*</span>
                                         {image && (
                                             <div>
                                               <img
@@ -339,12 +339,9 @@ function handleSelect(data) {
                                         </div> */}
                                        
 
-                                        {/* <div class="text-center d-flex justify-content-center mt-4">
-                                        <p>Want to join with 
-                                        <a href="#" class="font-italic text-muted" onClick={{}}> 
-                                        <u style={{color: '#00b7ff'}}>Gmail?</u></a></p>
-                                        </div> */}
-                                      
+                                         
+                                         <p className='text-muted' style={{fontSize: "small"}}><span style={{color:"red"}}>*</span>means field is required</p>
+                                        
 
                                         <div className="modal-buttons">
                                           <button style={{color: 'white'}}  className="input-button" type="submit" >

@@ -28,11 +28,11 @@ const Wrapper = ({content,shopName}) => {
                     </div>
                 </div>
                <div className='imgContainer1'>
-                {/* <img src={`http://localhost:8080${content?.ProductImage}`} alt='product-img1' className='productImage'></img> */}
-                <Image
+                <img src={`http://localhost:8080${content?.ProductImage}`} alt='product-img1' className='productImage'></img>
+                {/* <Image
                       width={200}
                       src={`http://localhost:8080${content?.ProductImage}`}
-                    />
+                    /> */}
                 </div>
                 <div className='productCard__content1'>
                     <h6>{content?.productName}</h6>
