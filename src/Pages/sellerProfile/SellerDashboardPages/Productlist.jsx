@@ -1,5 +1,5 @@
 import React, { useEffect , useState} from "react";
-import { Table } from "antd";
+import { Image, Table } from "antd";
 import { BiEdit } from "react-icons/bi";
 import { AiFillDelete } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
@@ -47,8 +47,8 @@ const Productlist = () => {
   const [forceupadate , setForceUpdate]  = useState(0)
 const getAllData = ()=>{
   sellerServices.getAllItems(user.id).then((res)=>{
-    setData(res.products)
-    console.log(res.product)
+    setData(res[0].products)
+    console.log(res[0].products)
   }).catch((e)=>{
     console.log(e.message)
   })
@@ -89,7 +89,7 @@ const deleteitem = (sellerId,productId)=>{
       title: `${data[i].productName}`,
       category: `${data[i].productCategory}`,
       price: `${data[i].productAmount}`,
-      image: `null ${i}`,
+      image: <><Image  src={`http://localhost:8080${data[i]?.ProductImage}`}  width={40} height={40} /></>,
       status: (
         <>
          <select

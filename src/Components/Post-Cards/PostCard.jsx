@@ -30,7 +30,7 @@ const { value: amount } = Swal.fire({
       const message = `Dear ${content.buyerName} I’m writing this to hear back from you about My offer ${value} On your post ${content.postTitle}. We would like to know if you’re still interested and how you’d like to move forward. Looking forward to hearing back from you soon.`
       sellerServices.newConversation({senderId:Loginprofile.id,receiverId:content.buyerId}).then((res)=>{
         if(res){
-          sellerServices.sendBidMessage({senderId:Loginprofile.id,message:message,conversationId:res._id,offerMessage:true,sellerId:Loginprofile.id,sellerName:Loginprofile.name,buyerId:content.buyerId,buyerName:content.buyerName,postTitle:content.postTitle,postDetail:content.postDetail,amount:value,city:content.city,deliveryLocation:content.deliveryLocation,image:content.image}).
+          sellerServices.sendBidMessage({senderId:Loginprofile.id,message:message,conversationId:res._id,offerMessage:true,sellerId:Loginprofile.id,sellerName:Loginprofile.name,buyerId:content.buyerId,buyerName:content.buyerName,postTitle:content.postTitle,postDetail:content.postDetail,amount:value,city:content.city,deliveryLocation:content.deliveryLocation,image:content.image,postId:content._id}).
           then((res)=>{
             if(res){
               Swal.fire({
@@ -67,7 +67,7 @@ if (amount) {
                       <p className='time'>{content.dueDate}</p>
                       <FaClock className={"productCard__clock"} /><br/>
                       </div>
-                      <div style={{display:"flex", marginTop:"25px", padding:"3px"}}>
+                      <div style={{display:"flex", marginTop:"25px", padding:"3px"}} >
                       <p className='status'>Status</p>
                       <FaCircle className={"status-activity"} />
                     </div>
@@ -75,7 +75,7 @@ if (amount) {
                 </div>
                <div className='imgContainer'>
                 {/* <img src={`http://localhost:8080${content?.image}`} alt='product-img' className='productImage'></img> */}
-                <Image  src={`http://localhost:8080${content?.image}`}  className='productImage' />
+                <Image  src={`http://localhost:8080${content?.image}`}  width={260} height={220} />
                 </div>
                 <div className='productCard__content'>
                     <h5>{content.postTitle}</h5>

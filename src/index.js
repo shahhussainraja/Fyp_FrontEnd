@@ -12,8 +12,8 @@ import Swal from 'sweetalert2'
 
 import { Provider } from 'react-redux';
 import {store , persistor} from "../src/Redux/store"
-import Spinner from 'react-spinkit';
 import { PersistGate } from 'redux-persist/integration/react';
+import Spinner from 'react-spinkit';
 import authServices from './Services/AuthServices';
 
 

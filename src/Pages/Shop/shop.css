@@ -61,6 +61,10 @@
 
     .wrapper {
       text-align: center;
+      height: 430px;
+    }
+    .product{
+      height: 400px;
     }
     .wrapper .product:hover{
       background-color: transparent;
@@ -319,12 +323,16 @@
   
   .productCard__content1 {
     display: flex;
-    width: 17rem;;
+    width: 17rem;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     padding: 10px;
+    /* margin-top: 10px; */
 
+  }
+  .productCard__content1 h6 {
+    font-size: medium;
   }
   
   .productName{
@@ -339,7 +347,7 @@
   }
   
   .productPrice{
-    font-size: 1rem;
+    font-size: 5px;
     font-weight: bold;
   }
   

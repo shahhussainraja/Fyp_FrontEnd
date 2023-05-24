@@ -142,6 +142,8 @@ const Addproduct = () => {
                                         <option value="bakery">Bakery</option>
                                         <option value="Furniture">Furniture</option>
                                         <option value="Cloths">Cloths</option>
+                                        <option value="Home-Garden">Home-Garden</option>
+                                        <option value="Catering">Catering</option>
                                         <option value="Interior Designing">Interior Designing</option>
                                       </Form.Select>
                                       {errors.category && touched.category? (

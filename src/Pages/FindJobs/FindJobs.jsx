@@ -75,10 +75,14 @@ useEffect(()=>{
                 </> :<>
                 
               <div style={{ marginTop:"0px"}} className="PostCard">
-                {allPosts?.map(contents => (
+                {allPosts?.map((contents) => (
+                  <>
+                    { contents.Status !== "Assigned" &&
                     <Products key = {contents._id}
                        content = {contents}
                     />
+                    }
+                  </>
                 ))}
                 </div>
                 

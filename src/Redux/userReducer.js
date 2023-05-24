@@ -27,8 +27,6 @@ reducers : {
     }
 
 }
-
-
 })
 
 // Action creators are generated for each case reducer function

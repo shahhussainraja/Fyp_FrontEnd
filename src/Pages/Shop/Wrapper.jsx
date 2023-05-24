@@ -23,13 +23,14 @@ const Wrapper = ({content,shopName}) => {
                     <div style={{display:"flex"}}>
                     </div>
                       <div className="productCard__content1">
-                      <p ><FaStore />{shopName}</p>
+                      <p style={{marginLeft:"10px"}} ><FaStore />{shopName}</p>
                       <p style={{color:"green"}}>Instock</p>
                     </div>
                 </div>
                <div className='imgContainer1'>
                 {/* <img src={`http://localhost:8080${content?.ProductImage}`} alt='product-img1' className='productImage'></img> */}
                 <Image
+                      height={200}
                       width={200}
                       src={`http://localhost:8080${content?.ProductImage}`}
                     />

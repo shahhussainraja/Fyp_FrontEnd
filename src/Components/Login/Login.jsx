@@ -53,7 +53,7 @@ function Login(){
        <div className="maincontainer" >
         <div class="container-fluid">
             <div class="row no-gutter" >
-                <div class="col-md-6" style={{padding: '0px, 0px', backgroundColor: 'white'}}>
+                <div class="col-md-6        " style={{padding: '0px, 0px', backgroundColor: 'white'}}>
                     <div class="login d-flex align-items-center py-5" >
                         <div class="container" >
                             <div class="row">
