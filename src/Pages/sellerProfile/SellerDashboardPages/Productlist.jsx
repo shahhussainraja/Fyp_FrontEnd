@@ -48,11 +48,7 @@ const Productlist = () => {
 const getAllData = ()=>{
   sellerServices.getAllItems(user.id).then((res)=>{
     setData(res[0].products)
-<<<<<<< HEAD
-    console.log(res[0].products)
-=======
     console.log(res.product)
->>>>>>> 278bf8ad36fec3027d200aeda4424f5fb17d2f5f
   }).catch((e)=>{
     console.log(e.message)
   })
