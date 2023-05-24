@@ -28,12 +28,17 @@ const Wrapper = ({content,shopName}) => {
                     </div>
                 </div>
                <div className='imgContainer1'>
+<<<<<<< HEAD
                 {/* <img src={`http://localhost:8080${content?.ProductImage}`} alt='product-img1' className='productImage'></img> */}
                 <Image
                       height={200}
+=======
+                <img src={`http://localhost:8080${content?.ProductImage}`} alt='product-img1' className='productImage'></img>
+                {/* <Image
+>>>>>>> 278bf8ad36fec3027d200aeda4424f5fb17d2f5f
                       width={200}
                       src={`http://localhost:8080${content?.ProductImage}`}
-                    />
+                    /> */}
                 </div>
                 <div className='productCard__content1'>
                     <h6>{content?.productName}</h6>

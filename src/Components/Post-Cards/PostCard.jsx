@@ -74,8 +74,8 @@ if (amount) {
                     
                 </div>
                <div className='imgContainer'>
-                {/* <img src={`http://localhost:8080${content?.image}`} alt='product-img' className='productImage'></img> */}
-                <Image  src={`http://localhost:8080${content?.image}`}  width={260} height={220} />
+                <img src={`http://localhost:8080${content?.image}`} alt='product-img' className='productImage'></img>
+                {/* <Image  src={`http://localhost:8080${content?.image}`}  className='productImage' /> */}
                 </div>
                 <div className='productCard__content'>
                     <h5>{content.postTitle}</h5>

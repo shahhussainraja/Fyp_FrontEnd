@@ -96,17 +96,19 @@ function Navbar() {
                 <li><Link to="/">Home</Link></li>
 
                 {user.userType === "buyer" ? <>
-                <li><Link to="/Post">Post Order</Link></li>
+                <li><Link to="/Post">Post Requirements</Link></li>
                 </> : <></>}
-                <li><Link to="/FindJobs" >Find Job</Link></li>
+                <li><Link to="/FindJobs" >Explore</Link></li>
                 <li><Link to="/Chat">chat</Link></li>
                 <li><Link to="/Shop" >Shop</Link></li>
+                
                 
                 {user.userType === "seller" ? <>
                 <li><Link to="/admin" >SellerProfile</Link></li>
                 </> : <></>}
 
                 {user.userType === "buyer" ? <>
+                <li><Link to="/MyTask"> My Task</Link></li>
                 <li><PersonFill color="#2693b2" style={{ cursor: "pointer", marginRight: "10px" }} className='Profile-btn' size={30} onClick={navigateToProfile} /></li>
                 </>:<></> }
 

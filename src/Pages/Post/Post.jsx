@@ -92,7 +92,7 @@ const user = useSelector((state)=>state.userDetail)
           </div>        
                                 <form  onSubmit={handleSubmit}>
                                     <div class="mb-3">
-                                        <lable class="mb-4 "  >Title
+                                        <lable class="mb-4 "  >Title<span style={{color:"red"}}>*</span>
                                         <input  type="Text"
                                         autoComplete="off"
                                         name="title"
@@ -109,9 +109,9 @@ const user = useSelector((state)=>state.userDetail)
                                     </div>
 
                                     <div class="mb-3">
-                                    <lable class=" mb-4 "  >Details
-                                        <input
-                                            type="Text"
+                                    <lable class=" mb-4 "  >Details<span style={{color:"red"}}>*</span>
+                                        <textarea
+                                            type="text"
                                             autoComplete="off"
                                             name="detail"
                                             id="detail"
@@ -131,7 +131,7 @@ const user = useSelector((state)=>state.userDetail)
                                     </div>
 
                                     <div class="mb-3">
-                                    <lable class="mb-4 "  > Asstimated Amount
+                                    <lable class="mb-4 "  > Esstimated Amount<span style={{color:"red"}}>*</span>
                                         <input
                                         id="amount"
                                         name="amount"
@@ -152,7 +152,7 @@ const user = useSelector((state)=>state.userDetail)
                                     </div> 
                                     
                                     <div class='mb-3'>
-                                    <lable class=" mb-4 " >City
+                                    <lable class=" mb-4 " >City<span style={{color:"red"}}>*</span>
                                     
                                       <Form.Select aria-label="Default select example" class="form-control  border-0 shadow-sm px-4"  name='city' id='city' onChange={handleChange} >
                                       <option value="" disabled selected>Select City</option>
@@ -170,7 +170,7 @@ const user = useSelector((state)=>state.userDetail)
 
 
                                     <div class="mb-3">
-                                        <lable class="mb-4 "  >Location
+                                        <lable class="mb-4 "  >Address<span style={{color:"red"}}>*</span>
                                         <input  type="Text"
                                         autoComplete="off"
                                         name="address"
@@ -190,7 +190,7 @@ const user = useSelector((state)=>state.userDetail)
                                     </div>
 
                                     <div class="mb-3">
-                                    <lable class="mb-4 "  >Due Date
+                                    <lable class="mb-4 "  >Due Date<span style={{color:"red"}}>*</span>
                                         <input
                                         type = "date"
                                         id="dueDate"
@@ -209,8 +209,8 @@ const user = useSelector((state)=>state.userDetail)
                                         ) : null}        
                                     </div>
 
-                                    <div class='mb-3'>
-                                    <lable class=" mb-4 "  >category
+                                    <div className='mb-3'>
+                                    <lable className=" mb-5  " >Category<span style={{color:"red"}}>*</span>
                                     
                                       <Form.Select aria-label="Default select example" class="form-control  border-0 shadow-sm px-4" name="category" id="category" onChange={handleChange}>
                                       <option value="" disabled selected>Select Catagory</option>
@@ -269,7 +269,7 @@ const user = useSelector((state)=>state.userDetail)
                                     <a href="#" class="font-italic text-muted" onClick={{}}> 
                                     <u style={{color: '#00b7ff'}}>Gmail?</u></a></p>
                                     </div> */}
-                                  
+                                  <p className='text-muted' style={{fontSize: "small"}}><span style={{color:"red"}}>*</span>means field is required</p>
 
                                     <div className="button">
                                       <button style={{color: 'white'}}  className="Post-button" type="submit" >

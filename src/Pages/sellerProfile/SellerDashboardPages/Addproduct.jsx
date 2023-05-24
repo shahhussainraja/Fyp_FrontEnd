@@ -80,7 +80,7 @@ const Addproduct = () => {
                                           onChange={handleChange}
                                           onBlur={handleBlur}
                                           value={values.title}
-                                          placeholder="e.g Custom Dress"
+                                          placeholder="e.g Bridal Dress"
                                           class="form-control  border-0 shadow-sm px-4"
                                           style={{height:"50px"}} />
                                           </lable>    
