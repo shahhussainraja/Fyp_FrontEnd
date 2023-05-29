@@ -48,7 +48,7 @@ function Catagories() {
         },
         {
           cateImg: "./images/category/cat9.png",
-          cateName: "Car",
+          cateName: "Food",
         },
        
       ]

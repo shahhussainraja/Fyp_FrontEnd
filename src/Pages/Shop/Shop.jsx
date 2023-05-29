@@ -20,7 +20,7 @@ function Shop() {
   const [searchData, setSearchData]  = useState("")
   const [data,setData] = useState([]) 
   const { CheckableTag } = Tag;
-  const tagsData = ['All','Cloths', 'Catering', 'Bakery-Items', 'Home-Garden','Gifts',"Furiture","Interior-Design"];
+  const tagsData = ['All','Cloths', 'Catering', 'Bakery-Items', 'Home-Garden','Gifts',"Furniture","Interior-Design"];
 
   const [selectedTags, setSelectedTags] = useState("");
 

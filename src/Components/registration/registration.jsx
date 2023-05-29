@@ -62,7 +62,7 @@ function Registration(){
         })
 
       },
-    });
+    }); 
     
   // console.log(
   //   "🚀 ~ file: Registration.jsx ~ line 25 ~ Registration ~ errors",
@@ -115,7 +115,7 @@ function Registration(){
                                             value={values.name}
                                             onChange={handleChange}
                                             onBlur={handleBlur}
-                                            class="form-control  border-0 shadow-sm px-4" />
+                                            className="form-control  border-0 shadow-sm px-4" />
                                             </lable>    
                                             {errors.name && touched.name ? (
                                             <p className="form-error errFont">{errors.name}</p>
@@ -249,4 +249,7 @@ function Registration(){
 
 
 export default Registration;
+
+
+
 

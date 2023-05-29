@@ -89,7 +89,11 @@ const deleteitem = (sellerId,productId)=>{
       title: `${data[i].productName}`,
       category: `${data[i].productCategory}`,
       price: `${data[i].productAmount}`,
+<<<<<<< HEAD
       image: <><Image src={`http://localhost:8080${data[i]?.ProductImage}`}  width={40} height={40}/></>,
+=======
+      image: <><Image  src={`http://localhost:8080${data[i]?.ProductImage}`}  width={40} height={40} /></>,
+>>>>>>> 35c696cae5780d4e97abe28b64eb0768ec281c85
       status: (
         <>
          <select

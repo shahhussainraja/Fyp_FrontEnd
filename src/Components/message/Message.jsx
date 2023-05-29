@@ -27,23 +27,15 @@ const handleAcceptOffer = ()=>{
         if(res.url){
             window.location.href = res.url;
           }
-         
-        
         }).catch((e)=>{
           console.log(e.message)
         })
-
-
-
       })
     } else if (result.isDenied) {
       Swal.fire('Changes are not saved', '', 'info')
     }
   })
 }
-
-
-
   return (
     <div className={ message.senderId === userId ? "message own" : "message" }>
         <div className="messageTop">
@@ -51,9 +43,7 @@ const handleAcceptOffer = ()=>{
         {message.senderId === userId ? <></>: <>
         <FaUserShield className="messageImg" />
         </> }
-
          <p className="messageText">{message.message}
-
       { Loginprofile.userType === "buyer"  && message.offerMessage === "true" &&
          <div style={{display:"flex",justifyContent:"center",marginTop:"20px"}}>
           <Button variant="warning" size="sm"  onClick={handleAcceptOffer} >Accept offer </Button>

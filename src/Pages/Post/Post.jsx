@@ -56,7 +56,9 @@ const user = useSelector((state)=>state.userDetail)
             icon: 'success',
             title: "Post uploaded Successfully",
             showConfirmButton: true,
-          }).then(()=>{  action.resetForm();setImage(null)})
+          }).then(()=>{  
+            action.resetForm();
+            setImage(null)})
         }
         }).catch((err)=>{
           console.log(err.message)
@@ -233,6 +235,7 @@ const user = useSelector((state)=>state.userDetail)
                                             alt="not found"
                                             width={"250px"}
                                             src={URL.createObjectURL(image)}
+                                            defaultValue={image}
                                           />
                                           <br />
                                           <button onClick={() => setImage(null)}>Remove</button>
@@ -246,6 +249,7 @@ const user = useSelector((state)=>state.userDetail)
                                         type="file"
                                         name="image"
                                         required
+                                        defaultValue={image}
                                         onChange={(event) => {
                                           console.log(event.target.files[0]);
                                           setImage(event.target.files[0]);

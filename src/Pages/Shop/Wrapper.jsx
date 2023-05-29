@@ -26,13 +26,19 @@ const Wrapper = ({content,shopName}) => {
                     <p style={{padding:"5px", fontSize:"15px", marginTop:"0px"}}>Amber</p>
                     </div>
                       <div className="productCard__content1">
-                      <p ><FaStore />{shopName}</p>
+                      <p style={{marginLeft:"10px"}} ><FaStore />{shopName}</p>
                       <p style={{color:"green"}}>Instock</p>
                     </div>
                 </div>
                <div className='imgContainer1'>
+<<<<<<< HEAD
+                {/* <img src={`http://localhost:8080${content?.ProductImage}`} alt='product-img1' className='productImage'></img> */}
+                <Image
+                      height={200}
+=======
                 <img src={`http://localhost:8080${content?.ProductImage}`} alt='product-img1' className='productImage'></img>
                 {/* <Image
+>>>>>>> 278bf8ad36fec3027d200aeda4424f5fb17d2f5f
                       width={200}
                       src={`http://localhost:8080${content?.ProductImage}`}
                     /> */}
