@@ -9,6 +9,7 @@ import { useSelector } from 'react-redux';
 import { Button } from 'react-bootstrap';
 import sellerServices from "../../Services/SellerServices";
 import { Image } from 'antd'
+import user from '../../images/userProfile.png'
 
 const Wrapper = ({content,shopName}) => {
 
@@ -21,6 +22,8 @@ const Wrapper = ({content,shopName}) => {
             <div key={content?.id} className='productCard1'>
                 <div className='cardTop1'>
                     <div style={{display:"flex"}}>
+                    <img style={{height:"1.5rem", width:"1.5rem"}} src={user}></img>
+                    <p style={{padding:"5px", fontSize:"15px", marginTop:"0px"}}>Amber</p>
                     </div>
                       <div className="productCard__content1">
                       <p ><FaStore />{shopName}</p>

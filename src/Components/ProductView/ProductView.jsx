@@ -7,7 +7,7 @@ function ProductView() {
 
   return (
 <div className="app">
-        
+              
             <div className="details" >
               <div className="big-img">
                 <img src={`http://localhost:8080${state.ProductImage}`} alt=""/>

@@ -5,7 +5,7 @@ import { useForm } from "react-cool-form";
 import { useFormik } from "formik";
 import { signUpSchema } from "../../Schemas/index";
 import Select from "react-select";
-import { Calendar, GeoAltFill, Clipboard2Fill } from 'react-bootstrap-icons';
+import { Calendar4Event, GeoAlt, Clipboard2 } from 'react-bootstrap-icons';
 import "./PostDetails.css";
 import Swal from 'sweetalert2'
 import 'animate.css';
@@ -13,6 +13,7 @@ import { useLocation } from 'react-router-dom';
 import { format } from 'timeago.js'
 import { bidSchema } from '../../Schemas/index';
 import { useSelector } from 'react-redux';
+import user from '../../images/userProfile.png'
 import sellerServices from '../../Services/SellerServices';
 import Contact from "../../Components/Contact/Contact"
 
@@ -155,8 +156,12 @@ function PostDetails(props) {
 //    </div>
 
 <div className="app">
-        
+<div style={{display:"flex", marginTop: "10px", marginBottom:"10px", justifyContent:"flex-start"}}>
+                                   <img style={{height:"1.5rem", width:"1.5rem"}} src={user}></img>
+                              <p style={{padding:"3px", fontSize:"15px", marginTop:"3px"}}>{state.buyerName}</p>
+                                   </div>
         <div className="details" >
+      
           <div className="big-img">
             <img src={`http://localhost:8080${state.image}`} alt=""/>
           </div>
@@ -168,12 +173,31 @@ function PostDetails(props) {
               <p>{state.category} category</p>
             </div>
 
-            <p><Clipboard2Fill style={{margin:"5px"}}/>{state.postDetail}</p>
-            <p><Calendar style={{margin:"5px"}}/>{state.dueDate}</p>
-            <p><GeoAltFill style={{margin:"5px"}}/>{state.deliveryLocation}<span style={{fontWeight:"bold"}}> {state.city} </span></p>
+            <p><Clipboard2 style={{margin:"5px", }}/>{state.postDetail}</p>
+            <p><Calendar4Event style={{margin:"5px"}}/>{state.dueDate}</p>
+            <p><GeoAlt style={{margin:"5px"}}/>{state.deliveryLocation}<span style={{fontWeight:"bold"}}>, {state.city} </span></p>
             {/* <p><GeoAltFill style={{margin:"5px"}}/>{state.city}</p> */}
 
-            <button className="cart">Add to cart</button>
+            {Loginprofile.userType  === "seller" &&
+
+                                  <div className='makeoffer-box'>
+                                    <form onSubmit={handleSubmit}>
+                                    <input
+                                    onChange={handleChange}
+                                    onFocus={handleBlur}
+                                    name='amount' id='amount'
+                                    className='input'
+                                    type='number' 
+                                    placeholder='Enter Amount/Rs'>
+                                    </input>
+                                    {errors.amount && touched.amount ? (
+                                            <p style={{fontSize:"10",padding:"0px",margin:"0px",color:"red"}}>{errors.amount}</p>
+                                            ) : null} 
+                                    <button className='makeoffer-button ' type="submit" >Make Offer</button>
+                                    </form>
+                                  </div>
+
+                                }
 
           </div>
         </div>

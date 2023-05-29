@@ -7,7 +7,8 @@ import FindJobs from './Pages/FindJobs/FindJobs';
 import Navbar from './Components/Navbar/Navbar';
 import Shop from './Pages/Shop/Shop';
 import Post from './Pages/Post/Post';
-import Login from './Components/Login/Login'
+import Login from './Components/Login/Login';
+import MyTasks from './Pages/MyTasks/MyTasks';
 import Conversation from './Pages/ConversationPage/Conversation';
 import Registration from './Components/registration/registration';
 import PostDetails from './Pages/PostDetails/PostDetails';
@@ -31,6 +32,7 @@ import { useSelector } from 'react-redux';
 import PageNotFound from './Components/PageNotFound/PageNotFound';
 import ProductView from './Components/ProductView/ProductView';
 import Reviews from './Pages/sellerProfile/SellerDashboardPages/Reviews';
+
 
 function App() {
 const user = useSelector((state)=>state.userDetail)
@@ -59,6 +61,7 @@ const user = useSelector((state)=>state.userDetail)
         {user.userType === "buyer" ? <>
         <Route path='/UserProfile' element={user.loggedIn ? <UserProfile/>: <Navigate to="/Login"></Navigate>} />
         <Route path='/Post' element={user.loggedIn ? <Post/>:<Navigate to="/Login"></Navigate>} />
+        <Route path='MyTasks' element={user.loggedIn ? <MyTasks/>: <Navigate to="/MyTasks"></Navigate>} />
         </> : <></>}      
       
         {user.userType === "seller"  ? <>

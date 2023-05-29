@@ -108,7 +108,7 @@ function Navbar() {
                 </> : <></>}
 
                 {user.userType === "buyer" ? <>
-                <li><Link to="/MyTask"> My Task</Link></li>
+                <li><Link to="/MyTasks"> My Task</Link></li>
                 <li><PersonFill color="#2693b2" style={{ cursor: "pointer", marginRight: "10px" }} className='Profile-btn' size={30} onClick={navigateToProfile} /></li>
                 </>:<></> }
 
