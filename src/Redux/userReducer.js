@@ -24,12 +24,14 @@ reducers : {
         state.image = action.payload.image
         state.userType = action.payload.userType
         state.loggedIn = action.payload.loggedIn
-    }
-
+    },
 }
+
+
+
 })
 
 // Action creators are generated for each case reducer function
-export const { updateUserDetail } = userSlice.actions;
+export const { updateUserDetail,updateLogged } = userSlice.actions;
 
 export default userSlice.reducer

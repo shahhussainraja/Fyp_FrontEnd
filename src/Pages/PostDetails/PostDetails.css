@@ -44,14 +44,13 @@
       background: #2693b2;
       transition: 0.3s;
       cursor: pointer;
-      width:200px;
+      width:100%;
       height: 40px;
-      margin-left: 8rem;
       margin-top: 10px;
       text-transform: uppercase;
       padding: 50px, 10px, 10px;
       text-decoration: none;
-     
+           
 }
 
 .makeoffer-button:hover {
@@ -71,9 +70,13 @@
 }
 
 .makeoffer-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   transition: 0.5s;
   padding: 5px;
-  width: 30rem;
+  width: 20rem;
   height: 12rem;
   margin-top: 1rem;
   background-color: ghostwhite;

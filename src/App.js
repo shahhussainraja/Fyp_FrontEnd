@@ -32,6 +32,8 @@ import { useSelector } from 'react-redux';
 import PageNotFound from './Components/PageNotFound/PageNotFound';
 import ProductView from './Components/ProductView/ProductView';
 import Reviews from './Pages/sellerProfile/SellerDashboardPages/Reviews';
+import AddToCart from './Components/Cart/AddToCart';
+import VisitStore from './Components/VisitStore/VisitStore';
 
 
 function App() {
@@ -57,8 +59,12 @@ const user = useSelector((state)=>state.userDetail)
         <Route path='/Chat' element={user.loggedIn ? <Conversation/> : <Navigate to="/Login"></Navigate>} />
         <Route path='/PaymentSuccess' element={user.loggedIn ? <Success /> : <Navigate to="/Login"></Navigate>} />
         <Route path='/ProductView' element={user.loggedIn ? <ProductView/> : <Navigate to="/Login"></Navigate>} />
+        <Route path='/sellerStore/:id' element={user.loggedIn ? <VisitStore/> : <Navigate to="/Login"></Navigate>} />
+      
+      
 
         {user.userType === "buyer" ? <>
+        <Route path='/addToCart' element={user.loggedIn ? <AddToCart /> : <Navigate to="/Login"></Navigate>} />
         <Route path='/UserProfile' element={user.loggedIn ? <UserProfile/>: <Navigate to="/Login"></Navigate>} />
         <Route path='/Post' element={user.loggedIn ? <Post/>:<Navigate to="/Login"></Navigate>} />
         <Route path='MyTasks' element={user.loggedIn ? <MyTasks/>: <Navigate to="/MyTasks"></Navigate>} />

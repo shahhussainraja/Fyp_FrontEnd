@@ -85,15 +85,11 @@ const deleteitem = (sellerId,productId)=>{
   if(data){
   for (let i = 0; i < data.length; i++) {
     data1.push({
-      key: i ,
+      key: i+1 ,
       title: `${data[i].productName}`,
       category: `${data[i].productCategory}`,
       price: `${data[i].productAmount}`,
-<<<<<<< HEAD
-      image: <><Image src={`http://localhost:8080${data[i]?.ProductImage}`}  width={40} height={40}/></>,
-=======
       image: <><Image  src={`http://localhost:8080${data[i]?.ProductImage}`}  width={40} height={40} /></>,
->>>>>>> 35c696cae5780d4e97abe28b64eb0768ec281c85
       status: (
         <>
          <select

@@ -42,13 +42,11 @@ function Shop() {
 
 useEffect(()=>{
 const searchRequest = (searchData,selectedTags)=>{
-  setTimeout(()=>{
     authServices.searchData( searchData ,selectedTags==="All"? "" :selectedTags).then((res)=>{
       setData(res)
     }).catch((err)=>{
       console.log(err.message);
     })
-  },1000)
 }
 searchRequest(searchData,selectedTags)
 },[selectedTags]);
@@ -107,7 +105,7 @@ searchRequest(searchData,selectedTags)
               <div className='grid2'>
               {data?.map((val)=>(
                   val.products?.map((e)=>(
-                    (<><Wrapper content={e} shopName={val.shopName}></Wrapper></>)
+                    (<><Wrapper key={e._id} content={e} shopName={val.shopName} sellerId = {val.sellerProfileId}></Wrapper></>)
                   ))
               ))}
             </div>
@@ -118,7 +116,7 @@ searchRequest(searchData,selectedTags)
               <div className='grid2'>
                   {data?.map((val)=>(
                       val.products?.map((e)=>(
-                        (<><Wrapper content={e} shopName={val.shopName}></Wrapper></>)
+                        (<><Wrapper key={e._id} content={e} shopName={val.shopName} sellerId = {val.sellerProfileId}></Wrapper></>)
                       ))
                   ))}
                 </div>

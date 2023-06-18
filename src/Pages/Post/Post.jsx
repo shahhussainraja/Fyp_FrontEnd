@@ -13,6 +13,7 @@ import { useSelector } from 'react-redux';
 import authServices from '../../Services/AuthServices';
 import Swal from 'sweetalert2';
 import Contact from '../../Components/Contact/Contact';
+import { useNavigate } from 'react-router-dom';
 
 const initialValues = {
   title: "",
@@ -28,7 +29,8 @@ const initialValues = {
 function Post() {
   // React state to manage selected options
 const [selectedOptions, setSelectedOptions] = useState();
-const user = useSelector((state)=>state.userDetail)
+const user = useSelector((state)=>state.userDetail);
+const navigate  =useNavigate();
   //form validation
     const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
     useFormik({
@@ -54,11 +56,13 @@ const user = useSelector((state)=>state.userDetail)
           Swal.fire({
             position: 'center',
             icon: 'success',
-            title: "Post uploaded Successfully",
+            title: "Order created successfully!",
             showConfirmButton: true,
           }).then(()=>{  
+            navigate("/FindJobs")
             action.resetForm();
             setImage(null)})
+            
         }
         }).catch((err)=>{
           console.log(err.message)
@@ -87,7 +91,7 @@ const user = useSelector((state)=>state.userDetail)
           
                             <div class="col-lg-9 col-xl-12 mx-auto" style={{backgroundColor:"white", padding:'50px', borderRadius:'2%'}}>
                             <div className='title' >
-        <h1 className=''>Post Order</h1>
+        <h1 className=''>Post Requirements</h1>
           <p className='details'>Find your dream customized products by sitting at home. Your dreams are our responsinility.</p> 
           </div>        
                                 <form  onSubmit={handleSubmit}>
@@ -170,7 +174,7 @@ const user = useSelector((state)=>state.userDetail)
 
 
                                     <div class="mb-3">
-                                        <lable class="mb-4 "  >Address<span style={{color:"red"}}>*</span>
+                                        <lable class="mb-4 "  >Postal Address<span style={{color:"red"}}>*</span>
                                         <input  type="Text"
                                         autoComplete="off"
                                         name="address"
@@ -271,7 +275,7 @@ const user = useSelector((state)=>state.userDetail)
                                     </div> */}
                                   <p className='text-muted' style={{fontSize: "small"}}><span style={{color:"red"}}>*</span>means field is required</p>
 
-                                    <div className="button">
+                                    <div className="button" style={{marginLeft:"50px"}}>
                                       <button style={{color: 'white'}}  className="Post-button" type="submit" >
                                         Post Order
                                       </button>

@@ -1,0 +1,10 @@
+.MyTaskcontainer{
+    width: 100%;
+    padding: 10px;
+    background-color: ghostwhite;
+}
+
+.details1{
+    display: flex;
+    flex-direction: column;
+}

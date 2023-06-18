@@ -127,7 +127,7 @@ const receiver = currentChat.members.find(member => member != currentUser )
               </div>
             ))}     
             </div>
-        </div>
+        </div>  
        
         <div className="chatMenu">
           <div className='chatHead'>

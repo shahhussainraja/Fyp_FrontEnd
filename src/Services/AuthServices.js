@@ -102,7 +102,23 @@ class AuthServices extends GenericServices{
                 reject(err);
             })
         })
+    } 
+    
+
+    makeCartPayment = (data)=>{
+        return new Promise((resolve,reject)=>{
+            this.post("/makeCartPayment",data).then((res)=>{
+                resolve(res);
+            }).catch((err)=>{
+                reject(err)
+            })
+        })
     }
+
+
+
+
+
 
 
     getOrderDetails = (buyerId) =>{
@@ -146,21 +162,28 @@ class AuthServices extends GenericServices{
         })
     }
 
-
-    // isAdmin = ()=>{
+    getPost = (id)=>{
+        return new Promise ((resolve,reject)=>{
+            this.get(`/fetchPost/${id}`).then((res)=>{
+                resolve(res);
+            }).catch((err)=>{
+                reject(err);
+            })
+        })
+    }
         
-    //     let token = localStorage.getItem("token");
-    //      if(!token)
-    //         return false;
-        
-    //     let decoded = jwt_decode(token);
-    //     if(decoded.role == "admin")
-    //         return true;
+    deletPost = (id)=>{
+            return new Promise ((resolve,reject)=>{
+                this.get(`/deletPost/${id}`).then((res)=>{
+                    resolve(res);
+                }).catch((err)=>{
+                    reject(err);
+                })
+            })
+        }
 
-    //     return false;
-    // }
 
-    
+
 
 
 }

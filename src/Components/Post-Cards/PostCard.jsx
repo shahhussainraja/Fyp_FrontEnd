@@ -74,13 +74,13 @@ if (amount) {
                     
                 </div>
                <div className='imgContainer'>
-                <img src={`http://localhost:8080${content?.image}`} alt='product-img' className='productImage'></img>
-                {/* <Image  src={`http://localhost:8080${content?.image}`}  className='productImage' /> */}
+                {/* <img src={`http://localhost:8080${content?.image}`} alt='product-img' className='productImage'></img> */}
+                <Image  src={`http://localhost:8080${content?.image}`} width={260} height={220} className='productImage' />
                 </div>
                 <div className='productCard__content'>
                     <h5>{content.postTitle}</h5>
                     <div className='displayStack__1'>
-                        <div className='productPrice'>{content.price}/Rs</div>
+                        <div className='productPrice'>Rs.{content.price}</div>
                         <div className='productSales'>{content.city}</div>
                     </div >
                 </div>

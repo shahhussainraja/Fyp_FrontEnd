@@ -44,14 +44,6 @@ function Header() {
           <p className='details'>Find your dream customized products by sitting at home. Your dreams are our responsinility.</p>
         </motion.div>
 
-
-        <div className='header-btns'>
-          <a className='cv-btn' style={{ borderRadius: 1, marginLeft: 0, textDecoration: "inherit", cursor: "pointer" }} onClick={() => navigation("/Post")}>Post Order</a>
-          <Link to="/FindJobs" className='cv-btn' style={{ borderRadius: 1 }}>Get Order</Link>
-          <a className='cv-btn' style={{ borderRadius: 1, textDecoration: "inherit", cursor: "pointer" }} onClick={() => navigation("/Shop")}>Shop</a>
-        </div>
-
-
       </div>
       <div className='sideImage'>
         <motion.div

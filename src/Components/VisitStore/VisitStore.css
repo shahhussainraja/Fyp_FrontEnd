@@ -1,0 +1,43 @@
+
+  .p{
+    margin-top: 20px;
+    /* border-bottom: solid 1px lightgrey; */
+    
+  }
+  .pdata{
+    margin-left: 200px;
+    width: 500px;
+  }
+  
+  .pdata .p{
+    margin-top: 20px;
+    border-bottom: solid 1px lightgrey;
+    text-align: center;
+    
+  }
+  
+  .profileName{
+    padding: 5px;
+    margin-top: 5%;
+    margin-left:40%;
+    text-align: right;
+  
+  }
+
+   
+  .profileName .pnh3{
+    margin-left: 150px;
+    color:  #2693b2;
+  }
+  
+  .profileFlex{
+    display: flex;
+    padding: 5px;
+    margin: 20px;
+    justify-content: center;
+  }
+  
+  .visitStoreContainer{
+    display: flex;
+    float: left;
+  }

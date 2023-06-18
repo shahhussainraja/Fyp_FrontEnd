@@ -91,8 +91,8 @@ const Addproduct = () => {
   
                                       <div class="mb-3">
                                       <lable class=" mb-4 ">Description
-                                          <input
-                                              type="Text"
+                                          <textarea
+                                              type=""
                                               autoComplete="off"
                                               name="detail"
                                               id="detail"
@@ -134,7 +134,7 @@ const Addproduct = () => {
                                           ) : null}          
                                       </div> 
                                       <div class='mb-3'>
-                                      <lable class=" mb-4 "  >category
+                                      <lable class=" mb-4 "  >Category
                                       
                                         <Form.Select aria-label="Default select example" class="form-control  border-0 shadow-sm px-4" name="category" id="category" onChange={handleChange} value={values.category}>
                                         <option value="" disabled selected>Select Catagory</option>

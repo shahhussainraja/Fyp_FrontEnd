@@ -77,7 +77,7 @@ useEffect(()=>{
               <div style={{ marginTop:"0px"}} className="PostCard">
                 {allPosts?.map((contents) => (
                   <>
-                    { contents.Status !== "Assigned" &&
+                    { contents.Status !== "Assigned" && contents.Status !== "Shipped" &&
                     <Products key = {contents._id}
                        content = {contents}
                     />
