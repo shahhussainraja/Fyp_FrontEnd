@@ -8,7 +8,7 @@ import {
   CardImg,
 } from "reactstrap";
 import "./Review.css"
-
+import StarRating from "../StarRating/StarRating";
 
 function Review({data ,}) {
   return (
@@ -24,15 +24,17 @@ function Review({data ,}) {
               }
               alt="user avatar"
             />
-            <CardSubtitle className="mb-2 text-muted" tag="h6">
+            <CardSubtitle className="m-2 text-muted" tag="h6">
               {data.buyerName}
             </CardSubtitle>
           </div>
           <div className="reviews-body">
+          <StarRating style={{marginTop:"10px"}}></StarRating>
             <CardSubtitle style={{fontWeight:"bold",padding:"5px"}}>
               Purchased Product :  {data?.products?.map((val)=>(<>{val.postTitle }</>))}
             </CardSubtitle>
             <CardText className="cardText">
+             
               {" Review : " + data.review}
             </CardText>
           </div>

@@ -35,7 +35,7 @@ function VisitStore() {
       useEffect(getProfileData,[]);
 
   return (
-    <div>
+    <div className='container'>
          <div classname='' style={{display:"flex", borderBottom:"solid black 1px", padding: "10px", marginTop:"70px" ,justifyContent:"space-around"}}>
                 <div>
                   <img src={`http://localhost:8080${data?.image}`}  

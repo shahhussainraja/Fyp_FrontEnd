@@ -79,6 +79,7 @@ const MyTasks = () => {
   const [postdata, setPostData] = useState([]);
   const [loading, isLoading] = useState(true)
 
+  const [starRating, setStarRating] = useState("")
   const [review, setReview] = useState("")
   const { TextArea } = Input;
   const [forceupadate, setForceUpdate] = useState(0)
@@ -289,7 +290,7 @@ const MyTasks = () => {
                                     Submit
                                   </Button>,
                                 ]}>
-                                  <StarRating></StarRating>
+                                  <StarRating ></StarRating>
                                 <TextArea rows={4} onChange={(e) => setReview(e.target.value)} value={review} placeholder='Enter Review here' />
                               </Modal>
                             </> : <>submitted</>

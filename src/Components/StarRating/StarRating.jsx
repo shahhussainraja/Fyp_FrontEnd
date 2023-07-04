@@ -6,9 +6,9 @@ const StarRating = () => {
 
   const [rating, setRating] = useState(null);
   const [hover, setHover] = useState(null);
-
+  console.log(rating)
   return (
-    <div>
+    <div style={{marginBottom:"10px"}}>
         {[...Array(5)].map((star, i) =>{
           const ratingValue = i + 1;
 
@@ -17,6 +17,7 @@ const StarRating = () => {
             <input 
             type='radio'
             name='rating' 
+            style={{display:"none"}}
             value={ratingValue}
             onClick={() => setRating(ratingValue)}
             
@@ -30,9 +31,9 @@ const StarRating = () => {
 
           
             </label>
+            
           ) 
         })}
-    
     </div>
   )
 }

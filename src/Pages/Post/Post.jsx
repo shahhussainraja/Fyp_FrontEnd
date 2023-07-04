@@ -12,7 +12,7 @@ import { postSchema } from '../../Schemas/index';
 import { useSelector } from 'react-redux';
 import authServices from '../../Services/AuthServices';
 import Swal from 'sweetalert2';
-import Contact from '../../Components/Contact/Contact';
+import Footer from '../../Components/Footer/Footer'
 import { useNavigate } from 'react-router-dom';
 
 const initialValues = {
@@ -160,9 +160,39 @@ const navigate  =useNavigate();
                                     
                                       <Form.Select aria-label="Default select example" class="form-control  border-0 shadow-sm px-4"  name='city' id='city' onChange={handleChange} >
                                       <option value="" disabled selected>Select City</option>
-                                      <option value="Lahore">Lahore</option>
-                                      <option value="Narowal">Narowal</option>
+                                      <option value="Abbottabad">Abbottabad</option>
+                                      <option value="Bahawalnagar">Bahawalnagar</option>
+                                      <option value="Bahawalpur">Bahawalpur</option>
+                                      <option value="Chakdara">Chakdara</option>
+                                      <option value="Chakwal">Chakwal</option>
+                                      <option value="Chishtian">Chishtian</option>
+                                      <option value="Dadu">Dadu</option>
+                                      <option value="Daska">Daska</option>
+                                      <option value="Dera Ghazi Khan">Dera Ghazi Khan</option>
                                       <option value="Fasialabad">Fasialabad</option>
+                                      <option value="Gojra">Gojra</option>
+                                      <option value="Gujranwala">Gujranwala</option>
+                                      <option value="Hyderabad">Hyderabad</option>
+                                      <option value="Islamkot">Islamkot</option>
+                                      <option value="Jacobabad">Jacobabad</option>
+                                      <option value="Kacchi Mandi">Kacchi Mandi</option>
+                                      <option value="Karachi">Karachi</option>
+                                      <option value="Khairpur">Khairpur</option>
+                                      <option value="Lahore">Lahore</option>
+                                      <option value="Mardan">Mardan</option>
+                                      <option value="Narowal">Narowal</option>
+                                      <option value="Okara">Okara</option>
+                                      <option value="Peshawar">Peshawar</option>
+                                      <option value="Sangla Hill">Sangla Hill</option>
+                                      <option value="Shikarpur">Shikarpur</option>
+                                      <option value="Sheikhupura">Sheikhupura</option>
+                                      <option value="Sitapur">Sitapur</option>
+                                      <option value="Srinagar">Srinagar</option>
+                                      <option value="Toba Tek SIngh">Toba Tek Singh</option>
+
+                                      
+                                      
+                                      
                                     </Form.Select>
                                     {errors.city && touched.city? (
                                         <p className="form-error">{errors.city}</p>
@@ -218,11 +248,15 @@ const navigate  =useNavigate();
                                     
                                       <Form.Select aria-label="Default select example" class="form-control  border-0 shadow-sm px-4" name="category" id="category" onChange={handleChange}>
                                       <option value="" disabled selected>Select Catagory</option>
-                                      <option value="Food">Food</option>
-                                      <option value="bakery">Bakery</option>
-                                      <option value="Furniture">Furniture</option>
+                                      <option value="Bakery Items">Bakery Items</option>
+                                      <option value="Catering">Catering</option>
                                       <option value="Cloths">Cloths</option>
-                                      <option value="Interior Designing">Interior Designing</option>
+                                      <option value="Decoration">Decoration</option>
+                                      <option value="Furniture">Furniture</option>
+                                      <option value="Food">Food</option>
+                                      <option value="Interior Design">Interior Design</option>
+                                      <option value="Gifts">Gifts</option>
+                                      <option value="Home and Garden">Home & Garden</option>
                                     </Form.Select>
                                     {errors.category && touched.category? (
                                         <p className="form-error">{errors.category}</p>
@@ -285,7 +319,7 @@ const navigate  =useNavigate();
                             </div>
                         </div>
                                            
-                        <Contact />
+                        <Footer />
                     </div>
    
   )
