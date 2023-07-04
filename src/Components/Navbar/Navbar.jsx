@@ -25,7 +25,7 @@ function Navbar() {
   const islogged = useSelector((state) => state.userDetail.loggedIn)
   const user = useSelector((state)=>state.userDetail)
 
-  // const value  = true;
+  //const islogged  = true;
   const [modalShow, setModalShow] = useState(false);
 
   const [sellerState, setSellerState] = useState(false)

@@ -14,6 +14,7 @@ import "./MyTasks.css"
 import { BiEdit } from "react-icons/bi";
 import { AiFillDelete } from "react-icons/ai";
 import sellerServices from '../../Services/SellerServices';
+import StarRating from '../../Components/StarRating/StarRating';
 
 
 const columns = [
@@ -288,6 +289,7 @@ const MyTasks = () => {
                                     Submit
                                   </Button>,
                                 ]}>
+                                  <StarRating></StarRating>
                                 <TextArea rows={4} onChange={(e) => setReview(e.target.value)} value={review} placeholder='Enter Review here' />
                               </Modal>
                             </> : <>submitted</>
