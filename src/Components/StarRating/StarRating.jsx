@@ -2,9 +2,9 @@ import React from 'react'
 import { useState } from 'react'
 import {FaStar} from 'react-icons/fa'
 
-const StarRating = () => {
+const StarRating = ({star}) => {
 
-  const [rating, setRating] = useState(null);
+  const [rating, setRating] = useState(star || 0);
   const [hover, setHover] = useState(null);
   console.log(rating)
   return (
@@ -18,18 +18,15 @@ const StarRating = () => {
             type='radio'
             name='rating' 
             style={{display:"none"}}
-            value={ratingValue}
-            onClick={() => setRating(ratingValue)}
+            value={star || 0 }
             
             />
             <FaStar 
             className='star' 
             size = {20}
-            onMouseOver={() => setHover(ratingValue)}
+            // onMouseOver={() => setHover(ratingValue)}
             onMouseOut={() => setHover(null)}
             color = {ratingValue <= (hover || rating) ? "#ffc107" : "#e4e5e9"}/>
-
-          
             </label>
             
           ) 

@@ -1,85 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { BsArrowDownRight, BsArrowUpRight } from "react-icons/bs";
 import { Column } from "@ant-design/plots";
 import { Table } from "antd";
-const columns = [
-  {
-    title: "SNo",
-    dataIndex: "key",
-  },
-  {
-    title: "Name",
-    dataIndex: "name",
-  },
-  {
-    title: "Product",
-    dataIndex: "product",
-  },
-  {
-    title: "Status",
-    dataIndex: "staus",
-  },
-];
-const data1 = [];
-for (let i = 0; i < 46; i++) {
-  data1.push({
-    key: i,
-    name: `Edward King ${i}`,
-    product: 32,
-    staus: `London, Park Lane no. ${i}`,
-  });
-}
+import { useSelector } from "react-redux";
+import sellerServices from "../../../Services/SellerServices";
+
+
 const Dashboard = () => {
-  const data = [
-    {
-      type: "Jan",
-      sales: 38,
-    },
-    {
-      type: "Feb",
-      sales: 52,
-    },
-    {
-      type: "Mar",
-      sales: 61,
-    },
-    {
-      type: "Apr",
-      sales: 145,
-    },
-    {
-      type: "May",
-      sales: 48,
-    },
-    {
-      type: "Jun",
-      sales: 38,
-    },
-    {
-      type: "July",
-      sales: 38,
-    },
-    {
-      type: "Aug",
-      sales: 38,
-    },
-    {
-      type: "Sept",
-      sales: 38,
-    },
-    {
-      type: "Oct",
-      sales: 38,
-    },
-    {
-      type: "Nov",
-      sales: 38,
-    },
-    {
-      type: "Dec",
-      sales: 38,
-    },
-  ];
+
+  const [dashInfo, setDashInfo] = useState(null);
+  const [graphData, setgraphData] = useState([]);
+  const user = useSelector((state)=>state.userDetail)
+
+  const getInfo = () => {
+    sellerServices.getDashBoardInfo(user.id).then((res) => {
+      setDashInfo(res)
+      setgraphData(res.graphInfo);
+    }).catch((err) => console.log(err.message))
+  }
+  useEffect(getInfo, []);
+
+  let data = graphData
+
   const config = {
     data,
     xField: "type",
@@ -116,37 +58,19 @@ const Dashboard = () => {
         <div className="d-flex justify-content-between align-items-end flex-grow-1 bg-white p-3 roudned-3">
           <div>
             <p className="desc">Total Income</p>
-            <h4 className="mb-0 sub-title">$1100</h4>
-          </div>
-          <div className="d-flex flex-column align-items-end">
-            <h6>
-              <BsArrowDownRight /> 32%
-            </h6>
-            <p className="mb-0  desc">This Month Progress</p>
+            <h4 className="mb-0 sub-title">Rs {dashInfo?.totalRevenue}</h4>
           </div>
         </div>
         <div className="d-flex justify-content-between align-items-end flex-grow-1 bg-white p-3 roudned-3">
           <div>
             <p className="desc">Total Orders</p>
-            <h4 className="mb-0 sub-title">289</h4>
-          </div>
-          <div className="d-flex flex-column align-items-end">
-            <h6 className="red">
-              <BsArrowUpRight /> 06%
-            </h6>
-            <p className="mb-0  desc">Compared to last month</p>
+            <h4 className="mb-0 sub-title">{dashInfo?.totalorder}</h4>
           </div>
         </div>
         <div className="d-flex justify-content-between align-items-end flex-grow-1 bg-white p-3 roudned-3">
           <div>
             <p className="desc">Completed Orders</p>
-            <h4 className="mb-0 sub-title">200</h4>
-          </div>
-          <div className="d-flex flex-column align-items-end">
-            <h6 className="green">
-              <BsArrowUpRight /> 80%
-            </h6>
-            <p className="mb-0 desc">Completion rate</p>
+            <h4 className="mb-0 sub-title">{dashInfo?.completedOrder}</h4>
           </div>
         </div>
       </div>
@@ -154,12 +78,6 @@ const Dashboard = () => {
         <h3 className="mb-5 title">Income Statics</h3>
         <div>
           <Column {...config} />
-        </div>
-      </div>
-      <div className="mt-4">
-        <h3 className="mb-5 title">Recent Orders</h3>
-        <div>
-          <Table columns={columns} dataSource={data1} />
         </div>
       </div>
     </div>

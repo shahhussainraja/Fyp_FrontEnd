@@ -25,13 +25,13 @@ function Review({data ,}) {
               alt="user avatar"
             />
             <CardSubtitle className="m-2 text-muted" tag="h6">
-              {data.buyerName}
+              {data?.buyerName}
             </CardSubtitle>
           </div>
           <div className="reviews-body">
-          <StarRating style={{marginTop:"10px"}}></StarRating>
+          <StarRating style={{marginTop:"10px"}} star={data?.reviewRating} ></StarRating>
             <CardSubtitle style={{fontWeight:"bold",padding:"5px"}}>
-              Purchased Product :  {data?.products?.map((val)=>(<>{val.postTitle }</>))}
+              Purchased Product :  {data?.products?.map((val)=>(<>{val?.postTitle }</>))}
             </CardSubtitle>
             <CardText className="cardText">
              
@@ -40,7 +40,7 @@ function Review({data ,}) {
           </div>
           <CardText>
             <small className="text-muted text-bold">
-              {"3 mins ago"}
+              {"few mins ago"}
             </small>
           </CardText>
         </div>

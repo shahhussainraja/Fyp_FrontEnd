@@ -72,7 +72,7 @@ const changeOrderStatus = (orderId)=>{
                  <Descriptions.Item label="City">{data.city}</Descriptions.Item>
                  <Descriptions.Item label="Postal code">{data.postalCode}</Descriptions.Item>
                  <Descriptions.Item label="Total Amount ">
-                   {data.totalAmount/100}
+                   {data.totalAmount}
                  </Descriptions.Item>
                  <Descriptions.Item label="Payment Status" contentStyle={{color:"red" , fontWeight:"bolder"}} >
                    Paid
@@ -117,7 +117,7 @@ const changeOrderStatus = (orderId)=>{
             <Descriptions.Item label="City">{data.city}</Descriptions.Item>
             <Descriptions.Item label="Postal code">{data.postalCode}</Descriptions.Item>
             <Descriptions.Item label="Total Amount ">
-              {data.totalAmount/100}
+              {data.totalAmount}
             </Descriptions.Item>
             <Descriptions.Item label="Payment Status" contentStyle={{color:"red" , fontWeight:"bolder"}} >
               Paid

@@ -116,8 +116,6 @@ function AddToCart() {
                             </MDBTypography>
                             <MDBTypography tag="h5">RS {cartDetail.total}</MDBTypography>
                           </div>
-
-                    
                           <Button variant="success" onClick={()=>makeCartPayment()}>Check out</Button>
                           <Button variant="danger" style={{marginLeft:"3px"}} onClick={()=>clearCartProducts()}>Clear cart</Button>
                         </div>

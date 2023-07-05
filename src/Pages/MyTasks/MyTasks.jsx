@@ -13,9 +13,8 @@ import { Table } from 'antd';
 import "./MyTasks.css"
 import { BiEdit } from "react-icons/bi";
 import { AiFillDelete } from "react-icons/ai";
-import sellerServices from '../../Services/SellerServices';
 import StarRating from '../../Components/StarRating/StarRating';
-
+import {FaStar} from 'react-icons/fa'
 
 const columns = [
   {
@@ -79,7 +78,9 @@ const MyTasks = () => {
   const [postdata, setPostData] = useState([]);
   const [loading, isLoading] = useState(true)
 
-  const [starRating, setStarRating] = useState("")
+  const [rating, setRating] = useState(null);
+  const [hover, setHover] = useState(null);
+  
   const [review, setReview] = useState("")
   const { TextArea } = Input;
   const [forceupadate, setForceUpdate] = useState(0)
@@ -114,7 +115,7 @@ const MyTasks = () => {
   const handleOk = (id) => {
     if (review !== "") {
       console.log(review)
-      authServices.addReview(id, { review: review }).then((res) => {
+      authServices.addReview(id, { review: review , ratingValue : rating }).then((res) => {
         Swal.fire({
           position: 'center',
           icon: 'success',
@@ -183,10 +184,7 @@ const MyTasks = () => {
       status: `${postdata[i].Status}`,
       action: (
         <>
-          <button  className=" fs-3 text-danger">
-            <BiEdit />
-          </button>
-          <button className="ms-3 fs-3 text-danger" onClick={()=>deletPost(postdata[i]?._id,postdata[i].Status)} >
+          <button className="ms-3 fs-4 text-danger" style={{backgroundColor : "transparent"}} onClick={()=>deletPost(postdata[i]?._id,postdata[i].Status)} >
             <AiFillDelete  />
           </button>
         </>
@@ -194,9 +192,6 @@ const MyTasks = () => {
     });
   }
 }
-
-
-
 
   return (
     <>
@@ -219,7 +214,7 @@ const MyTasks = () => {
                         <Descriptions.Item label="City">{data.city}</Descriptions.Item>
                         <Descriptions.Item label="Postal code">{data.postalCode}</Descriptions.Item>
                         <Descriptions.Item label="Total Amount ">
-                          {data.totalAmount / 100}
+                          {data.totalAmount}
                         </Descriptions.Item>
                         <Descriptions.Item label="Payment Status" contentStyle={{ color: "red", fontWeight: "bolder" }} >
                           Paid
@@ -264,7 +259,7 @@ const MyTasks = () => {
                         <Descriptions.Item label="City">{data.city}</Descriptions.Item>
                         <Descriptions.Item label="Postal code">{data.postalCode}</Descriptions.Item>
                         <Descriptions.Item label="Total Amount ">
-                          {data.totalAmount / 100}
+                          {data.totalAmount}
                         </Descriptions.Item>
                         <Descriptions.Item label="Payment Status" contentStyle={{ color: "red", fontWeight: "bolder" }} >
                           Paid
@@ -290,7 +285,31 @@ const MyTasks = () => {
                                     Submit
                                   </Button>,
                                 ]}>
-                                  <StarRating ></StarRating>
+                                <div style={{ marginBottom: "10px" }}>
+                                  {[...Array(5)].map((star, i) => {
+                                    const ratingValue = i + 1;
+
+                                    return (
+                                      <label>
+                                        <input
+                                          type='radio'
+                                          name='rating'
+                                          style={{ display: "none" }}
+                                          value={ratingValue}
+                                          onClick={() => setRating(ratingValue)}
+
+                                        />
+                                        <FaStar
+                                          className='star'
+                                          size={20}
+                                          onMouseOver={() => setHover(ratingValue)}
+                                          onMouseOut={() => setHover(null)}
+                                          color={ratingValue <= (hover || rating) ? "#ffc107" : "#e4e5e9"} />
+                                      </label>
+
+                                    )
+                                  })}
+                                </div>
                                 <TextArea rows={4} onChange={(e) => setReview(e.target.value)} value={review} placeholder='Enter Review here' />
                               </Modal>
                             </> : <>submitted</>

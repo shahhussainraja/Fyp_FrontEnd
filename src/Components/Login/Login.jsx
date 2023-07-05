@@ -8,6 +8,7 @@ import { updateUserDetail } from '../../Redux/userReducer';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate, useNavigate } from 'react-router-dom';
 import sellerServices from '../../Services/SellerServices';
+import Swal from 'sweetalert2';
 
 
 function Login(){
@@ -33,6 +34,13 @@ function Login(){
                 if(err.response.status === 410){
                     setError(true)
                 }
+                if(err.response.status === 411){
+                    Swal.fire(
+                        'Account Blocked!',
+                        'Please contact customer support service.',
+                        'error'
+                      )
+                }
                 console.log(err.message)
             })
         }else{
@@ -42,6 +50,13 @@ function Login(){
             }).catch((err)=>{
                 if(err.response.status === 410  ){
                     setError(true)
+                }
+                 if(err.response.status === 411){
+                    Swal.fire(
+                        'Account Blocked!',
+                        'Please Contact customer support service.',
+                        'error'
+                      )
                 }
                 console.log(err.message)
             })

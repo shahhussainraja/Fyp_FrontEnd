@@ -104,9 +104,7 @@ searchRequest(searchData,selectedTags)
           <h4 style={{margin:"20px", color:'#E3BE00'}}>New Products</h4>
               <div className='grid2'>
               {data?.map((val)=>(
-                  val.products?.map((e)=>(
-                    (<><Wrapper key={e._id} content={e} shopName={val.shopName} sellerId = {val.sellerProfileId}></Wrapper></>)
-                  ))
+                    (<><Wrapper key={val._id} content={val.products} shopName={val.shopName} sellerId = {val.sellerProfileId}></Wrapper></>)
               ))}
             </div>
           </>:<>
@@ -115,9 +113,7 @@ searchRequest(searchData,selectedTags)
               </>:<>
               <div className='grid2'>
                   {data?.map((val)=>(
-                      val.products?.map((e)=>(
-                        (<><Wrapper key={e._id} content={e} shopName={val.shopName} sellerId = {val.sellerProfileId}></Wrapper></>)
-                      ))
+                        (<><Wrapper key={val._id} content={val.products} shopName={val.shopName} sellerId = {val.sellerProfileId}></Wrapper></>)
                   ))}
                 </div>
               </>}

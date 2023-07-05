@@ -59,3 +59,8 @@
   transition: all ease 0.5s;
   color: #000000;
 }  
+
+.form-error{
+  color:red !important;
+  font-size: medium;
+}

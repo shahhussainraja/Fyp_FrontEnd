@@ -19,9 +19,6 @@ function FindJobs() {
   const [allPosts , setAllPosts] = useState(null)
   const  selectedTags  =  useSelector((state)=>state.Postfilter.selectedCategory);
 
-
-
-  
 useEffect(()=>{
   const searchRequest = (searchData,selectedTags)=>{
     setTimeout(()=>{
@@ -45,7 +42,6 @@ useEffect(()=>{
 
     }
   }
-
 
 
 
